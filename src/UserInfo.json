@@ -1,0 +1,72 @@
+{
+  "dor bruker": {
+    "username": "dor bruker",
+    "password": "12345678",
+    "email": "dorbruker1@gmail.com",
+    "birthday": "20/11/1999",
+    "plan": 2,
+    "tasks": [
+      {
+        "task name": "buying food",
+        "date": "25/09/2023",
+        "icon": "",
+        "status": "didn't start",
+        "description": "buying food for the house, dont forget chicken for friday"
+      },
+      {
+        "task name": "fixing the car",
+        "date": "30/09/2023",
+        "icon": "",
+        "status": "didn't start",
+        "description": "Need to take the car to the garage, engin light turned on"
+      }
+    ]
+  },
+
+  "ori barda": {
+    "username": "ori barda",
+    "password": "12345678",
+    "email": "oribarda10@gmail.com",
+    "birthday": "14/07/2002",
+    "plan": 3,
+    "tasks": [
+      {
+        "task name": "buying food",
+        "date": "25/09/2023",
+        "icon": "",
+        "status": "didn't start",
+        "description": "buying food for the house, dont forget chicken for friday"
+      },
+      {
+        "task name": "fixing the car",
+        "date": "30/09/2023",
+        "icon": "",
+        "status": "didn't start",
+        "description": "Need to take the car to the garage, engin light turned on"
+      }
+    ]
+  },
+  "or rehoven": {
+    "username": "or rehoven",
+    "password": "12345678",
+    "email": "orrehoven@gmail.com",
+    "birthday": "14/07/2002",
+    "plan": 1,
+    "tasks": [
+      {
+        "task name": "buying food",
+        "date": "25/09/2023",
+        "icon": "",
+        "status": "didn't start",
+        "description": "buying food for the house, dont forget chicken for friday"
+      },
+      {
+        "task name": "fixing the car",
+        "date": "30/09/2023",
+        "icon": "",
+        "status": "didn't start",
+        "description": "Need to take the car to the garage, engin light turned on"
+      }
+    ]
+  }
+}
