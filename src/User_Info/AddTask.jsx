@@ -1,35 +1,22 @@
-import { useState } from "react";
+import { useConText, useContext, useState } from "react";
 import DatePicker from "react-datepicker";
+import { UserContext } from "../General_Components/Context";
 
 function AddTask() {
-    const events = [
-        {
-          title: "Big Meeting",
-          start: new Date(2023, 8, 23),
-          end: new Date(2023, 8, 23),
-        },
-        {
-          title: "Lunch",
-          start: new Date(2023, 8, 20),
-          end: new Date(2023, 8, 20),
-        },
-        {
-          title: "Movie Night",
-          start: new Date(2023, 8, 13),
-          end: new Date(2023, 8, 13),
-        },
-      ];
-    const [allEvent, setallEvent] = useState(events);
-    const [newEvent, setNewEvent] = useState({
-        title: "",
-        start: "",
-        end: "",
-      });
-        function handleAddEvent() {
-        setallEvent([...allEvent, newEvent]);
-        console.log(allEvent);
-      }
+  const { allEvent, setallEvent } = useContext(UserContext);
+  const { newEvent, setNewEvent } = useContext(UserContext);
+  const [isCheckedEnd, setIsCheckedEnd] = useState(false);
+  const [isCheckedHour, setIsCheckedHour] = useState(false);
 
+  function handleAddEvent() {
+    setallEvent([...allEvent, newEvent]);
+  }
+  const handleCheckboxEnd = () => {
+    setIsCheckedEnd(!isCheckedEnd);
+  };
+  const handleCheckboxhours = () => {
+    setIsCheckedHour(!isCheckedHour);
+  };
   return (
     <>
       <h2>Add New Event</h2>
@@ -38,20 +25,88 @@ function AddTask() {
           type="text"
           placeholder="Add Title"
           value={newEvent.title}
-          onChange={(e) => setnewEvent({ ...newEvent, title: e.target.value })}
+          onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
         />
       </div>
-      <DatePicker
-        placeholdertext="Start date"
-        selected={newEvent.start}
-        onChange={(start) => setnewEvent({ ...newEvent, start })}
+      Need specific hours?{" "}
+      <input
+        name="specifichours"
+        type="checkbox"
+        checked={isCheckedHour}
+        onChange={handleCheckboxhours}
       />
-      <DatePicker
-        placeholdertext="End date"
-        selected={newEvent.end}
-        onChange={(end) => setnewEvent({ ...newEvent, end })}
-      />
-      <button onClick={handleAddEvent}>Submit</button>
+      {isCheckedHour ? (
+        <>
+          <div>
+            <DatePicker
+              placeholderText="Start date"
+              selected={newEvent.start}
+              onChange={(start) =>
+                setNewEvent({ ...newEvent, start, end: start })
+              }
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              dateFormat="MMMM d, yyyy h:mm aa"
+            />
+          </div>
+          <span>More then one day?</span>{" "}
+          <input
+            name="moreDays"
+            type="checkbox"
+            checked={isCheckedEnd}
+            onChange={handleCheckboxEnd}
+          />
+          {isCheckedEnd ? (
+            <div>
+              <DatePicker
+                placeholderText="End date"
+                selected={newEvent.end}
+                onChange={(end) => setNewEvent({ ...newEvent, end })}
+                showTimeSelect
+                timeFormat="HH:mm"
+                timeIntervals={15}
+                dateFormat="MMMM d, yyyy h:mm aa"
+              />
+            </div>
+          ) : null}
+        </>
+      ) : (
+        <>
+          <div>
+            <DatePicker
+              placeholderText="Start date"
+              selected={newEvent.start}
+              onChange={(start) =>
+                setNewEvent({ ...newEvent, start, end: start })
+              }
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              dateFormat="MMMM d, yyyy"
+            />
+          </div>
+          <span>More than one day?</span>{" "}
+          <input
+            name="moreDays"
+            type="checkbox"
+            checked={isCheckedEnd}
+            onChange={handleCheckboxEnd}
+          />
+          {isCheckedEnd ? (
+            <div>
+              <DatePicker
+                placeholderText="End date"
+                selected={newEvent.end}
+                onChange={(end) => setNewEvent({ ...newEvent, end })}
+                timeFormat="HH:mm"
+                timeIntervals={15}
+                dateFormat="MMMM d, yyyy"
+              />
+            </div>
+          ) : null}
+        </>
+      )}
+      <button onClick={handleAddEvent}>Add Task</button>
     </>
   );
 }
