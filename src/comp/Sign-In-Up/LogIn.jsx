@@ -4,7 +4,7 @@ import users from "../../UserInfo.json";
 import { UserContext } from "../../General_Components/Context";
 
 function LogIn() {
-  const {user, setUser} = useContext(UserContext) 
+  const {user, setUser, setallEvent} = useContext(UserContext) 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();

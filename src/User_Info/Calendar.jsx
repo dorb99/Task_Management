@@ -1,72 +1,54 @@
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import react, { useState } from "react";
-import DatePicker from "react-datepicker";
+import { useContext, useEffect, useState } from "react";
 import moment from "moment";
-import "react-datepicker/dist/react-datepicker.css"
+import "react-datepicker/dist/react-datepicker.css";
+import { UserContext } from "../General_Components/Context";
 
 
-export default function App() {
-  const events = [
-    {
-      title: "Big Meeting",
-      start: new Date(2023, 8, 23),
-      end: new Date(2023, 8, 23),
-    },
-    {
-      title: "Lunch",
-      start: new Date(2023, 8, 20),
-      end: new Date(2023, 8, 20),
-    },
-    {
-      title: "Movie Night",
-      start: new Date(2023, 8, 13),
-      end: new Date(2023, 8, 13),
-    },
-  ];
-  const [newEvent, setNewEvent] = useState({
-    title: "",
-    start: "",
-    end: "",
-  });
-  const [allEvent, setallEvent] = useState(events);
-  function handleAddEvent() {
-    setallEvent([...allEvent, newEvent]);
-    console.log(allEvent);
+export default function PrintCalendar() {
+  const { allEvent, setallEvent, user } = useContext(UserContext);
+  const localizer = momentLocalizer(moment);
+  
+  const handleDoubleClick = (event) => {
+    console.log(event.title+ " two click");
+  };
+  const handleOneClick = (event) => {
+    console.log(event.title+ " one clicks");
+  };
+
+  function ShowingEvening() {
+    const newEvent = [];
+    for (let index = 0; index < allEvent.length; index++) {
+      const title = allEvent[index].title;
+      const start = new Date(allEvent[index].start);
+      const end = new Date(allEvent[index].end);
+      newEvent.push({ title: title, start: start, end: end });
+    }
+    setallEvent(newEvent)
   }
 
-  const localizer = momentLocalizer(moment);
-  return (
-    <>
-      <h2>Add New Event</h2>
-      <div>
-        <input
-          type="text"
-          placeholder="Add Title"
-          value={newEvent.title}
-          onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
-        />
-      </div>
-      <DatePicker
-        placeholdertext="Start date"
-        selected={newEvent.start}
-        onChange={(start) => setNewEvent({ ...newEvent, start })}
-      />
-      <DatePicker
-        placeholdertext="End date"
-        selected={newEvent.end}
-        onChange={(end) => setNewEvent({ ...newEvent, end })}
-      />
-      <button onClick={handleAddEvent}>Submit</button>
-      <div>
-        <Calendar
-          localizer={localizer}
-          events={allEvent}
-          startAccessor="start"
-          endAccessor="end"
-          style={{ height: 500, margin: "50px" }}
-        />
-      </div>
-    </>
-  );
+  useEffect(() => {
+    if (user) {
+      ShowingEvening();
+    }
+  }, [user]);
+
+  {
+    return (
+      <>
+        <div>
+          <Calendar
+            localizer={localizer}
+            events={allEvent}
+            startAccessor="start"
+            endAccessor="end"
+            style={{ height: 500, margin: "50px" }}
+            onSelectEvent={handleOneClick}
+            onDoubleClickEvent={handleDoubleClick}
+          />
+        </div>
+      </>
+    );
+  }
 }
