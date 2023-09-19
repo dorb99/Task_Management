@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
 import LogIn from "./comp/Sign-In-Up/LogIn";
 import SignUp from "./comp/Sign-In-Up/SignUp";
 import users from "./UserInfo.json";
-
+import UserPage from "./User_Info/UserPage";
 function App() {
   const [user, setUser] = useState(null);
+  
 
   return (
     <>
@@ -15,11 +15,12 @@ function App() {
           <Route
             path="/"
             element={
-              user ? <UserPage user={user} /> : <LogIn setUser={setUser} />
+              user ? <UserPage/> : <LogIn setUser={setUser} />
             }
           />
           <Route path="/signup" element={<SignUp setUser={setUser} />} />
         </Routes>
+      
       </div>
     </>
   );

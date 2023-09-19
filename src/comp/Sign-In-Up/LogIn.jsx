@@ -13,7 +13,7 @@ function LogIn({ setUser }) {
       if (usersArray[i] === username) {
         if (users[username].password === password) { // Compare passwords correctly
           setUser(username);
-          navigate("/UserPage");
+          navigate("/");  
         } else {
           alert("Please check your password");
         }

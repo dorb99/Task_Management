@@ -1,7 +1,7 @@
 {
-  "dor bruker": {
+  "d": {
     "username": "dor bruker",
-    "password": "12345678",
+    "password": "1",
     "email": "dorbruker1@gmail.com",
     "birthday": "20/11/1999",
     "plan": 2,
@@ -11,18 +11,20 @@
         "date": "25/09/2023",
         "icon": "",
         "status": "didn't start",
-        "description": "buying food for the house, dont forget chicken to friday"
+        "description": "buying food for the house, dont forget chicken to friday",
+        "color": "orange"
       },
       {
         "task name": "fixing the car",
         "date": "30/09/2023",
         "icon": "",
         "status": "didn't start",
-        "description": "Need to take the car to the garage, engin light turned on"
+        "description": "Need to take the car to the garage, engin light turned on",
+        "color": "black"
+
       }
     ]
   },
-
   "ori barda": {
     "username": "ori barda",
     "password": "12345678",
@@ -35,14 +37,16 @@
         "date": "25/09/2023",
         "icon": "",
         "status": "didn't start",
-        "description": "buying food for the house, dont forget chicken to friday"
+        "description": "buying food for the house, dont forget chicken to friday",
+        "color": "orange"
       },
       {
         "task name": "fixing the car",
         "date": "30/09/2023",
         "icon": "",
         "status": "didn't start",
-        "description": "Need to take the car to the garage, engin light turned on"
+        "description": "Need to take the car to the garage, engin light turned on",
+        "color": "black"
       }
     ]
   },
@@ -58,14 +62,16 @@
         "date": "25/09/2023",
         "icon": "",
         "status": "didn't start",
-        "description": "buying food for the house, dont forget chicken to friday"
+        "description": "buying food for the house, dont forget chicken to friday",
+        "color": "orange"
       },
       {
         "task name": "fixing the car",
         "date": "30/09/2023",
         "icon": "",
         "status": "didn't start",
-        "description": "Need to take the car to the garage, engin light turned on"
+        "description": "Need to take the car to the garage, engin light turned on",
+        "color": "black"
       }
     ]
   }
