@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&family=Phudu:wght@300;500;700&family=Poppins:wght@100;200&family=Rajdhani:wght@300;500&display=swap");
+
+/* Base styles for the modal */
+.modal {
+  font-family: "Phudu", cursive;
+  font-weight: 700;
+  position: fixed;
+  width: 400px;
+  z-index: 1040;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style for the backdrop */
+.backdrop {
+  position: fixed;
+  z-index: 1030;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Style for the modal header */
+.modal-header {
+  border-bottom: 1px solid #e9ecef;
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Style for the modal title */
+.modal-title {
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+/* Style for the modal description */
+.modal-desc {
+  padding: 12px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style for the close button */
+.close-button {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #00563B;
+  background-color: white;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+/* Style for buttons */
+button {
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 10px;
+}
+
+/* Style for secondary button */
+.secondary-button {
+  color: #fff;
+  background-color: #254636;
+}
+
+/* Style for primary button */
+.primary-button {
+  color: #fff;
+  background-color: #00ff08;
+}
+
+/* Additional styles for the form fields */
+.insert {
+  padding: 1vw 1vh 1vw 1vh;
+}
+
+/* Style for the "Remember Me" checkbox */
+.insert input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Style for the select plan section */
+#select-plan {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+/* Style for individual plans */
+.plan {
+  background-color: whitesmoke;
+  padding-right: 1vw;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+/* Additional custom styles can be added here */
+.modal-footer{
+  display: flex;
+  justify-content: flex-end;
+  margin: 2vw;
+}
+/* Style for the plan checkbox container */
+.plan {
+  display: flex;
+  align-items: center;
+  background-color: whitesmoke;
+  padding: 10px;
+  border-radius: 20px;
+  margin: 5px; 
+  display: flex;
+  flex-direction: row;
+}
+
+/* Style for the checkbox input */
+.plan input[type="checkbox"] {
+  margin-right: 10px; 
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Style for the plan label */
+.plan label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333; /* Text color */
+}
+.what-get{
+  font-size: 10px;
+}
+.plan-size{
+  height: 25vh;
+}
