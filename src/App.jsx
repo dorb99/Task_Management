@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
 import LogIn from "./comp/Sign-In-Up/LogIn";
 import SignUp from "./comp/Sign-In-Up/SignUp";
 import UserPage from "./User_Info/UserPage"; // Import UserPage component
@@ -11,6 +10,7 @@ import NavBar from "./General_Components/NavBar";
 
 function App() {
   const [user, setUser] = useState(null);
+  
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
@@ -23,6 +23,7 @@ function App() {
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/contactus" element={<ContactUs/>}/>
         </Routes>
+      
       </div>
     </UserContext.Provider>
   );
