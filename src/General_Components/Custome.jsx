@@ -16,7 +16,7 @@ export default function Custome() {
     <div className="modal-example">
       <div>
         <button type="button" onClick={() => setShowModal(true)}>
-          Choose A Plan
+          Custome
         </button>
       </div>
 

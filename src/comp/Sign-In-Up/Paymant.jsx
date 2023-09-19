@@ -2,16 +2,34 @@ import React, { useState } from "react";
 import { Modal } from "react-overlays";
 import "./Paymant.css";
 import Credit from "./CreditCard";
+
 export default function Modals() {
   const [showModal, setShowModal] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState("plan1");
+  const [selectedPlan, setSelectedPlan] = useState("");
+  console.log(selectedPlan);
+  const [isChecked, setIsChecked] = useState(false);
 
   const renderBackdrop = (props) => <div className="backdrop" {...props} />;
 
   const handleClose = () => setShowModal(false);
 
+  const handlePlanChange = (e) => {
+    setSelectedPlan(e.target.value);
+    setIsChecked(true);
+  };
+
   const handleSuccess = () => {
-    console.log("success");
+    if (!isChecked || !selectedPlan) {
+      alert("Please choose a plan before submitting.");
+    } else {
+      console.log("success");
+      // Additional logic to handle the submission
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
   };
 
   return (
@@ -28,9 +46,9 @@ export default function Modals() {
         onHide={handleClose}
         renderBackdrop={renderBackdrop}
       >
-        <div>
+        <form onSubmit={handleSubmit}>
           <div className="modal-header">
-            <div className="modal-title">Log In</div>
+            <div className="modal-title">Choose your plan!</div>
             <div>
               <span className="close-button" onClick={handleClose}>
                 x
@@ -38,72 +56,154 @@ export default function Modals() {
             </div>
           </div>
           <div className="modal-desc">
-            <div
-              id="select-plan"
-              value={selectedPlan}
-              onChange={(e) => setSelectedPlan(e.target.value)}
-            >
+            <div id="select-plan">
               <span className="plan">
                 <div className="plan-size">
                   <label htmlFor="plan1">
                     Plan 1 ($10)
                     <p>
                       <ul>
-                        <li className="what-get">Fully working Calendar</li>
+                        <li className="what-get">1.Fully working Calendar</li>
                         <li className="what-get">
-                          Design each of your tasks as you wish
+                          2.Design each of your tasks as you wish
                         </li>
-                        <li className="what-get">A task orgenaizer</li>
+                        <li className="what-get">3.A task organizer</li>
                       </ul>
                     </p>
                   </label>
-                  <input type="checkbox" id="plan1" value="plan1" />
+                  <div className="checkbox-wrapper-31">
+                    <input
+                      className="checkbox-plan"
+                      type="checkbox"
+                      value="plan1"
+                      checked={selectedPlan === "plan1"}
+                      onChange={handlePlanChange}
+                    />
+                    <svg viewBox="0 0 35.6 35.6">
+                      <circle
+                        className="background"
+                        cx="17.8"
+                        cy="17.8"
+                        r="17.8"
+                      ></circle>
+                      <circle
+                        className="stroke"
+                        cx="17.8"
+                        cy="17.8"
+                        r="14.37"
+                      ></circle>
+                      <polyline
+                        className="check"
+                        points="11.78 18.12 15.55 22.23 25.17 12.87"
+                      ></polyline>
+                    </svg>
+                  </div>
                 </div>
                 <div className="plan-size">
                   <label htmlFor="plan2">
-                    Plan 1 ($10)
+                    Plan 2 ($20)
                     <p>
                       <ul>
-                        <li className="what-get">Fully working Calendar</li>
+                        <li className="what-get">1.Everything from plan 1</li>
                         <li className="what-get">
-                          Design each of your tasks as you wish
+                          2.Design each of your tasks as you wish
                         </li>
-                        <li className="what-get">A task orgenaizer</li>
+                        <li className="what-get">3.A task organizer</li>
                       </ul>
                     </p>
                   </label>
-                  <input type="checkbox" id="plan2" value="plan2" />
+                  <div className="checkbox-wrapper-31">
+                    <input
+                      className="checkbox-plan"
+                      type="checkbox"
+                      value="plan2"
+                      checked={selectedPlan === "plan2"}
+                      onChange={handlePlanChange}
+                    />
+                    <svg viewBox="0 0 35.6 35.6">
+                      <circle
+                        className="background"
+                        cx="17.8"
+                        cy="17.8"
+                        r="17.8"
+                      ></circle>
+                      <circle
+                        className="stroke"
+                        cx="17.8"
+                        cy="17.8"
+                        r="14.37"
+                      ></circle>
+                      <polyline
+                        className="check"
+                        points="11.78 18.12 15.55 22.23 25.17 12.87"
+                      ></polyline>
+                    </svg>
+                  </div>
                 </div>
                 <div className="plan-size">
                   <label htmlFor="plan3">
-                    Plan 1 ($10)
+                    Plan 3 ($30)
                     <p>
                       <ul>
-                        <li className="what-get">Fully working Calendar</li>
+                        <li className="what-get">1.Fully working Calendar</li>
                         <li className="what-get">
-                          Design each of your tasks as you wish
+                          2.Design each of your tasks as you wish
                         </li>
-                        <li className="what-get">A task orgenaizer</li>
+                        <li className="what-get">3.A task organizer</li>
                       </ul>
                     </p>
                   </label>
-                  <input type="checkbox" id="plan3" value="plan3" />
+                  <div className="checkbox-wrapper-31">
+                    <input
+                      className="checkbox-plan"
+                      type="checkbox"
+                      value="plan3"
+                      checked={selectedPlan === "plan3"}
+                      onChange={handlePlanChange}
+                    />
+                    <svg viewBox="0 0 35.6 35.6">
+                      <circle
+                        className="background"
+                        cx="17.8"
+                        cy="17.8"
+                        r="17.8"
+                      ></circle>
+                      <circle
+                        className="stroke"
+                        cx="17.8"
+                        cy="17.8"
+                        r="14.37"
+                      ></circle>
+                      <polyline
+                        className="check"
+                        points="11.78 18.12 15.55 22.23 25.17 12.87"
+                      ></polyline>
+                    </svg>
+                  </div>
                 </div>
               </span>
             </div>
-            <div className="paymant">
+            <div className="payment">
               <Credit />
             </div>
           </div>
           <div className="modal-footer">
-            <button className="secondary-button" onClick={handleClose}>
+            <button
+              type="button"
+              className="secondary-button"
+              onClick={handleClose}
+            >
               Close
             </button>
-            <button className="primary-button" onClick={handleSuccess}>
-              Save
+            <button
+              type="submit"
+              className="primary-button"
+              onClick={handleSuccess}
+            >
+              Submit
             </button>
           </div>
-        </div>
+        </form>
       </Modal>
     </div>
   );

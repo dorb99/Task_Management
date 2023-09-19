@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&family=Phudu:wght@300;500;700&family=Poppins:wght@100;200&family=Rajdhani:wght@300;500&display=swap");
 
 /* Base styles for the modal */
+/* Base styles for the modal */
 .modal {
   font-family: "Phudu", cursive;
   font-weight: 700;
   position: fixed;
-  width: 400px;
+  width: auto;
   z-index: 1040;
   top: 50%;
   left: 50%;
@@ -18,7 +19,6 @@
   flex-direction: column;
   align-items: center;
 }
-
 /* Style for the backdrop */
 .backdrop {
   position: fixed;
@@ -31,20 +31,35 @@
 }
 
 /* Style for the modal header */
+/* Style for the modal header */
 .modal-header {
-  border-bottom: 1px solid #e9ecef;
-  width: 100%;
-  padding: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 12px; 
+  margin-left: 12px;/* Add padding to the modal header */
 }
 
 /* Style for the modal title */
 .modal-title {
   font-weight: 500;
   font-size: 1.25rem;
+  color: #333; /* Added color for better readability */
 }
+
+/* Style for the close button */
+.close-button {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #00563b;
+  background-color: transparent;
+  opacity: 0.7;
+  cursor: pointer;
+  padding: 4px 8px; /* Adjust padding for better button positioning */
+  border-radius: 3px; /* Add border radius for button */
+}
+
 
 /* Style for the modal description */
 .modal-desc {
@@ -53,17 +68,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/* Style for the close button */
-.close-button {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1;
-  color: #00563B;
-  background-color: white;
-  opacity: 0.7;
-  cursor: pointer;
 }
 
 /* Style for buttons */
@@ -80,6 +84,7 @@ button {
 .secondary-button {
   color: #fff;
   background-color: #254636;
+  margin-right: 1vw;
 }
 
 /* Style for primary button */
@@ -107,49 +112,126 @@ button {
 
 /* Style for individual plans */
 .plan {
-  background-color: whitesmoke;
-  padding-right: 1vw;
   border-radius: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-evenly;
 }
 
 /* Additional custom styles can be added here */
-.modal-footer{
+.modal-footer {
   display: flex;
   justify-content: flex-end;
   margin: 2vw;
 }
-/* Style for the plan checkbox container */
-.plan {
-  display: flex;
-  align-items: center;
-  background-color: whitesmoke;
-  padding: 10px;
-  border-radius: 20px;
-  margin: 5px; 
-  display: flex;
-  flex-direction: row;
-}
 
-/* Style for the checkbox input */
-.plan input[type="checkbox"] {
-  margin-right: 10px; 
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-/* Style for the plan label */
-.plan label {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #333; /* Text color */
-}
-.what-get{
+.what-get {
   font-size: 10px;
 }
-.plan-size{
-  height: 25vh;
+.plan-size {
+  background-color: wheat;
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  padding: 1vw;
+  margin: 1vw;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+}
+ul{
+  list-style: none;
+}
+.checkbox-wrapper-31:hover .check {
+  stroke-dashoffset: 0;
+}
+.checkbox-plan{
+  -webkit-appearance: none;
+}
+.checkbox-wrapper-31 {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+}
+
+.checkbox-wrapper-31 .background {
+  fill: #008f2d;
+  transition: ease all 0.6s;
+  -webkit-transition: ease all 0.6s;
+}
+
+.checkbox-wrapper-31 .stroke {
+  fill: none;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  stroke-width: 2px;
+  stroke-dashoffset: 100;
+  stroke-dasharray: 100;
+  transition: ease all 0.6s;
+  -webkit-transition: ease all 0.6s;
+}
+
+.checkbox-wrapper-31 .check {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+  stroke-dashoffset: 22;
+  stroke-dasharray: 22;
+  transition: ease all 0.6s;
+  -webkit-transition: ease all 0.6s;
+}
+
+.checkbox-wrapper-31 input[type=checkbox] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  margin: 0;
+  opacity: 0;
+  -appearance: none;
+  -webkit-appearance: none;
+}
+
+.checkbox-wrapper-31 input[type=checkbox]:hover {
+  cursor: pointer;
+}
+
+.checkbox-wrapper-31 input[type=checkbox]:checked + svg .background {
+  fill: #6cbe45;
+}
+
+.checkbox-wrapper-31 input[type=checkbox]:checked + svg .stroke {
+  stroke-dashoffset: 0;
+}
+
+.checkbox-wrapper-31 input[type=checkbox]:checked + svg .check {
+  stroke-dashoffset: 0;
+}
+/* Define a media query for screens under 550px */
+@media screen and (max-width: 550px) {
+  /* Adjust the width of the modal as per your design */
+  .modal {
+    width: 80%; /* You can adjust this value as needed */
+  }
+
+  /* Change the flex direction to column for individual plans */
+  .plan {
+    flex-direction: column;
+  }
+
+  /* Add overflow scroll for the plan section */
+  .modal-desc {
+    overflow-y: auto;
+    max-height: 300px; /* You can adjust the max height as needed */
+  }
+
+  /* Optionally, adjust other styles for better responsiveness */
+  .plan-size {
+    width: 100%; /* Make individual plans full width */
+    margin-bottom: 10px; /* Add space between plans */
+  }
 }

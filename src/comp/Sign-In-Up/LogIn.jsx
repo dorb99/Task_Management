@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import users from "../../UserInfo.json";
 import { UserContext } from "../../General_Components/Context";
-
+import "./LogIn.css"
+import Footer from "../../General_Components/Footer"
 function LogIn() {
   const {user, setUser, setallEvent} = useContext(UserContext) 
   const [username, setUsername] = useState("");
@@ -22,7 +23,7 @@ function LogIn() {
     }
   }
   return (
-    <div>
+    <div id="container">
       <h2>Log In</h2>
       <input
         type="text"
@@ -41,6 +42,7 @@ function LogIn() {
       <p>
         Don't have an account? <Link to="/signup">Sign Up</Link>
       </p>
+      <Footer/>
     </div>
   );
 }

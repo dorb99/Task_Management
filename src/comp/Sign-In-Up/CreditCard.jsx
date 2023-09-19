@@ -17,14 +17,10 @@ function CreditCardSection() {
     setCVV(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <div className="credit-card-section">
       <h3>Credit Card Information</h3>
-      <form onSubmit={handleSubmit}>
+      <div>
         <div className="form-group">
           <label htmlFor="cardNumber">Card Number</label>
           <input
@@ -33,6 +29,7 @@ function CreditCardSection() {
             value={cardNumber}
             onChange={handleCardNumberChange}
             placeholder="1234 5678 9012 3456"
+            pattern="^[0-9]{16}$" 
             required
           />
         </div>
@@ -44,6 +41,7 @@ function CreditCardSection() {
             value={expirationDate}
             onChange={handleExpirationDateChange}
             placeholder="MM/YY"
+            pattern="^[0-9]{4}$" 
             required
           />
         </div>
@@ -55,11 +53,11 @@ function CreditCardSection() {
             value={cvv}
             onChange={handleCVVChange}
             placeholder="CVV"
+            pattern="^[0-9]{3}$" 
             required
           />
         </div>
-        <button type="submit">Submit</button>
-      </form>
+      </div>
     </div>
   );
 }

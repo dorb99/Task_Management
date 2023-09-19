@@ -1,10 +1,8 @@
-
-
 function ShowTasks() {
-    return(
-        <>
-        <h1>Showing Tasks</h1>
-        </>
-    )
+  return (
+    <>
+<h1>tasks</h1>
+    </>
+  );
 }
 export default ShowTasks;

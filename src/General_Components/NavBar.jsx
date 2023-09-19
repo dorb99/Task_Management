@@ -23,7 +23,7 @@ function NavBar() {
           Home
         </Link>
         <Link to="/myprofile" className="nav-item">
-          My Profile
+        Profile
         </Link>
         <Link to="/contactus" className="nav-item">
           Contact
