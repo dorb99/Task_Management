@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Modals from "./Paymant"; 
+import Modals from "./Paymant";
 
 function SignUp({ setUser }) {
   const [email, setEmail] = useState("");
@@ -8,7 +8,6 @@ function SignUp({ setUser }) {
   const [username, setUsername] = useState("");
 
   const handleSignUp = () => {
-    // Implement user registration logic here
   };
 
   return (
@@ -34,7 +33,7 @@ function SignUp({ setUser }) {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-        <Modals />
+      <Modals />
       <button onClick={handleSignUp}>
         <Link to="/login">Sign Up</Link>
       </button>

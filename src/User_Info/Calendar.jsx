@@ -48,12 +48,12 @@ export default function App() {
         />
       </div>
       <DatePicker
-        placeholdertext="Start date"
+        placeholderText="Start date"
         selected={newEvent.start}
         onChange={(start) => setNewEvent({ ...newEvent, start })}
       />
       <DatePicker
-        placeholdertext="End date"
+        placeholderText="End date"
         selected={newEvent.end}
         onChange={(end) => setNewEvent({ ...newEvent, end })}
       />
