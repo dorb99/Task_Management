@@ -17,13 +17,11 @@ function App() {
       <div className="App">
         <NavBar />
         <Routes>
-          <Route
-            path="/"
-            element={
-              user ? <UserPage user={user} /> : <LogIn setUser={setUser} />
-            }
-          />
-          <Route path="/signup" element={<SignUp setUser={setUser} />} />
+          <Route path="/" element={user ? <UserPage /> : <LogIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/myprofile" element={<MyProfile />} />
+          <Route path="/contactus" element={<ContactUs/>}/>
         </Routes>
       
       </div>
