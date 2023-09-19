@@ -1,24 +1,19 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from React Router
+import { Link } from "react-router-dom";
+import Modals from "./Paymant"; 
 
 function SignUp({ setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [selectedPlan, setSelectedPlan] = useState("");
 
-  const handleSignUp = () => {};
+  const handleSignUp = () => {
+    // Implement user registration logic here
+  };
+
   return (
     <div>
       <h2>Sign Up</h2>
-      <select
-        value={selectedPlan}
-        onChange={(e) => setSelectedPlan(e.target.value)}
-      >
-        <option value="plan1">Plan 1 ($10)</option>
-        <option value="plan2">Plan 2 ($20)</option>
-        <option value="plan3">Plan 3 ($30)</option>
-      </select>
       <input
         type="text"
         placeholder="Username"
@@ -39,9 +34,13 @@ function SignUp({ setUser }) {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+        <Modals />
       <button onClick={handleSignUp}>
         <Link to="/login">Sign Up</Link>
       </button>
+      <p>
+        I have an account! <Link to="/login">Log In</Link>
+      </p>
     </div>
   );
 }

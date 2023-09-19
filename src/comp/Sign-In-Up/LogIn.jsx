@@ -1,31 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import users from "../../UserInfo.json";
+import { UserContext } from "../../General_Components/Context";
 
-function LogIn({ setUser }) {
+function LogIn() {
+  const {user, setUser} = useContext(UserContext) 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const usersArray = Object.keys(users);
   const navigate = useNavigate();
 
   const handleSignIn = () => {
-    for (let i = 0; i < usersArray.length; i++) {
-      if (usersArray[i] === username) {
-        if (users[username].password === password) { // Compare passwords correctly
-          setUser(username);
-          navigate("/");  
-        } else {
-          alert("Please check your password");
-        }
-        return; // Exit the loop once a matching username is found
+    if (users.hasOwnProperty(username)) {
+      if (users[username].password === password) {
+        setUser(username);
+        navigate("/");
+      } else {
+        alert("Please check your password");
       }
+    } else {
+      alert("Username not found. Please sign up.");
     }
-    alert("Username not found. Please sign up.");
-  };
-
+  }
   return (
     <div>
-      <h2>Sign In</h2>
+      <h2>Log In</h2>
       <input
         type="text"
         placeholder="Username"
