@@ -5,7 +5,7 @@ import { UserContext } from "../../General_Components/Context";
 import "./LogIn.css";
 import Footer from "../../General_Components/Footer";
 function LogIn() {
-  const { user, setUser } = useContext(UserContext);
+  const {user, setUser, setallEvent} = useContext(UserContext) 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
