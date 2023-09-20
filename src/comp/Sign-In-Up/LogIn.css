@@ -1,11 +1,108 @@
-#container{
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow-y: hidden;
+}
+
+#container {
+  background-image: url("loginwallpaper.jpg");
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  color: whitesmoke;
-  height:88.5vh;
-  background-image: url(loginwallpaper.jpg);
-  background-size: cover;
-  overflow-y: hidden;
+  justify-content: center;
+  height: 100vh;
+}
+
+#login-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  max-width: 350px;
+  width: 100%;
+}
+
+#login-header {
+  color: #008000;
+  margin-bottom: 20px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+}
+
+#login-button {
+  background-color: #008000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#login-button:hover {
+  background-color: #006400;
+}
+
+#no-account {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#no-account a {
+  color: #008000;
+  text-decoration: none;
+}
+
+#no-account a:hover {
+  text-decoration: underline;
+}
+
+#comments {
+  color: rgb(65, 96, 63);
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  width: 35vw;
+  height: 18vh;
+  padding: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.profile-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none !important;
+}
+
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#heading {
+  color: rgb(81, 236, 81);
+  font-size: 24px;
+  text-align: center;
+}
+@media (max-width: 1021px) {
+  #comments {
+    width: 100%;
+  }
+}
+@media (max-width: 400px) {
+  body{
+    overflow-y: scroll;
+  }
 }
