@@ -1,20 +1,20 @@
 import { useContext } from "react";
 import AddTask from "./AddTask";
 import Calendar from "./Calendar";
-import ShowTasks from "./ShowTasks";
 import { UserContext } from "../General_Components/Other/Context";
+import "./UserInfo.css"
+import Fetcher from "../Fetcher";
 
 
 function UserPage() {
-  const { setallEvent, allEvent } = useContext(UserContext);
+  const { setallEvent, allEvent, userInfo } = useContext(UserContext);
 
   return (
-    <>
-      <h1>User Page</h1>
-      {allEvent.length !== 0 && <Calendar />}
-      <ShowTasks />
+    <div className="userhomecontainer">
+      <h1>My Home</h1>
       <AddTask />
-    </>
+      { <Calendar />}
+    </div>
   );
 }
 export default UserPage;

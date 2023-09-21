@@ -1,0 +1,34 @@
+.qa-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.qa-section {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.qa-question{
+  background-color: rgb(215, 233, 233);
+  margin: 5vh;
+  border-radius: 60px;
+  padding: 5px;
+}
+.QHeader{
+  color: rgb(238, 167, 76);
+}
+.Qexample{
+  color: chocolate;
+}
+.Answer{
+  color: rgb(78, 76, 76);
+}
+.span-btn{
+  size-adjust: 120%;
+  color: crimson;
+  cursor: pointer;
+  font-weight: 700;
+}

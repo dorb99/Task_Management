@@ -10,6 +10,10 @@ import NavBar from "./General_Components/NavBar/NavBar"; // Import
 import users from "./UserInfo.json";
 import Forgot from "./Account/ForgotPassword/Forgot";
 import Footer from "./General_Components/Footer/Footer";
+import QAPage from "./General_Components/QAPage";
+import Fetcher from "./Fetcher";
+import ErrorPage from "./General_Components/Other/ErrorPage";
+
 function App() {
   const [cardInfo, setCardInfo] = useState({
     CVV: "",
@@ -17,19 +21,13 @@ function App() {
     expirationDate: "",
   });
   const [user, setUser] = useState();
+  const [userInfo, setUserInfo] = useState();
   const [allEvent, setallEvent] = useState([]);
   const [newEvent, setNewEvent] = useState({
     title: "",
     start: "",
     end: "",
   });
-
-  useEffect(() => {
-    if (user) {
-      setallEvent(users[user].tasks);
-    }
-  }, [user]);
-
   return (
     <UserContext.Provider
       value={{
@@ -41,17 +39,31 @@ function App() {
         setNewEvent,
         setCardInfo,
         cardInfo,
+        userInfo,
+        setUserInfo,
       }}
     >
       <div className="App">
         <NavBar />
+        <Fetcher />
         <Routes>
-          <Route path="/" element={user ? <UserPage /> : <LogIn />} />
+          <Route
+            path="/"
+            element={
+              user !== "no-user" && user !== undefined ? (
+                <UserPage />
+              ) : (
+                <LogIn />
+              )
+            }
+          />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/forgot" element={<Forgot />} />
+          <Route path="/QAPage" element={<QAPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
       </div>

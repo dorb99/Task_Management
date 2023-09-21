@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../img/WebLogoNew.png";
 import { UserContext } from "../Other/Context";
-import "./NavBar.css"
+import "./NavBar.css";
 
 function NavBar() {
   const { user, setUser } = useContext(UserContext); // Assuming setUser is a function to update the user context
@@ -35,6 +35,9 @@ function NavBar() {
             Log Out
           </Link>
         ) : null}
+        <Link to="/QAPage" className="nav-item">
+          QA
+        </Link>
       </nav>
     </header>
   );
