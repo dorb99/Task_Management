@@ -2,7 +2,7 @@ import { useContext } from "react";
 import AddTask from "./AddTask";
 import Calendar from "./Calendar";
 import ShowTasks from "./ShowTasks";
-import { UserContext } from "../General_Components/Context";
+import { UserContext } from "../General_Components/Other/Context";
 
 
 function UserPage() {

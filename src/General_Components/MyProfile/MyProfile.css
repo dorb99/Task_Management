@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+#my-profile {
+  background-image: url("../img/MyPage.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+#my-profile-container {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); 
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Box shadow for depth */
+  width: 80%; /* Percentage width for responsiveness */
+  max-width: 400px; /* Maximum width */
+  animation: fadeInUp 0.5s ease; /* Fade-in animation */
+}
+
+#my-profile-header {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.my-profile-input {
+display: flex;
+align-items: center;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 2px solid #4caf50; /* Underline effect */
+  background: transparent; /* Transparent background */
+  font-size: 16px;
+  color: #333; /* Text color */
+  transition: border-color 0.3s ease; /* Smooth border color transition */
+}
+
+.my-profile-input:focus {
+  border-color: #45a049; /* Change border color on focus */
+}
+
+#my-profile-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#my-profile-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05); 
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Add a shadow on hover */
+}
+
+#no-account,
+#forgot-pass {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333; /* Text color */
+}
+
+#no-account a,
+#forgot-pass a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+#no-account a:hover,
+#forgot-pass a:hover {
+  text-decoration: underline;
+}
+
+/* Keyframes for fadeInUp animation */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -1,11 +1,19 @@
+/* Import fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
+/* Reset styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Global styles */
+body {
   font-family: "Poppins", sans-serif;
 }
+
+/* Header */
 .header {
   position: sticky;
   top: 0;
@@ -15,9 +23,8 @@
   justify-content: space-between;
   align-items: center;
   background-color: lightgreen;
-  overflow-x: hidden;
+  overflow: hidden;
   z-index: 30;
-  overflow-y: hidden;
 }
 
 .header::before {
@@ -51,15 +58,24 @@
 .header:hover::after {
   left: 100vw;
 }
-.logo {
-  font-size: 1.5rem;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
+
+/* Logo */
+#logo {
+  position: absolute;
+  top: 5px;
+  left: 1vw;
+  width: 270px;
+;
+}
+
+/* Navigation */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
 }
 
 .nav-item {
-  position: relative;
   color: #fff;
   font-size: 1rem;
   font-weight: 500;
@@ -74,6 +90,7 @@
   color: #006a4e;
 }
 
+/* Icons */
 .icons {
   position: absolute;
   right: 5%;
@@ -83,12 +100,17 @@
   display: none;
 }
 
+/* Checkbox (for responsive menu) */
 #check {
   display: none;
 }
-@media (max-width: 390px) {
-  .navbar{
-   display: flex;
-   flex-direction: column;
+
+/* Media query */
+@media (max-width: 623px) {
+  .navbar {
+    flex-direction: column;
+  }
+  #logo{
+    width: 50vw ;
   }
 }
