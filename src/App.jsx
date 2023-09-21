@@ -9,10 +9,10 @@ import { UserContext } from "./General_Components/Other/Context";
 import NavBar from "./General_Components/NavBar/NavBar"; // Import
 import users from "./UserInfo.json";
 import Forgot from "./Account/ForgotPassword/Forgot";
-import Footer from "./General_Components/Footer/Footer";import ErrorPage from "./General_Components/ErrorPage";
+import Footer from "./General_Components/Footer/Footer";
 import QAPage from "./General_Components/QAPage";
 import Fetcher from "./Fetcher";
-
+import ErrorPage from "./General_Components/Other/ErrorPage";
 
 function App() {
   const [cardInfo, setCardInfo] = useState({
@@ -21,6 +21,7 @@ function App() {
     expirationDate: "",
   });
   const [user, setUser] = useState();
+  const [userInfo, setUserInfo] = useState();
   const [allEvent, setallEvent] = useState([]);
   const [newEvent, setNewEvent] = useState({
     title: "",
@@ -38,11 +39,13 @@ function App() {
         setNewEvent,
         setCardInfo,
         cardInfo,
+        userInfo,
+        setUserInfo,
       }}
     >
       <div className="App">
         <NavBar />
-        <Fetcher/>
+        <Fetcher />
         <Routes>
           <Route
             path="/"
@@ -64,7 +67,6 @@ function App() {
         </Routes>
         <Footer />
       </div>
-      
     </UserContext.Provider>
   );
 }

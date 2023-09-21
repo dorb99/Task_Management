@@ -1,4 +1,4 @@
-import { UserContext } from "./General_Components/Context";
+import { UserContext } from "./General_Components/Other/Context";
 import users from "./UserInfo.json";
 import React, { useContext, useEffect, useMemo, useState } from "react";
 
