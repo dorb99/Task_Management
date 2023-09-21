@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import users from "../../UserInfo.json";
-import { UserContext } from "../../General_Components/Context";
+import { UserContext } from "../../General_Components/Other/Context";
 import "./LogIn.css";
-import Footer from "../../General_Components/Footer";
+import Comments from "../Comments/Comments";
 function LogIn() {
   const {user, setUser, setallEvent} = useContext(UserContext) 
   const [username, setUsername] = useState("");
@@ -23,8 +23,8 @@ function LogIn() {
     }
   };
   return (
-    <div id="container">
-      <div id="login-container">
+    <div id="login-container">
+      <div id="login">
         <h2 id="login-header">Log In</h2>
         <input className="login-input"
           type="text"
@@ -43,8 +43,11 @@ function LogIn() {
         <p id="no-account">
           Don't have an account? <Link to="/signup">Sign Up</Link>
         </p>
+        <p id="forgot-pass">
+          Forgot your password? <Link to="/forgot">Here</Link>
+        </p>
       </div>
-      <Footer />
+      <Comments/>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useContext, useEffect, useState } from "react";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
-import { UserContext } from "../General_Components/Context";
+import { UserContext } from "../General_Components/Other/Context";
 
 
 export default function PrintCalendar() {
