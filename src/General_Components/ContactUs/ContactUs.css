@@ -1,0 +1,53 @@
+/* Resetting some default styles for better consistency */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#about-father {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-image: url(../img/Problems.jpg);
+  background-size: cover;
+  height: 100vh;
+  color: black;
+}
+
+#about-container {
+  background-image: url(../img/OurLogo.png);
+  background-size: cover;
+  opacity: 0.9;
+  border-radius: 20px;
+  box-shadow: 0px 10px 40px 0px rgba(99, 255, 26, 0.2);
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
+  max-width: 800px;
+  height: 450px;
+}
+.project-name {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.para {
+  margin: 20px 0;
+}
+
+.follow-us {
+  text-align: center;
+  margin-top: 20px;
+}
+.link-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.problems {
+  display: flex;
+  justify-content: baseline;
+  flex-direction: column;
+}

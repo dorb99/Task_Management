@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
-import { UserContext } from "../General_Components/Context";
+import { UserContext } from "../General_Components/Other/Context";
 import { Modal } from "react-overlays";
 import users from "../UserInfo.json";
 import { useEffect } from "react";

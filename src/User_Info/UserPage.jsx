@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import AddTask from "./AddTask";
 import Calendar from "./Calendar";
-import { UserContext } from "../General_Components/Context";
+import { UserContext } from "../General_Components/Other/Context";
 import "./UserInfo.css"
 import Fetcher from "../Fetcher";
 

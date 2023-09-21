@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Modal } from "react-overlays";
 import "./Paymant.css";
 import Credit from "./CreditCard";
-
+import Comments from "../Comments/Comments";
 export default function Modals() {
   const [showModal, setShowModal] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("");
   console.log(selectedPlan);
   const [isChecked, setIsChecked] = useState(false);
+  
 
   const renderBackdrop = (props) => <div className="backdrop" {...props} />;
 
@@ -19,11 +20,12 @@ export default function Modals() {
   };
 
   const handleSuccess = () => {
+    const cardInfo= {cardNumber: cardNumber, expirationDate: expirationDate, cvv: cvv}
+    console.log({cardInfo});
     if (!isChecked || !selectedPlan) {
       alert("Please choose a plan before submitting.");
     } else {
       console.log("success");
-      // Additional logic to handle the submission
     }
   };
 
@@ -33,7 +35,7 @@ export default function Modals() {
   };
 
   return (
-    <div className="modal-example">
+    <>
       <div>
         <button type="button" onClick={() => setShowModal(true)}>
           Choose A Plan
@@ -205,6 +207,8 @@ export default function Modals() {
           </div>
         </form>
       </Modal>
-    </div>
+    </>
   );
 }
+
+

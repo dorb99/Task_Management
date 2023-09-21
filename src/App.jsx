@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LogIn from "./comp/Sign-In-Up/LogIn";
-import SignUp from "./comp/Sign-In-Up/SignUp";
-import UserPage from "./User_Info/UserPage";
-import MyProfile from "./General_Components/MyProfile";
-import ContactUs from "./General_Components/ContactUs";
-import { UserContext } from "./General_Components/Context";
-import NavBar from "./General_Components/NavBar";
+import LogIn from "./Account/LogIn/LogIn";
+import SignUp from "./Account/SignUp/SignUp";
+import UserPage from "./User_Info/UserPage"; // Import UserPage component
+import MyProfile from "./General_Components/MyProfile/MyProfile"; // Import
+import ContactUs from "./General_Components/ContactUs/ContactUs"; // Import
+import { UserContext } from "./General_Components/Other/Context";
+import NavBar from "./General_Components/NavBar/NavBar"; // Import
 import users from "./UserInfo.json";
-import ErrorPage from "./General_Components/ErrorPage";
+import Forgot from "./Account/ForgotPassword/Forgot";
+import Footer from "./General_Components/Footer/Footer";import ErrorPage from "./General_Components/ErrorPage";
 import QAPage from "./General_Components/QAPage";
 import Fetcher from "./Fetcher";
 
 
 function App() {
-  const [userInfo, setUserInfo] = useState(); 
+  const [cardInfo, setCardInfo] = useState({
+    CVV: "",
+    cardNumber: "",
+    expirationDate: "",
+  });
   const [user, setUser] = useState();
   const [allEvent, setallEvent] = useState([]);
   const [newEvent, setNewEvent] = useState({
@@ -24,7 +29,16 @@ function App() {
   });
   return (
     <UserContext.Provider
-      value={{ user, setUser, allEvent, setallEvent, newEvent, setNewEvent , userInfo, setUserInfo}}
+      value={{
+        user,
+        setUser,
+        allEvent,
+        setallEvent,
+        newEvent,
+        setNewEvent,
+        setCardInfo,
+        cardInfo,
+      }}
     >
       <div className="App">
         <NavBar />
@@ -44,10 +58,13 @@ function App() {
           <Route path="/login" element={<LogIn />} />
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/forgot" element={<Forgot />} />
           <Route path="/QAPage" element={<QAPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
+        <Footer />
       </div>
+      
     </UserContext.Provider>
   );
 }

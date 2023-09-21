@@ -1,0 +1,62 @@
+.whole-page {
+  background-image: url("../loginwallpaper.jpg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: hidden;
+}
+
+#forgot-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+#forgot-title {
+  color: #008000; /* Green header text color */
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#forgot-email-title {
+  color: #333; /* Label text color */
+}
+
+#forgot-email {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+#forgot-button {
+  background-color: #008000; /* Green button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#forgot-button:hover {
+  background-color: #006400;
+  transition: background-color 0.3s ease; 
+}
+
+#forgot-message {
+  margin-top: 10px;
+  color: #333; /* Message text color */
+  font-size: 16px;
+}
