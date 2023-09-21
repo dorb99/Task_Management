@@ -3,7 +3,8 @@
 function ErrorPage() {
     return(
         <>
-        <h1>Error!</h1>
+        <h1>Opps!</h1>
+        <h2>It looks like the page doesnt exist. Please go back</h2>
         </>
     )
 }

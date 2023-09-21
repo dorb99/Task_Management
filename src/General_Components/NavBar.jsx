@@ -28,6 +28,9 @@ function NavBar() {
         <Link to="/contactus" className="nav-item">
           Contact
         </Link>
+        <Link to="/QAPage" className="nav-item">
+        QA
+        </Link>
       </nav>
     </header>
   );

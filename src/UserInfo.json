@@ -1,34 +1,36 @@
 {
   "d": {
-    "username": "dor bruker",
+    "username": "ori barda",
     "password": "1",
-    "email": "dorbruker1@gmail.com",
-    "birthday": "20/11/1999",
-    "plan": 2,
+    "email": "oribarda10@gmail.com",
+    "birthday": "14/07/2002",
+    "plan": 3,
     "tasks": [
       {
-        "title": "Morning Meeting",
-        "start": "2023-09-06T09:00:00.000Z",
-        "end": "2023-09-06T10:00:00.000Z"
+        "title": "Morning Task",
+        "start": "2023-09-06T09:15:00.000Z",
+        "end": "2023-09-06T10:00:00.000Z",
+        "color": "red"
       },
       {
-        "title": "Lunch Break",
-        "start": "2023-09-06T12:30:00.000Z",
-        "end": "2023-09-06T13:00:00.000Z"
+        "title": "diinner",
+        "start": "2023-09-02T21:00:00.000Z",
+        "end": "2023-09-02T21:00:00.000Z",
+        "color": "green"
       },
       {
-        "title": "Afternoon Task",
-        "start": "2023-09-06T15:45:00.000Z",
-        "end": "2023-09-06T16:30:00.000Z"
+        "title": "Afternoon Meeting",
+        "start": "2023-09-06T14:30:00.000Z",
+        "end": "2023-09-06T15:30:00.000Z"
       },
       {
         "title": "Evening Event",
-        "start": "2023-09-06T18:00:00.000Z",
-        "end": "2023-09-06T19:30:00.000Z"
+        "start": "2023-09-06T19:00:00.000Z",
+        "end": "2023-09-06T20:30:00.000Z"
       },
       {
-        "title": "Late Night Project",
-        "start": "2023-09-06T22:00:00.000Z",
+        "title": "Late Night Work",
+        "start": "2023-09-06T23:00:00.000Z",
         "end": "2023-09-06T23:59:59.999Z"
       },
       {
@@ -48,23 +50,23 @@
       },
       {
         "title": "Two-Day Event 1",
-        "start": "2023-09-10T14:00:00.000Z",
-        "end": "2023-09-11T14:00:00.000Z"
+        "start": "2023-09-09T12:00:00.000Z",
+        "end": "2023-09-10T12:00:00.000Z"
       },
       {
         "title": "Two-Day Event 2",
-        "start": "2023-09-15T10:00:00.000Z",
-        "end": "2023-09-16T10:00:00.000Z"
+        "start": "2023-09-14T16:00:00.000Z",
+        "end": "2023-09-15T16:00:00.000Z"
       },
       {
         "title": "Two-Day Event 3",
-        "start": "2023-09-20T08:00:00.000Z",
-        "end": "2023-09-21T08:00:00.000Z"
+        "start": "2023-09-19T11:00:00.000Z",
+        "end": "2023-09-20T11:00:00.000Z"
       },
       {
         "title": "Three-Day Event 1",
-        "start": "2023-09-25T16:00:00.000Z",
-        "end": "2023-09-27T16:00:00.000Z"
+        "start": "2023-09-25T10:00:00.000Z",
+        "end": "2023-09-27T10:00:00.000Z"
       },
       {
         "title": "Weekend Getaway",
@@ -95,6 +97,40 @@
         "title": "Birthday Celebration",
         "start": "2023-10-25T17:00:00.000Z",
         "end": "2023-10-25T21:00:00.000Z"
+      },
+      {
+        "title": "ddd",
+        "start": "2023-09-02T21:00:00.000Z",
+        "end": "2023-09-02T21:00:00.000Z"
+      },
+      {
+        "title": "ddd",
+        "start": "2023-09-03T21:00:00.000Z",
+        "end": "2023-09-03T21:00:00.000Z",
+        "color": "blue"
+      },
+      {
+        "title": "asdas",
+        "start": "2023-09-28T21:00:00.000Z",
+        "end": "2023-09-28T21:00:00.000Z"
+      },
+      {
+        "title": "lunch",
+        "start": "2023-09-17T10:30:00.000Z",
+        "end": "2023-09-17T10:30:00.000Z",
+        "color": "yellow"
+      },
+      {
+        "title": "lunch",
+        "start": "2023-08-31T21:00:00.000Z",
+        "end": "2023-08-31T21:00:00.000Z",
+        "color": "brown"
+      },
+      {
+        "title": "ddd",
+        "start": "2023-09-10T21:00:00.000Z",
+        "end": "2023-09-10T21:00:00.000Z",
+        "color": "red"
       }
     ]
   },
