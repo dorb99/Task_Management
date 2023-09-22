@@ -1,191 +1,45 @@
-// import React, { useState, useEffect } from "react";
-// import profile1 from "./CommentsImg/Profile1.jpg";
-// import "./Comments.css";
-// function Footer() {
-//   const comments = [
-//     [
-//       <div className="comment-container">
-//         <span>
-//           <img className="profile-image" src={profile1} alt="" />
-//           Eli Miller|3 Years User|
-//         </span>
-//         "Great product! I love it!",
-//       </div>,
-//     ],
-//     [
-//       <div className="comment-container">
-//         <span>
-//           <img className="profile-image" src={profile1} alt="" />
-//           Elazzar Bruker|1 Year User|
-//         </span>
-//         "Very user-friendly and helpful.",
-//       </div>,
-//     ],
-//     [
-//       <div className="comment-container">
-//         <span>
-//           <img className="profile-image" src={profile1} alt="" />
-//           Shlomi|6 Years User|
-//         </span>
-//         "I recommend this to everyone.",
-//       </div>,
-//     ],
-//     [
-//       <div className="comment-container">
-//         <span>
-//           <img className="profile-image" src={profile1} alt="" />
-//           Yehonatan Ben-Ezra|4 Years User|
-//         </span>
-//       </div>,
-//       "Outstanding customer support!",
-//     ],
-//     [
-//       <div className="comment-container">
-//         <span>
-//           <img className="profile-image" src={profile1} alt="" />
-//           Or Reuben|2 Years User|
-//         </span>
-//       </div>,
-//       "An essential tool for productivity.",
-//     ],
-//     [
-//       <div className="comment-container">
-//         <span>
-//           <img className="profile-image" src={profile1} alt="" />
-//           Anna Baruch|9 Months User|
-//         </span>
-//       </div>,
-//       "Excellent value for the price.",
-//     ],
-//     [
-//       <div className="comment-container">
-//         <span>
-//           <img className="profile-image" src={profile1} alt="" />
-//           Eli Miller|3 Years User|
-//         </span>
-//       </div>,
-//       "I cant imagine life without it!",
-//     ],
-//   ];
-
-//   const [currentCommentIndex, setCurrentCommentIndex] = useState(0);
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentCommentIndex((prevIndex) =>
-  //       getRandomIndex(prevIndex, comments.length)
-  //     );
-  //   }, 5000);
-
-  //   return () => clearInterval(interval);
-  // }, []);
-  // const getRandomIndex = (currentIndex, maxIndex) => {
-  //   let randomIndex;
-  //   do {
-  //     randomIndex = Math.floor(Math.random() * maxIndex);
-  //   } while (randomIndex === currentIndex);
-  //   return randomIndex;
-  // };
-
-//   return (
-//     <>
-//       <div id="reco-container">
-//         <h1 id="heading">Our Users Recommend</h1>
-//         <div id="comments">
-//           {comments.map((comment) => (
-//             <p className="comment-animation">{comment}</p>
-//           ))}
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default Footer;
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
-import "./Comments.css"; // Make sure to have your CSS file imported here
+import "./Comments.css";
 
-// Import the profile image
-import profile1 from "./CommentsImg/profile1.jpg"; // Replace with the correct path
+import profile1 from "./CommentsImg/profile1.jpg";
 
 const comments = [
-  [
-    <div className="comment-container">
-      <span>
-        <img className="profile-image" src={profile1} alt="" />
-        Eli Miller|3 Years User|
-      </span>
-      "Great product! I love it!"
-    </div>,
-  ],
-  [
-    <div className="comment-container">
-      <span>
-        <img className="profile-image" src={profile1} alt="" />
-        Elazzar Bruker|1 Year User|
-      </span>
-      "Very user-friendly and helpful."
-    </div>,
-  ],
-  [
-    <div className="comment-container">
-      <span>
-        <img className="profile-image" src={profile1} alt="" />
-        Shlomi|6 Years User|
-      </span>
-      "I recommend this to everyone."
-    </div>,
-  ],
-  [
-    <div className="comment-container">
-      <span>
-        <img className="profile-image" src={profile1} alt="" />
-        Yehonatan Ben-Ezra|4 Years User|
-      </span>
-      "Outstanding customer support!"
-    </div>,
-  ],
-  [
-    <div className="comment-container">
-      <span>
-        <img className="profile-image" src={profile1} alt="" />
-        Or Reuben|2 Years User|
-      </span>
-      "An essential tool for productivity."
-    </div>,
-  ],
-  [
-    <div className="comment-container">
-      <span>
-        <img className="profile-image" src={profile1} alt="" />
-        Anna Baruch|9 Months User|
-      </span>
-      "Excellent value for the price."
-    </div>,
-  ],
-  [
-    <div className="comment-container">
-      <span>
-        <img className="profile-image" src={profile1} alt="" />
-        Eli Miller|3 Years User|
-      </span>
-      "I can't imagine life without it!"
-    </div>,
-  ],
+  {
+    user: "Eli Miller",
+    yearsUser: "-3 Years Member!",
+    comment: "Great product! I love it!",
+  },
+  {
+    user: "Elazzar Bruker",
+    yearsUser: "-1 Year Member!",
+    comment: "Very user-friendly and helpful.",
+  },
+  {
+    user: "Shlomi",
+    yearsUser: "-6 Years Member!",
+    comment: "I recommend this to everyone.",
+  },
+  {
+    user: "Yehonatan Ben Ezra",
+    yearsUser: "-8 Years Member!",
+    comment: "Best product I have ever seen",
+  },
+  {
+    user: "Or Reuben",
+    yearsUser: "-2 Years Member!",
+    comment: "An essential tool for productivity.",
+  },
+  {
+    user: "Anna Baruch",
+    yearsUser: "-9 Months Member!",
+    comment: "Excellent value for the price.",
+  },
+  {
+    user: "Johnny Beeker",
+    yearsUser: "-3 Weeks Member!",
+    comment: "I can't imagine life without it!",
+  },
 ];
 
 const delay = 2500;
@@ -205,7 +59,8 @@ export default function Slideshow() {
     timeoutRef.current = setTimeout(() =>
       setIndex((prevIndex) =>
         prevIndex === comments.length - 1 ? 0 : prevIndex + 1
-      ), delay
+      ),
+      delay
     );
 
     return () => {
@@ -214,14 +69,20 @@ export default function Slideshow() {
   }, [index]);
 
   return (
-    <div id="comments" className="slideshow"> {/* Add the id and class name */}
+    <div id="comments" className="slideshow">
       <div
         className="slideshowSlider"
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >
-        {comments.map((commentArray, idx) => (
+        {comments.map((commentObj, idx) => (
           <div className={`slide ${idx === index ? "active" : ""}`} key={idx}>
-            {commentArray}
+            <div className="comment-container">
+              <div>
+                <img className="profile-image" src={profile1} alt="" />
+                <span className="amount-years"> {commentObj.user}&nbsp;{commentObj.yearsUser}</span>
+              </div>
+              {commentObj.comment}
+            </div>
           </div>
         ))}
       </div>
