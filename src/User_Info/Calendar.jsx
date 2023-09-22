@@ -6,30 +6,40 @@ import "react-datepicker/dist/react-datepicker.css";
 import { UserContext } from "../General_Components/Other/Context";
 import { Modal } from "react-overlays";
 
-export default function PrintCalendar() {
-  const { allEvent, setallEvent, user, userInfo } = useContext(UserContext);
+export default function PrintCalendar({ openModal, setEditer }) {
+  const {
+    allEvent,
+    newEvent,
+    setNewEvent,
+    setallEvent,
+    user,
+    userInfo,
+    setTaskAdder,
+  } = useContext(UserContext);
   const [calendarEvents, setCalendarEvents] = useState();
   const [currentEvent, setCurrentEvent] = useState({});
   const [taskChanger, setTaskChanger] = useState(false);
+  const [taskEdit, setTaskEdit] = useState(false);
   const localizer = momentLocalizer(moment);
   const renderBackdrop = (props) => (
     <div className="backdrop_adder" {...props} />
   );
 
-  const handleDoubleClick = (event) => {
-    console.log(event.title + " two click");
-  };
+  // const handleDoubleClick = (event) => {
+  //       setCurrentEvent(event);
+  // };
   const handleOneClick = (event) => {
-    setTaskChanger(true);
-    setCurrentEvent(event);
+    setNewEvent(event);
+    openModal();
+    setEditer(true)
   };
 
   useEffect(() => {
     const eventsCollector = allEvent.map((event) => {
-      const { title, start, end, color } = event;
+      const { title, start, end, color, id } = event;
       const formattedStart = new Date(start);
       const formattedEnd = new Date(end);
-      return { title, start: formattedStart, end: formattedEnd, color: color };
+      return { title, start: formattedStart, end: formattedEnd, color: color, id: id};
     });
     setCalendarEvents(eventsCollector);
   }, [allEvent]);
@@ -44,7 +54,7 @@ export default function PrintCalendar() {
           endAccessor="end"
           style={{ height: 500, margin: "50px", width: 600 }}
           onSelectEvent={handleOneClick}
-          onDoubleClickEvent={handleDoubleClick}
+          // onDoubleClickEvent={handleDoubleClick}
           eventPropGetter={(calendarEvents) => {
             const backgroundColor = calendarEvents.color
               ? calendarEvents.color
@@ -54,7 +64,7 @@ export default function PrintCalendar() {
         />
         {currentEvent.title && (
           <Modal
-            className="modal_Adder"
+            className="modal_Presnt , event_Modal"
             show={taskChanger}
             onHide={() => {
               setTaskChanger(false);
@@ -63,7 +73,8 @@ export default function PrintCalendar() {
           >
             <div style={{ color: currentEvent.color || "black" }}>
               <h4>Title: {currentEvent.title}</h4>
-              {currentEvent.start.toLocaleString() === currentEvent.end.toLocaleString() ? (
+              {currentEvent.start.toLocaleString() ===
+              currentEvent.end.toLocaleString() ? (
                 <h4>Time: {currentEvent.start.toLocaleString()}</h4>
               ) : (
                 <>

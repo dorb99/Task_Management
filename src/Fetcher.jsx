@@ -1,8 +1,10 @@
 import { UserContext } from "./General_Components/Other/Context";
 import users from "./UserInfo.json";
 import React, { useContext, useEffect, useMemo, useState } from "react";
-
+import axios from "axios";
 function Fetcher() {
+  const [isCheckedEnd, setIsCheckedEnd] = useState(false);
+  const [isCheckedHour, setIsCheckedHour] = useState(false);
   const {
     user,
     setUser,
@@ -12,41 +14,50 @@ function Fetcher() {
     setNewEvent,
     userInfo,
     setUserInfo,
+    changed,
+    setChanged
   } = useContext(UserContext);
-  const [prevevents, setprevevents] = useState([]);
-  const [prevuser, setprevuser] = useState();
+  const [prevInfo, setprevInfo] = useState();
+  const [prevuser, setprevuser] = useState(0);
 
-  async function userFetcher() {
+  function userFetcher() {
     if (user !== prevuser) {
       let uri = `http://localhost:3000/${user}`;
-      const res = await fetch(uri);
-      const resulved = await res.json();
-      setUserInfo(resulved);
-      const events = resulved.tasks;
-      setallEvent(events);
-      setprevuser(user);
-      setprevevents(allEvent);
+      const res = axios.get(uri).then(({ data }) => {
+        setUserInfo(data);
+        const events = data.tasks;
+        setallEvent(events);
+        setprevuser(user);
+      });
     }
   }
-  
   async function EventsChange() {
-    console.log("rendered");
-    if (allEvent.length > prevevents.length) {
-    const update = { ...userInfo, tasks: allEvent };
+    const newInfo = { ...userInfo, tasks: allEvent };
     const uri = `http://localhost:3000/${user}`;
     const res = await fetch(uri, {
       method: "POST",
-      body: JSON.stringify(update),
+      body: JSON.stringify(newInfo),
       headers: { "Content-Type": "application/json" },
     });
-    const resulved = await res.json();
-    setprevevents(allEvent);
-    }
+    const resolved = await res.json();
+    setChanged(false);
+    setUserInfo(resolved);
+    const events = resolved.tasks;
+    setallEvent(events);
   }
 
-  useMemo(() => EventsChange(), [allEvent.length]);
-  useMemo(() => userFetcher(), [user]);
+  useEffect(() => {
+    if (changed === true) {
+      EventsChange();
+    }
+  }, [changed]);
+
+
+  useEffect(() => {
+    userFetcher();
+  }, [user]);
 
   return null;
 }
+
 export default Fetcher;

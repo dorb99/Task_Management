@@ -6,7 +6,13 @@
   align-items: center;
 }
 
-.modal_Adder {
+.event_Modal {
+  background-image: url(../General_Components/img/empty_form.png);
+  background-size: cover;
+  background-position: center center;
+  padding-left: 50px;
+  padding-right: 1px;
+  padding-top: 40px;
   font-family: "Phudu", cursive;
   font-weight: 700;
   position: fixed;
@@ -23,7 +29,9 @@
   flex-direction: column;
   align-items: center;
 }
-
+#newEventPadding {
+  margin-bottom: 30px;
+}
 .backdrop_adder {
   position: fixed;
   z-index: 1030;
@@ -46,10 +54,20 @@
   align-items: center;
 }
 
+.event_Modal input {
+  border-radius: 10px;
+  border: 3px solid black;
+  padding: 5px;
+}
+.event_Modal button {
+  border-radius: 10px;
+  border: 2px darkslategray solid;
+  padding: 5px;
+}
 .react-datepicker {
   width: max-content;
 }
-/* Center the calendar and apply a bluish background */
+
 .rbc-calendar {
   display: flex;
   justify-content: center;

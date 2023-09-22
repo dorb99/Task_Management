@@ -7,7 +7,6 @@ import MyProfile from "./General_Components/MyProfile/MyProfile"; // Import
 import ContactUs from "./General_Components/ContactUs/ContactUs"; // Import
 import { UserContext } from "./General_Components/Other/Context";
 import NavBar from "./General_Components/NavBar/NavBar"; // Import
-import users from "./UserInfo.json";
 import Forgot from "./Account/ForgotPassword/Forgot";
 import Footer from "./General_Components/Footer/Footer";
 import QAPage from "./General_Components/QAPage";
@@ -23,11 +22,19 @@ function App() {
   const [user, setUser] = useState();
   const [userInfo, setUserInfo] = useState();
   const [allEvent, setallEvent] = useState([]);
+  const [changed, setChanged] = useState(false);
+  const [taskAdder, setTaskAdder] = useState(false);
   const [newEvent, setNewEvent] = useState({
     title: "",
     start: "",
     end: "",
   });
+  
+  useEffect(() => {
+    const haveUser = JSON.parse(localStorage.getItem("username"));
+    if (haveUser !== null) setUser(haveUser);
+    console.log(haveUser);
+  }, []);
   return (
     <UserContext.Provider
       value={{
@@ -41,6 +48,10 @@ function App() {
         cardInfo,
         userInfo,
         setUserInfo,
+        changed,
+        setChanged,
+        taskAdder,
+        setTaskAdder,
       }}
     >
       <div className="App">
@@ -67,7 +78,6 @@ function App() {
         </Routes>
         <Footer />
       </div>
-      
     </UserContext.Provider>
   );
 }
