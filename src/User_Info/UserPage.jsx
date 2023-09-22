@@ -34,6 +34,6 @@ function UserPage() {
   ) : (
     <LogIn />
   )
-  ) 
+  )
 }
 export default UserPage;

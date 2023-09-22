@@ -4,7 +4,7 @@
     "password": "1",
     "email": "dorbruker1@gmail.com",
     "birthday": "20/11/1999",
-    "plan": 2,
+    "plan": "Pro",
     "tasks": [
       {
         "title": "Morning Meeting",
@@ -103,6 +103,7 @@
     "birthday": "14/07/2002",
     "username": "ori barda4125",
     "password": "12",
+    "plan": "Platinum",
     "tasks": [
       {
         "title": "Morning Task",
