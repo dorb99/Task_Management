@@ -47,8 +47,8 @@ align-items: center;
   border-bottom: 2px solid #4caf50; /* Underline effect */
   background: transparent; /* Transparent background */
   font-size: 16px;
-  color: #333; /* Text color */
   transition: border-color 0.3s ease; /* Smooth border color transition */
+  color: #05290c;
 }
 
 .my-profile-input:focus {

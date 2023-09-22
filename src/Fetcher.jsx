@@ -1,52 +1,58 @@
 import { UserContext } from "./General_Components/Other/Context";
-import users from "./UserInfo.json";
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 function Fetcher() {
-  const {
-    user,
-    setUser,
-    allEvent,
-    setallEvent,
-    newEvent,
-    setNewEvent,
-    userInfo,
-    setUserInfo,
-  } = useContext(UserContext);
-  const [prevevents, setprevevents] = useState([]);
-  const [prevuser, setprevuser] = useState();
+  const { user, allEvent, setallEvent, userInfo, setUserInfo } =
+    useContext(UserContext);
 
-  async function userFetcher() {
-    if (user !== prevuser) {
-      let uri = `http://localhost:3000/${user}`;
-      const res = await fetch(uri);
-      const resulved = await res.json();
-      setUserInfo(resulved);
-      const events = resulved.tasks;
-      setallEvent(events);
-      setprevuser(user);
-      setprevevents(allEvent);
-    }
-  }
-  
-  async function EventsChange() {
-    console.log("rendered");
-    if (allEvent.length > prevevents.length) {
-    const update = { ...userInfo, tasks: allEvent };
-    const uri = `http://localhost:3000/${user}`;
-    const res = await fetch(uri, {
-      method: "POST",
-      body: JSON.stringify(update),
-      headers: { "Content-Type": "application/json" },
-    });
-    const resulved = await res.json();
-    setprevevents(allEvent);
-    }
-  }
+  useEffect(() => {
+    async function userFetcher() {
+      try {
+        if (user) {
+          let uri = `http://localhost:3000/${user}`;
+          const res = await fetch(uri);
 
-  useMemo(() => EventsChange(), [allEvent.length]);
-  useMemo(() => userFetcher(), [user]);
+          if (res.ok) {
+            const resolved = await res.json();
+            setUserInfo(resolved);
+            const events = resolved.tasks || [];
+            setallEvent(events);
+          } else {
+            console.error("Failed to fetch user data.");
+          }
+        }
+      } catch (error) {
+        console.error("Error in userFetcher:", error);
+      }
+    }
+
+    async function eventsChange() {
+      try {
+        if (user && allEvent.length > 0) {
+          const update = { ...userInfo, tasks: allEvent };
+          const uri = `http://localhost:3000/${user}`;
+          const res = await fetch(uri, {
+            method: "POST",
+            body: JSON.stringify(update),
+            headers: { "Content-Type": "application/json" },
+          });
+
+          if (res.ok) {
+            const resolved = await res.json();
+          } else {
+            console.error("Failed to update user data.");
+          }
+        }
+      } catch (error) {
+        console.error("Error in eventsChange:", error);
+      }
+    }
+
+    userFetcher();
+    eventsChange();
+  }, [user, allEvent, setallEvent, userInfo, setUserInfo]);
 
   return null;
 }
+
 export default Fetcher;

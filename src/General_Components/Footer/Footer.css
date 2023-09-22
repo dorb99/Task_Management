@@ -1,57 +1,162 @@
-#footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
+/* App.css */
+.site-footer {
+  background-color: #26272b;
+  font-size: 15px;
+  line-height: 24px;
+  color: rgb(99, 122, 99) !important;
+  height: 100%;
 }
 
-#all-rights {
-  margin: 0;
-  font-size: 14px;
+.site-footer hr {
+  border-top-color: #6a0dad; /* Match the color scheme */
+  opacity: 0.5;
 }
-h5 {
+
+.site-footer hr.small {
+  margin: 20px 0;
+}
+
+.site-footer h6 {
+  color: #45b07e; /* Match the color scheme */
   font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 0; /* Remove margin for cleaner look */
 }
 
-#go-here {
+.site-footer a {
+  color: #6a0dad; /* Match the color scheme */
+}
+
+/* Footer links styles */
+.footer-links {
+  padding-left: 0;
+  list-style: none;
+}
+
+.footer-links li {
+  display: block;
+}
+
+.footer-links a {
+  color: #6a0dad; /* Match the color scheme */
+}
+
+.footer-links.inline li {
+  display: inline-block;
+}
+
+/* Social icons styles */
+.site-footer .social-icons {
+  text-align: right;
+}
+
+.site-footer .social-icons a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 6px;
+  margin-right: 0;
+  border-radius: 100%;
+  background-color: #45b07e; 
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  transition: background-color 0.3s ease; 
 }
 
-.go-here-picture {
-  width: 24px;
-  height: 24px;
+.site-footer .social-icons a:hover {
+  background-color: #023b15; /* New color on hover */
 }
 
-/* Style social media icons */
-.go-here-picture[src$="FB.png"] {
+/* Copyright text styles */
+.copyright-text {
+  margin: 0;
+  color: #737373; /* Match the color scheme */
+}
+
+@media (max-width: 991px) {
+  .site-footer [class^='col-'] {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-footer {
+    padding-bottom: 0;
+  }
+  .site-footer .copyright-text,
+  .site-footer .social-icons {
+    text-align: center;
+  }
+}
+
+/* Additional styles for social icons */
+.social-icons {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.social-icons li.title {
+  margin-right: 15px;
+  text-transform: uppercase;
+  color: #96a2b2;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.social-icons a {
+  background-color: #eceeef;
+  color: #818a91;
+  font-size: 16px;
+  display: inline-block;
+  line-height: 44px;
+  width: 44px;
+  height: 44px;
+  text-align: center;
+  margin-right: 8px;
+  border-radius: 100%;
+  transition: all 0.2s linear;
+}
+
+.social-icons.size-sm a {
+  line-height: 34px;
+  height: 34px;
+  width: 34px;
+  font-size: 14px;
+}
+
+/* Hover styles for social icons */
+.social-icons a.facebook:hover {
   background-color: #3b5998;
-  border-radius: 50%;
-  padding: 5px;
 }
 
-.go-here-picture[src$="Ins.png"] {
-  background-color: #c13584;
-  border-radius: 50%;
-  padding: 5px;
+.social-icons a.twitter:hover {
+  background-color: #00aced;
 }
 
-.go-here-picture[src$="Tw.png"] {
-  background-color: #1da1f2;
-  border-radius: 50%;
-  padding: 5px;
+.social-icons a.instagram:hover {
+  background-color: #ff4242;
 }
 
-.go-here-picture[src$="GH.png"] {
-  background-color: rgb(255, 143, 143);
-  border-radius: 50%;
-  padding: 5px;
+.social-icons a.github:hover {
+  background-color: #d9ff00;
 }
-.go-here-picture:hover {
-  transform: scale(1.2); 
-  transition: transform 0.3s ease;
+
+@media (max-width: 767px) {
+  .social-icons li.title {
+    display: block;
+    margin-right: 0;
+    font-weight: 600;
+  }
 }
-.go-here-picture {
-  transition: transform 0.3s ease;
+
+.fa {
+  width: 20px;
 }

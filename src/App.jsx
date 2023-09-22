@@ -13,6 +13,8 @@ import Footer from "./General_Components/Footer/Footer";
 import QAPage from "./General_Components/QAPage";
 import Fetcher from "./Fetcher";
 import ErrorPage from "./General_Components/Other/ErrorPage";
+import { Calendar } from "fullcalendar";
+import "./App.css"
 
 function App() {
   const [cardInfo, setCardInfo] = useState({
@@ -22,12 +24,17 @@ function App() {
   });
   const [user, setUser] = useState();
   const [userInfo, setUserInfo] = useState();
-  const [allEvent, setallEvent] = useState([]);
+  const [allEvent, setallEvent] = useState();
   const [newEvent, setNewEvent] = useState({
     title: "",
     start: "",
     end: "",
   });
+  useEffect(() => {
+    const haveUser = JSON.parse(localStorage.getItem("username"));
+    if (haveUser !== null) setUser(haveUser);
+    console.log(haveUser);
+  }, []);
   return (
     <UserContext.Provider
       value={{
@@ -67,7 +74,6 @@ function App() {
         </Routes>
         <Footer />
       </div>
-      
     </UserContext.Provider>
   );
 }

@@ -5,9 +5,12 @@ import { UserContext } from "../Other/Context";
 import "./NavBar.css";
 
 function NavBar() {
-  const { user, setUser } = useContext(UserContext); // Assuming setUser is a function to update the user context
+  const { user, setUser } = useContext(UserContext);
 
-  const logOut = () => setUser(""); // Assuming this function logs the user out
+  const logOut = () => {
+    setUser("");
+    localStorage.removeItem("username");
+  };
 
   return (
     <header className="header">

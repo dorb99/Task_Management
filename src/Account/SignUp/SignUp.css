@@ -1,5 +1,3 @@
-/* Add this CSS to your stylesheet or a separate CSS file */
-
 /* Styles for the SignUp component */
 #signup-container {
   overflow-y: hidden;
@@ -10,9 +8,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: max-content;
+  box-shadow: 0px 10px 20px rgba(0, 0, 255, 0.1); 
 }
 
+/* Signup box */
 #signup {
   margin-top: 20px;
   background-color: rgba(255, 255, 255, 0.9);
@@ -22,60 +21,92 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   max-width: 350px;
   width: 100%;
+  transition: box-shadow 0.3s ease, transform 0.3s ease; 
 }
 
+/* Add shadow and move up on hover */
+#signup:hover {
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3); 
+  transform: translateY(-5px); 
+}
+/* Signup header */
 #signup-header {
-  color: #008000;
+  color: #45b07e; 
   margin-bottom: 20px;
 }
 
+/* Signup input fields */
 .signup-input {
   width: 100%;
-  padding: 10px;
+  padding: 12px; 
   margin: 10px 0;
-  border: none;
+  border: 1px solid #ccc; 
   border-radius: 5px;
+  color: #010403;
+  transition: border-color 0.3s ease;
 }
 
+/* Style the input field on focus */
+.signup-input:focus {
+  outline: none;
+  border-color: #45b07e; 
+}
+
+/* Signup button */
 #signup-button {
-  background-color: #008000;
+  background-color: #45b07e;
   color: white;
   border: none;
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-decoration: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 #signup-button:hover {
-  background-color: #006400;
+  background-color: #023b15;
+  box-shadow: 0px 12px 16px 0px rgba(70, 180, 129, 0.6);
+  transform: translateY(-5px);
 }
+
 #signup-button a {
   text-decoration: none;
   color: white;
 }
+#have-account a {
+  text-decoration: none;
+  position: relative;
+  color: #45b07e;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
 
+/* Have an account link */
 #have-account {
   margin-top: 10px;
   font-size: 14px;
 }
-
+#have-account a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #45b07e;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
 #have-account a {
-  color: #008000;
+  color: #45b07e;
   text-decoration: none;
 }
-
+#have-account a:hover::before {
+  transform-origin: right;
+  transform: scaleX(1);
+}
 #have-account a:hover {
   text-decoration: underline;
-}
-
-/* Media query for small screens */
-@media (max-width: 400px) {
-  #signup-container {
-    overflow-y: scroll;
-  }
-}
-.patter-input {
-  font-size: 10px;
+  color: #023b15;
 }

@@ -7,51 +7,57 @@ import { UserContext } from "../General_Components/Other/Context";
 import { Modal } from "react-overlays";
 
 export default function PrintCalendar() {
-  const { allEvent, setallEvent, user, userInfo } = useContext(UserContext);
-  const [calendarEvents, setCalendarEvents] = useState();
+  const { allEvent, user } = useContext(UserContext);
+  const [calendarEvents, setCalendarEvents] = useState([]);
   const [currentEvent, setCurrentEvent] = useState({});
   const [taskChanger, setTaskChanger] = useState(false);
   const localizer = momentLocalizer(moment);
+
   const renderBackdrop = (props) => (
     <div className="backdrop_adder" {...props} />
   );
 
   const handleDoubleClick = (event) => {
-    console.log(event.title + " two click");
+    console.log(event.title + " double click");
   };
+
   const handleOneClick = (event) => {
     setTaskChanger(true);
     setCurrentEvent(event);
   };
 
   useEffect(() => {
-    const eventsCollector = allEvent.map((event) => {
-      const { title, start, end, color } = event;
-      const formattedStart = new Date(start);
-      const formattedEnd = new Date(end);
-      return { title, start: formattedStart, end: formattedEnd, color: color };
-    });
-    setCalendarEvents(eventsCollector);
+    if (allEvent !== undefined) {
+      const eventsCollector = allEvent.map((event) => {
+        const { title, start, end, color } = event;
+        const formattedStart = new Date(start);
+        const formattedEnd = new Date(end);
+        return { title, start: formattedStart, end: formattedEnd, color: color };
+      });
+      setCalendarEvents(eventsCollector);
+    }
   }, [allEvent]);
 
   return (
     <>
       <div>
-        <Calendar
-          localizer={localizer}
-          events={calendarEvents}
-          startAccessor="start"
-          endAccessor="end"
-          style={{ height: 500, margin: "50px", width: 600 }}
-          onSelectEvent={handleOneClick}
-          onDoubleClickEvent={handleDoubleClick}
-          eventPropGetter={(calendarEvents) => {
-            const backgroundColor = calendarEvents.color
-              ? calendarEvents.color
-              : "white";
-            return { style: { backgroundColor } };
-          }}
-        />
+        {user ? (
+          <Calendar
+            localizer={localizer}
+            events={calendarEvents}
+            startAccessor="start"
+            endAccessor="end"
+            style={{ height: 500, margin: "50px", width: 600 }}
+            onSelectEvent={handleOneClick}
+            onDoubleClickEvent={handleDoubleClick}
+            eventPropGetter={(calendarEvents) => {
+              const backgroundColor = calendarEvents.color
+                ? calendarEvents.color
+                : "white";
+              return { style: { backgroundColor } };
+            }}
+          />
+        ) : null}
         {currentEvent.title && (
           <Modal
             className="modal_Adder"
