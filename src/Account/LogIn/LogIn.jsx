@@ -15,7 +15,7 @@ function LogIn() {
     const savedUsername = JSON.parse(localStorage.getItem("username"));
     if (savedUsername && user!==savedUsername) {
       setUser(savedUsername); 
-      navigate("/"); 
+      navigate("/userpage"); 
     }
   },[user]); 
 
@@ -24,7 +24,7 @@ function LogIn() {
       if (users[username].password === password) {
         setUser(username);
         localStorage.setItem("username", JSON.stringify(username));
-        navigate("/");
+        navigate("/userpage");
       } else {
         alert("Please check your password");
       }

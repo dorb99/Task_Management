@@ -15,7 +15,7 @@ function Fetcher() {
     userInfo,
     setUserInfo,
     changed,
-    setChanged
+    setChanged,
   } = useContext(UserContext);
   const [prevInfo, setprevInfo] = useState();
   const [prevuser, setprevuser] = useState(0);
@@ -52,9 +52,8 @@ function Fetcher() {
     }
   }, [changed]);
 
-
   useEffect(() => {
-    userFetcher();
+    user ? userFetcher() : null;
   }, [user]);
 
   return null;

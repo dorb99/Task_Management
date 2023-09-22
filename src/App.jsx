@@ -13,7 +13,7 @@ import QAPage from "./General_Components/QAPage";
 import Fetcher from "./Fetcher";
 import ErrorPage from "./General_Components/Other/ErrorPage";
 import { Calendar } from "fullcalendar";
-import "./App.css"
+import "./App.css";
 
 function App() {
   const [cardInfo, setCardInfo] = useState({
@@ -34,7 +34,6 @@ function App() {
   useEffect(() => {
     const haveUser = JSON.parse(localStorage.getItem("username"));
     if (haveUser !== null) setUser(haveUser);
-    console.log(haveUser);
   }, []);
   return (
     <UserContext.Provider
@@ -59,18 +58,9 @@ function App() {
         <NavBar />
         <Fetcher />
         <Routes>
-          <Route
-            path="/"
-            element={
-              user !== "no-user" && user !== undefined ? (
-                <UserPage />
-              ) : (
-                <LogIn />
-              )
-            }
-          />
+          <Route path="/" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<LogIn />} />
+          <Route path="/userpage" element={<UserPage />} />
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/forgot" element={<Forgot />} />

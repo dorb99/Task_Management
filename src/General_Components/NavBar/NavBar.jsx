@@ -14,9 +14,15 @@ function NavBar() {
 
   return (
     <header className="header">
-      <Link to="/">
-        <img id="logo" src={Logo} alt="" />
-      </Link>
+      {user ? (
+        <Link to="/userpage">
+          <img id="logo" src={Logo} alt="" />
+        </Link>
+      ) : (
+        <Link to="/">
+          <img id="logo" src={Logo} alt="" />
+        </Link>
+      )}
 
       <input type="checkbox" id="check" />
       <label htmlFor="check" className="icons">
@@ -34,7 +40,7 @@ function NavBar() {
           Contact Us
         </Link>
         {user ? (
-          <Link to="/LogIn" className="nav-item" onClick={logOut}>
+          <Link to="/" className="nav-item" onClick={logOut}>
             Log Out
           </Link>
         ) : null}

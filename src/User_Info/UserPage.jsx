@@ -2,9 +2,10 @@ import { useContext, useState } from "react";
 import AddTask from "./AddTask";
 import Calendar from "./Calendar";
 import { UserContext } from "../General_Components/Other/Context";
-import "./UserPage.css";
+import "./UserInfo.css";
 import Fetcher from "../Fetcher";
 import Event_Modal from "./Event_Modal";
+import LogIn from "../Account/LogIn/LogIn";
 
 function UserPage() {
   const { setallEvent, allEvent, userInfo, newEvent   ,setChanged } = useContext(UserContext);
@@ -29,11 +30,8 @@ function UserPage() {
         editer={editer}
         setEditer={setEditer}
       />
-      { <Calendar openModal={openModal} setEditer={setEditer}/>}
+        <Calendar openModal={openModal} setEditer={setEditer} />
     </div>
-  ) : (
-    <LogIn />
-  )
   ) 
 }
 export default UserPage;

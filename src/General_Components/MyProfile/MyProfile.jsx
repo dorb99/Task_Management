@@ -14,8 +14,6 @@ function MyProfile() {
   });
   let numberOfTasks = 0;
 
-  console.log(userInfo);
-
   useEffect(() => {
     const savedUsername = localStorage.getItem("username");
     if (!userInfo?.username && savedUsername) {

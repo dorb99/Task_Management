@@ -1,8 +1,0 @@
-.userhomecontainer{
- background-image: url(../General_Components/img/Tasks.jpg);
- background-size: cover;
- display: flex;
- flex-direction: column;
- align-items: center;
- color: whitesmoke;
-}
