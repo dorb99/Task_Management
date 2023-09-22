@@ -12,6 +12,8 @@ import Footer from "./General_Components/Footer/Footer";
 import QAPage from "./General_Components/QAPage";
 import Fetcher from "./Fetcher";
 import ErrorPage from "./General_Components/Other/ErrorPage";
+import { Calendar } from "fullcalendar";
+import "./App.css"
 
 function App() {
   const [cardInfo, setCardInfo] = useState({
@@ -29,7 +31,6 @@ function App() {
     start: "",
     end: "",
   });
-  
   useEffect(() => {
     const haveUser = JSON.parse(localStorage.getItem("username"));
     if (haveUser !== null) setUser(haveUser);

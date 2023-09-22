@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import AddTask from "./AddTask";
 import Calendar from "./Calendar";
 import { UserContext } from "../General_Components/Other/Context";
-import "./UserInfo.css"
+import "./UserPage.css";
 import Fetcher from "../Fetcher";
 import Event_Modal from "./Event_Modal";
 
@@ -31,6 +31,9 @@ function UserPage() {
       />
       { <Calendar openModal={openModal} setEditer={setEditer}/>}
     </div>
-  );
+  ) : (
+    <LogIn />
+  )
+  ) 
 }
 export default UserPage;

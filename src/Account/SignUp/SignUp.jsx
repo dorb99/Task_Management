@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Modals from "../Paymant/Paymant";
+import Modals from "../Payment/Payment";
 import "./SignUp.css";
 import Comments from "../Comments/Comments";
 function SignUp({ setUser }) {

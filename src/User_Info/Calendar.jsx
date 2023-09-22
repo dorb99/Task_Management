@@ -21,6 +21,7 @@ export default function PrintCalendar({ openModal, setEditer }) {
   const [taskChanger, setTaskChanger] = useState(false);
   const [taskEdit, setTaskEdit] = useState(false);
   const localizer = momentLocalizer(moment);
+
   const renderBackdrop = (props) => (
     <div className="backdrop_adder" {...props} />
   );

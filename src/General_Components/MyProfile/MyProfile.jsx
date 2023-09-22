@@ -23,6 +23,7 @@ function MyProfile() {
       setUserInfo({ ...editedData, username: savedUserData });
     }
   }, [userInfo, setUserInfo]);
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -101,8 +102,7 @@ function MyProfile() {
             <h2>Email: {userInfo?.email}</h2>
             <h2>Password: {userInfo?.password}</h2>
             <h2>Birthday: {userInfo?.birthday}</h2>
-            <h2>Number Of Tasks: {numberOfTasks}</h2>{" "}
-            {/* Display the number of tasks */}
+            <h2>Number Of Tasks: {numberOfTasks}</h2> {/* Display the number of tasks */}
             <button
               id="my-profile-button"
               onClick={() => setEditing(true)}

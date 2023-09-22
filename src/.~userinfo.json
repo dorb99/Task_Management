@@ -7,34 +7,6 @@
     "plan": 2,
     "tasks": [
       {
-<<<<<<< HEAD
-        "title": "Task with No Time 1",
-        "start": "2023-09-06T00:00:00.000Z",
-        "end": "2023-09-06T00:00:00.000Z",
-        "color": "red",
-        "id": 1
-      },
-      {
-        "title": "Two-Day Event 2",
-        "start": "2023-09-14T16:00:00.000Z",
-        "end": "2023-09-15T16:00:00.000Z",
-        "color": "green",
-        "id": 2
-      },
-      {
-        "title": "Two-Day Event 3",
-        "start": "2023-09-19T11:00:00.000Z",
-        "end": "2023-09-20T11:00:00.000Z",
-        "color": "green",
-        "id": 3
-      },
-      {
-        "title": "Three-Day Event 1",
-        "start": "2023-09-25T10:00:00.000Z",
-        "end": "2023-09-27T10:00:00.000Z",
-        "color": "green",
-        "id": 4
-=======
         "title": "Morning Meeting",
         "start": "2023-09-06T09:00:00.000Z",
         "end": "2023-09-06T10:00:00.000Z"
@@ -93,95 +65,36 @@
         "title": "Three-Day Event 1",
         "start": "2023-09-25T16:00:00.000Z",
         "end": "2023-09-27T16:00:00.000Z"
->>>>>>> 5631e24c01656680d865f48798b42ab318bafe21
       },
       {
         "title": "Weekend Getaway",
         "start": "2023-09-30T12:00:00.000Z",
-        "end": "2023-10-01T16:00:00.000Z",
-        "color": "brown",
-        "id": 5
+        "end": "2023-10-01T16:00:00.000Z"
       },
       {
         "title": "Monthly Review",
         "start": "2023-10-05T09:00:00.000Z",
-        "end": "2023-10-05T10:30:00.000Z",
-        "color": "yellow",
-        "id": 6
+        "end": "2023-10-05T10:30:00.000Z"
       },
       {
         "title": "Project Deadline",
-        "start": "2023-10-11T15:00:00.000Z",
-        "end": "2023-10-11T15:00:00.000Z",
-        "color": "blue",
-        "id": 7
+        "start": "2023-10-10T15:00:00.000Z",
+        "end": "2023-10-10T18:00:00.000Z"
       },
       {
         "title": "Holiday Planning",
         "start": "2023-10-15T19:00:00.000Z",
-        "end": "2023-10-15T20:30:00.000Z",
-        "color": "red",
-        "id": 8
+        "end": "2023-10-15T20:30:00.000Z"
       },
       {
         "title": "End of Month Party",
         "start": "2023-10-20T20:00:00.000Z",
-        "end": "2023-10-20T23:00:00.000Z",
-        "color": "purple",
-        "id": 9
+        "end": "2023-10-20T23:00:00.000Z"
       },
       {
         "title": "Birthday Celebration",
         "start": "2023-10-25T17:00:00.000Z",
-<<<<<<< HEAD
-        "end": "2023-10-25T21:00:00.000Z",
-        "color": "brown",
-        "id": 10
-      },
-      {
-        "title": "dinnner",
-        "start": "2023-09-21T05:04:51.000Z",
-        "end": "2023-09-21T05:04:51.000Z",
-        "color": "purple",
-        "id": 12
-      },
-      {
-        "title": "dinnner",
-        "start": "2023-09-21T05:04:51.000Z",
-        "end": "2023-09-21T05:04:51.000Z",
-        "color": "purple",
-        "id": 13
-      },
-      {
-        "title": "dinnner",
-        "start": "2023-09-21T05:04:51.000Z",
-        "end": "2023-09-21T05:04:51.000Z",
-        "color": "purple",
-        "id": 14
-      },
-      {
-        "title": "dinnner",
-        "start": "2023-09-21T05:04:51.000Z",
-        "end": "2023-09-21T05:04:51.000Z",
-        "color": "purple",
-        "id": 15
-      },
-      {
-        "title": "lunch",
-        "start": "2023-10-17T05:39:00.000Z",
-        "end": "2023-10-17T05:39:00.000Z",
-        "color": "purple",
-        "id": 16
-      },
-      {
-        "title": "dinn",
-        "start": "2023-09-09T05:59:43.000Z",
-        "end": "2023-09-09T05:59:43.000Z",
-        "color": "red",
-        "id": 18
-=======
         "end": "2023-10-25T21:00:00.000Z"
->>>>>>> 5631e24c01656680d865f48798b42ab318bafe21
       }
     ]
   },
@@ -189,7 +102,7 @@
     "email": "oribarda10@gmail.com",
     "birthday": "14/07/2002",
     "username": "ori barda4125",
-    "password": "1",
+    "password": "12",
     "tasks": [
       {
         "title": "Morning Task",
