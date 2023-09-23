@@ -57,7 +57,7 @@ function SignUp({ setUser }) {
             Submit
           </button>
           <p id="have-account">
-            I have an account! <Link to="/login">Log In</Link>
+            I have an account! <Link to="/">Log In</Link>
           </p>
         </div>
       </form>

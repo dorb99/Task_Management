@@ -1,4 +1,4 @@
-/* Container for comments */
+
 #comments {
   font-size: 18px;
   background-color: rgba(255, 255, 255, 0.9);
@@ -81,9 +81,11 @@
   border-radius: 50%;
   cursor: pointer;
   margin: 0 7px;
-  background-color: #c4c4c4;
+  background-color: #b2f6d6; /* Updated to a greener color */
+  transition: background-color 0.3s ease; /* Smooth color transition */
 }
 
 .slideshowDot.active {
-  background-color: #6a0dad;
+  background-color: #00ff95; /* Keep the active dot color as is */
 }
+

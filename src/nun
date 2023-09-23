@@ -1,0 +1,319 @@
+/* Style for the modal container */
+.userhomecontainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(../General_Components/img/Tasks.jpg);
+  background-size: cover;
+}
+.event_Modal {
+  background-size: cover;
+  background-position: center center;
+  padding: 40px;
+  font-family: "Phudu", cursive;
+  font-weight: 700;
+  position: fixed;
+  width: 400px;
+  z-index: 1040;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 0.4s ease-in-out forwards;
+}
+
+/* Style for the modal title */
+.modal-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Style for the input fields */
+input,
+select {
+  border-radius: 20px;
+  border: 2px solid #4caf50;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s, background-color 0.3s, transform 0.2s;
+  outline: none;
+}
+
+/* Style for the checkboxes */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-label span {
+  font-size: 1rem;
+  margin-right: 10px;
+  color: #333;
+}
+
+.custom-checkbox {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border: 2px solid #4caf50;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-checkbox:before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 8px;
+  height: 12px;
+  border: solid #4caf50;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.3s, background-color 0.3s;
+}
+/* Style for the buttons */
+button {
+  border-radius: 20px;
+  border: none;
+  padding: 12px 24px;
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s, color 0.3s;
+  margin-top: 10px;
+  outline: none;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+  color: #fff;
+}
+
+/* Style for the date picker */
+.react-datepicker {
+  width: max-content;
+}
+
+/* Animation for fading in the modal */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Backdrop style */
+.backdrop_adder {
+  position: fixed;
+  z-index: 1030;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+button#newEventPadding:hover {
+  transform: translateY(-5px);
+}
+
+
+
+
+
+
+
+
+
+
+/* Style for the calendar container */
+.your-calendar-class {
+  width: 600px;
+  height: 500px;
+  margin: 50px auto;
+  background-color: #45b07e;
+  font-family: Arial, sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+  opacity: 0.9;
+  overflow: hidden; /* Hide overflowing events */
+}
+
+/* Style for the month view */
+.rbc-month-view {
+  border-radius: 10px;
+  border: 0px solid;
+}
+
+/* Style for the calendar events */
+.your-calendar-class .rbc-event {
+  background-color: #4caf50; /* Event background color */
+  color: #fff; /* Event text color */
+  border: none; /* Remove event border */
+  padding: 4px;
+  margin: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Style for the selected event */
+.your-calendar-class .rbc-selected {
+  background-color: #e0e0e0; /* Selected event background color */
+}
+
+/* Style for the event tooltip */
+.your-calendar-class .rbc-tooltip {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the event tooltip arrow */
+.your-calendar-class .rbc-tooltip::before {
+  border-top-color: #333;
+}
+
+/* Style for the event tooltip's close button */
+.your-calendar-class .rbc-tooltip button {
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Style for the event tooltip's close button on hover */
+.your-calendar-class .rbc-tooltip button:hover {
+  text-decoration: underline;
+}
+
+/* Style for the hover effect on buttons */
+.your-calendar-class button:hover {
+  background-color: transparent !important;
+}
+
+/* Style for navigation buttons */
+.rbc-button-link {
+  border: none !important;
+}
+
+/* Style for navigation button hover effect */
+.rbc-button-link button:hover {
+  background-color: transparent !important;
+}
+
+/* Style for navigation buttons */
+.rbc-btn-group > button:first-child:not(:last-child) {
+  border-radius: 7px;
+  border: none !important;
+  margin-bottom: 3px;
+  margin-right: 3px;
+}
+
+/* Style for navigation buttons */
+.rbc-btn-group > button:not(:first-child):not(:last-child) {
+  border-radius: 7px;
+  border: none !important;
+  margin-right: 3px;
+  margin-bottom: 3px;
+}
+
+/* Style for navigation buttons */
+.rbc-btn-group > button:last-child:not(:first-child) {
+  border-radius: 7px;
+  border: none !important;
+  margin-bottom: 3px;
+}
+
+/* Style for the "today" button */
+.rbc-today {
+  background-color: #95ffd6;
+}
+
+/* Style for off-range background */
+.rbc-off-range-bg {
+  background-color: #e8fff0;
+}
+
+/* Style for toolbar buttons on active and hover states */
+.rbc-toolbar button:active,
+.rbc-toolbar button.rbc-active {
+  background-color: #e8fff0 !important;
+}
+.event-button{
+  display: block !important;
+}
+
+/* ... Your existing styles ... */
+/* Style for the modal container */
+.userhomecontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(../General_Components/img/Tasks.jpg);
+  background-size: cover;
+}
+
+/* ... Your existing styles ... */
+
+/* Responsive styles for medium-sized screens */
+@media (max-width: 1024px) {
+  .your-calendar-class {
+    width: 90%; /* Adjust calendar width for medium-sized screens */
+    max-width: 600px; /* Limit the maximum calendar width */
+  }
+  
+  /* Add more responsive styles as needed for medium-sized screens */
+}
+
+/* Responsive styles for small screens */
+@media (max-width: 600px) {
+  .userhomecontainer {
+    background-image: none; /* Remove background image on small screens */
+  }
+  
+  .event_Modal {
+    width: 90%; /* Adjust modal width for small screens */
+    max-width: 400px; /* Limit the maximum modal width */
+  }
+  
+  .modal-title {
+    font-size: 1.2rem; /* Adjust title font size for small screens */
+  }
+  
+  /* Add more responsive styles as needed for small screens */
+}
+
+/* Responsive styles for extra-small screens */
+
