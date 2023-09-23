@@ -1,31 +1,37 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { UserContext } from "../General_Components/Other/Context";
+import { useMemo } from "react";
 
 function AddTask({ openModal, setEditer }) {
-  const {
-    allEvent,
-    setallEvent,
-    newEvent,
-    setNewEvent,
-    user,
-    setUser,
-    setChanged,
-    taskAdder,
-    setTaskAdder,
-  } = useContext(UserContext);
-  const maxId = allEvent.length > 0 ? Math.max(...allEvent.map((task) => task.id)) : 0;
-  const nextId = maxId + 2;
+  const { allEvents, setNewEvent } = useContext(UserContext);
+  const nextID = useMemo(() => findID(), [allEvents]);
 
+  function findID() {
+    if (allEvents) {
+      const allID = allEvents.map((event) => event.id);
+      allID.sort((a, b) => a - b);
+      const nextID = (() => {
+        for (let index = 0; index < allID.length; index++) {
+          if (!allID.includes(index)) {
+            return index;
+          }
+        }
+        return allID.length;
+      })();
+      return nextID;
+    } else return 1;
+  }
+  
   const handleAddEventClick = () => {
     setNewEvent({
-      id: nextId,
+      id: nextID,
       title: "",
       color: "white",
       start: new Date(),
       end: new Date(),
     });
     openModal();
-    setEditer(false)
+    setEditer(false);
   };
 
   return (

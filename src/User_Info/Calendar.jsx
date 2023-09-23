@@ -6,21 +6,16 @@ import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import { UserContext } from "../General_Components/Other/Context";
 import { Modal } from "react-overlays";
+import { all } from "axios";
 
 export default function PrintCalendar({ openModal, setEditer }) {
   const {
-    allEvent,
-    newEvent,
+    allEvents,
     setNewEvent,
-    setallEvent,
-    user,
-    userInfo,
-    setTaskAdder,
   } = useContext(UserContext);
   const [calendarEvents, setCalendarEvents] = useState();
   const [currentEvent, setCurrentEvent] = useState({});
   const [taskChanger, setTaskChanger] = useState(false);
-  const [taskEdit, setTaskEdit] = useState(false);
   const localizer = momentLocalizer(moment);
 
   const renderBackdrop = (props) => (
@@ -32,8 +27,8 @@ export default function PrintCalendar({ openModal, setEditer }) {
     openModal();
     setEditer(true);
   };
-
   useEffect(() => {
+<<<<<<< HEAD
     const eventsCollector = allEvent.map((event) => {
       const { title, start, end, color, id } = event;
       const formattedStart = new Date(start);
@@ -42,6 +37,22 @@ export default function PrintCalendar({ openModal, setEditer }) {
     });
     setCalendarEvents(eventsCollector);
   }, [allEvent]);
+=======
+    if (allEvents) {
+      if (allEvents.length > 1) {
+        const eventsCollector = allEvents.map((event) => {
+          const { title, start, end, color, id } = event;
+          const formattedStart = new Date(start);
+          const formattedEnd = new Date(end);
+          return { title, start: formattedStart, end: formattedEnd, color: color, id: id};
+        });
+        setCalendarEvents(eventsCollector);
+      } else {
+        setCalendarEvents(allEvents)
+      }
+    } 
+  }, [allEvents]);
+>>>>>>> d83355d3e54a54f50f2529eadf09f5f8fb85a557
 
   return (
     <>

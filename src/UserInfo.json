@@ -7,95 +7,106 @@
     "plan": 2,
     "tasks": [
       {
-        "id": "0",
+        "id": 0,
         "color": "green",
         "title": "Morning Meeting",
         "start": "2023-09-06T09:00:00.000Z",
         "end": "2023-09-06T10:00:00.000Z"
       },
       {
-        "id": "1",
+        "id": 1,
         "color": "blue",
         "title": "Lunch Break",
         "start": "2023-09-06T12:30:00.000Z",
         "end": "2023-09-06T13:00:00.000Z"
       },
       {
-        "id": "2",
+        "id": 2,
         "color": "green",
         "title": "Afternoon Task",
         "start": "2023-09-06T15:45:00.000Z",
         "end": "2023-09-06T16:30:00.000Z"
       },
       {
-        "id": "3",
+        "id": 3,
         "color": "red",
         "title": "Evening Event",
         "start": "2023-09-06T18:00:00.000Z",
         "end": "2023-09-06T19:30:00.000Z"
       },
       {
-        "id": "4",
-        "color": "purple",
+        "id": 4,
         "title": "Late Night Project",
         "start": "2023-09-06T22:00:00.000Z",
-        "end": "2023-09-06T23:59:59.999Z"
+        "end": "2023-09-06T23:59:59.999Z",
+        "color": "red"
       },
       {
+        "id": 5,
         "title": "Task with No Time 1",
         "start": "2023-09-06T00:00:00.000Z",
         "end": "2023-09-06T00:00:00.000Z",
-        "color": "blue",
-        "id": "5"
+        "color": "blue"
       },
       {
-        "title": "Task with No Time 1",
-        "start": "2023-09-06T00:00:00.000Z",
-        "end": "2023-09-06T00:00:00.000Z",
-        "color": "blue",
-        "id": "5"
-      },
-      {
-        "id": "6",
+        "id": 6,
         "color": "green",
         "title": "Task with No Time 3",
         "start": "2023-09-06T00:00:00.000Z",
         "end": "2023-09-06T00:00:00.000Z"
       },
       {
-        "id": "7",
-        "color": "green",
+        "id": 7,
         "title": "Two-Day Event 1",
         "start": "2023-09-10T14:00:00.000Z",
-        "end": "2023-09-11T14:00:00.000Z"
+        "end": "2023-09-11T14:00:00.000Z",
+        "color": "yellow"
       },
       {
+        "id": 8,
         "title": "Two-Day Event 2",
         "start": "2023-09-15T10:00:00.000Z",
         "end": "2023-09-16T10:00:00.000Z",
-        "color": "red",
-        "id": "8"
+        "color": "red"
       },
       {
-        "id": "9",
+        "id": 9,
         "color": "green",
         "title": "Two-Day Event 3",
         "start": "2023-09-20T08:00:00.000Z",
         "end": "2023-09-21T08:00:00.000Z"
       },
       {
+<<<<<<< HEAD
         "id": "11",
+=======
+        "id": 10,
+        "title": "Three-Day Event 1",
+        "start": "2023-09-25T16:00:00.000Z",
+        "end": "2023-09-27T16:00:00.000Z",
+        "color": "pink"
+      },
+      {
+        "id": 11,
+>>>>>>> d83355d3e54a54f50f2529eadf09f5f8fb85a557
         "color": "green",
         "title": "Weekend Getaway",
         "start": "2023-09-30T12:00:00.000Z",
         "end": "2023-10-01T16:00:00.000Z"
       },
       {
-        "id": "12",
+        "id": 12,
         "color": "green",
         "title": "Monthly Review",
         "start": "2023-10-05T09:00:00.000Z",
         "end": "2023-10-05T10:30:00.000Z"
+      },
+      {
+        "id": 13,
+        "title": "Task with No Time 1",
+        "start": "2023-09-06T00:00:00.000Z",
+        "end": "2023-09-06T00:00:00.000Z",
+        "color": "blue"
       },
       {
         "id": 14,
@@ -105,11 +116,47 @@
         "end": "2023-09-17T11:00:00.000Z"
       },
       {
+<<<<<<< HEAD
         "id": 18,
         "title": "15",
         "color": "white",
         "start": "2023-09-29T11:07:02.000Z",
         "end": "2023-09-29T11:07:02.000Z"
+=======
+        "id": 16,
+        "title": "dinner",
+        "color": "pink",
+        "start": "2023-09-02T14:01:15.000Z",
+        "end": "2023-09-02T14:01:15.000Z"
+      },
+      {
+        "id": 15,
+        "title": "dinner",
+        "color": "white",
+        "start": "2023-09-22T17:22:02.512Z",
+        "end": "2023-09-22T17:22:02.512Z"
+      },
+      {
+        "id": 17,
+        "title": "rjjj kn;k",
+        "color": "green",
+        "start": "2023-09-23T04:33:36.932Z",
+        "end": "2023-09-23T04:33:36.932Z"
+      },
+      {
+        "id": 18,
+        "title": "lunch",
+        "color": "teal",
+        "start": "2023-09-23T04:39:43.369Z",
+        "end": "2023-09-23T04:39:43.369Z"
+      },
+      {
+        "id": 19,
+        "title": "dinner",
+        "color": "brown",
+        "start": "2023-09-09T04:53:05.000Z",
+        "end": "2023-09-09T04:53:05.000Z"
+>>>>>>> d83355d3e54a54f50f2529eadf09f5f8fb85a557
       }
     ]
   },
@@ -118,23 +165,118 @@
     "birthday": "14/07/2002",
     "username": "ori barda4125",
     "password": "12",
+    "plan": "1",
     "tasks": [
       {
+<<<<<<< HEAD
+=======
+        "id": 0,
+        "color": "green",
+        "title": "Morning Meeting",
+        "start": "2023-09-06T09:00:00.000Z",
+        "end": "2023-09-06T10:00:00.000Z"
+      },
+      {
+        "id": 1,
+        "color": "blue",
+        "title": "Lunch Break",
+        "start": "2023-09-06T12:30:00.000Z",
+        "end": "2023-09-06T13:00:00.000Z"
+      },
+      {
+        "id": 2,
+        "color": "green",
+        "title": "Afternoon Task",
+        "start": "2023-09-06T15:45:00.000Z",
+        "end": "2023-09-06T16:30:00.000Z"
+      },
+      {
+        "id": 3,
+        "color": "red",
+        "title": "Evening Event",
+        "start": "2023-09-06T18:00:00.000Z",
+        "end": "2023-09-06T19:30:00.000Z"
+      },
+      {
+        "id": 4,
+        "title": "Late Night Project",
+        "start": "2023-09-06T22:00:00.000Z",
+        "end": "2023-09-06T23:59:59.999Z",
+        "color": "red"
+      },
+      {
+        "id": 5,
+        "title": "Task with No Time 1",
+        "start": "2023-09-06T00:00:00.000Z",
+        "end": "2023-09-06T00:00:00.000Z",
+        "color": "blue"
+      },
+      {
+        "id": 6,
+        "color": "green",
+        "title": "Task with No Time 3",
+        "start": "2023-09-06T00:00:00.000Z",
+        "end": "2023-09-06T00:00:00.000Z"
+      },
+      {
+        "id": 7,
+        "title": "Two-Day Event 1",
+        "start": "2023-09-10T14:00:00.000Z",
+        "end": "2023-09-11T14:00:00.000Z",
+        "color": "yellow"
+      },
+      {
+        "id": 8,
+        "title": "Two-Day Event 2",
+        "start": "2023-09-15T10:00:00.000Z",
+        "end": "2023-09-16T10:00:00.000Z",
+        "color": "red"
+      },
+      {
+        "id": 9,
+        "color": "green",
+        "title": "Two-Day Event 3",
+        "start": "2023-09-20T08:00:00.000Z",
+        "end": "2023-09-21T08:00:00.000Z"
+      },
+      {
+        "id": 10,
+        "title": "Three-Day Event 1",
+        "start": "2023-09-25T16:00:00.000Z",
+        "end": "2023-09-27T16:00:00.000Z",
+        "color": "pink"
+      },
+      {
+        "id": 11,
+        "color": "green",
+        "title": "Weekend Getaway",
+        "start": "2023-09-30T12:00:00.000Z",
+        "end": "2023-10-01T16:00:00.000Z"
+      },
+      {
+        "id": 12,
+        "color": "green",
+>>>>>>> d83355d3e54a54f50f2529eadf09f5f8fb85a557
         "title": "Monthly Review",
         "start": "2023-10-05T09:00:00.000Z",
         "end": "2023-10-05T10:30:00.000Z"
       },
       {
-        "title": "Project Deadline",
-        "start": "2023-10-10T15:00:00.000Z",
-        "end": "2023-10-10T18:00:00.000Z"
+        "id": 13,
+        "title": "Task with No Time 1",
+        "start": "2023-09-06T00:00:00.000Z",
+        "end": "2023-09-06T00:00:00.000Z",
+        "color": "blue"
       },
       {
-        "title": "Holiday Planning",
-        "start": "2023-10-15T19:00:00.000Z",
-        "end": "2023-10-15T20:30:00.000Z"
+        "id": 14,
+        "title": "flight",
+        "color": "teal",
+        "start": "2023-09-17T11:00:00.000Z",
+        "end": "2023-09-17T11:00:00.000Z"
       },
       {
+<<<<<<< HEAD
         "title": "End of Month Party",
         "start": "2023-10-20T20:00:00.000Z",
         "end": "2023-10-20T23:00:00.000Z"
@@ -157,6 +299,13 @@
         "color": "teal",
         "start": "2023-09-24T17:48:56.000Z",
         "end": "2023-09-28T17:48:56.000Z"
+=======
+        "id": 16,
+        "title": "dinner",
+        "color": "pink",
+        "start": "2023-09-02T14:01:15.000Z",
+        "end": "2023-09-02T14:01:15.000Z"
+>>>>>>> d83355d3e54a54f50f2529eadf09f5f8fb85a557
       }
     ]
   }
