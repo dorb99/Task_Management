@@ -1,14 +1,10 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import AddTask from "./AddTask";
 import Calendar from "./Calendar";
-import { UserContext } from "../General_Components/Other/Context";
 import "./UserInfo.css";
-import Fetcher from "../Fetcher";
 import Event_Modal from "./Event_Modal";
-import LogIn from "../Account/LogIn/LogIn";
 
 function UserPage() {
-  const { setallEvent, allEvent, userInfo, newEvent   ,setChanged } = useContext(UserContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editer, setEditer] = useState(false);
 
@@ -19,7 +15,6 @@ function UserPage() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  
   return (
     <div className="userhomecontainer">
       <h1>My Home</h1>

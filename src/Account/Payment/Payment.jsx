@@ -3,6 +3,7 @@ import { Modal } from "react-overlays";
 import "./Payment.css"; // Add your CSS styling here
 
 export default function SubscriptionModal() {
+  const renderBackdrop = (props) => <div className="backdrop" {...props} />;
   const [showModal, setShowModal] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("");
   const [creditCardData, setCreditCardData] = useState({
@@ -37,10 +38,10 @@ export default function SubscriptionModal() {
       localStorage.setItem("creditCardData", JSON.stringify(creditCardData));
       alert("Your Credit Card Information Is Safe With Me Now Thanks fucker!");
       setShowModal(false);
+
     }
   };
 
-  const renderBackdrop = (props) => <div className="backdrop" {...props} />;
 
   return (
     <>

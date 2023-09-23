@@ -1,23 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import users from "../../UserInfo.json";
-import { UserContext } from "../../General_Components/Other/Context";
+import { UserContext  } from "../../General_Components/Other/Context";
 import "./LogIn.css";
 import Comments from "../Comments/Comments";
 
 function LogIn() {
-  const { user, setUser, setallEvent } = useContext(UserContext);
+  const { user, setUser } =  useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const savedUsername = JSON.parse(localStorage.getItem("username"));
-    if (savedUsername && user!==savedUsername) {
-      setUser(savedUsername); 
-      navigate("/userpage"); 
-    }
-  },[user]); 
 
   const handleSignIn = () => {
     if (users.hasOwnProperty(username)) {
@@ -32,6 +24,14 @@ function LogIn() {
       alert("Username not found. Please sign up.");
     }
   };
+
+  useEffect(() => {
+    const savedUsername = JSON.parse(localStorage.getItem("username"));
+    if (savedUsername && user!==savedUsername) {
+      setUser(savedUsername); 
+      navigate("/"); 
+    }
+  },[user]); 
 
   return (
     <div id="login-container">

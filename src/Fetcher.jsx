@@ -2,22 +2,17 @@ import { UserContext } from "./General_Components/Other/Context";
 import users from "./UserInfo.json";
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
+import { memo } from "react";
 function Fetcher() {
-  const [isCheckedEnd, setIsCheckedEnd] = useState(false);
-  const [isCheckedHour, setIsCheckedHour] = useState(false);
   const {
     user,
-    setUser,
-    allEvent,
-    setallEvent,
-    newEvent,
-    setNewEvent,
+    allEvents,
+    setallEvents,
     userInfo,
     setUserInfo,
     changed,
     setChanged,
   } = useContext(UserContext);
-  const [prevInfo, setprevInfo] = useState();
   const [prevuser, setprevuser] = useState(0);
 
   function userFetcher() {
@@ -26,24 +21,49 @@ function Fetcher() {
       const res = axios.get(uri).then(({ data }) => {
         setUserInfo(data);
         const events = data.tasks;
-        setallEvent(events);
+        setallEvents(events);
         setprevuser(user);
       });
     }
   }
+  // async function EventsChange() {
+  //   console.log("saving info");
+  //   const newInfo = { ...userInfo, tasks: allEvents };
+  //   const uri = `http://localhost:3000/${user}`;
+  //   const res = await fetch(uri, {
+  //     method: "PUT",
+  //     body: JSON.stringify(newInfo),
+  //     headers: { "Content-Type": "application/json" },
+  //   });
+  //   const resolved = await res.json();
+  //   setChanged(false);
+  //   setUserInfo(resolved);
+  //   const events = resolved.tasks;
+  //   setallEvents(events);
+  // }
+
   async function EventsChange() {
-    const newInfo = { ...userInfo, tasks: allEvent };
-    const uri = `http://localhost:3000/${user}`;
-    const res = await fetch(uri, {
-      method: "POST",
-      body: JSON.stringify(newInfo),
-      headers: { "Content-Type": "application/json" },
-    });
-    const resolved = await res.json();
-    setChanged(false);
-    setUserInfo(resolved);
-    const events = resolved.tasks;
-    setallEvent(events);
+    if (user === "o" || user === "d") {
+      const newInfo = { ...userInfo, tasks: allEvents };
+      const uri = `http://localhost:3000/${user}`;
+      const res = await fetch(uri, {
+        method: "PUT",
+        body: JSON.stringify(newInfo),
+        headers: { "Content-Type": "application/json" },
+      });
+      const resolved = await res.json();
+      setChanged(false);
+      setUserInfo(resolved);
+      const events = resolved.tasks;
+      setallEvents(events);
+    }
+    else{
+      const newInfo = { ...userInfo, tasks: allEvents }
+      setChanged(false);
+      setUserInfo(newInfo);
+      const events = newInfo.tasks;
+      setallEvents(events);
+    }
   }
 
   useEffect(() => {
@@ -59,4 +79,4 @@ function Fetcher() {
   return null;
 }
 
-export default Fetcher;
+export default memo(Fetcher);

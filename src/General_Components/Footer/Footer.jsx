@@ -33,22 +33,22 @@ function Footer() {
             <div className="col-md-4 col-sm-6 col-xs-12">
               <ul className="social-icons">
                 <li>
-                  <a className="facebook" target="_blank" href="#">
+                  <a className="facebook" target="_blank" href="https://he-il.facebook.com/">
                   <img className="fa" src={FB} alt="" />
                   </a>
                 </li>
                 <li>
-                  <a className="twitter" target="_blank" href="#">
+                  <a className="twitter" target="_blank" href="https://twitter.com/">
                     <img className="fa" src={TW} alt="" />
                   </a>
                 </li>
                 <li>
-                  <a className="instagram" target="_blank" href="#">
+                  <a className="instagram" target="_blank" href="https://www.instagram.com/">
                     <img className="fa" src={Ins} alt="" />
                   </a>
                 </li>
                 <li>
-                  <a className="github" target="_blank" href="#">
+                  <a className="github" target="_blank" href="https://github.com/dorb99/task_management_project.git">
                     <img className="fa" src={GH} alt="" />
                   </a>
                 </li>

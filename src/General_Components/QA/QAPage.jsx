@@ -1,20 +1,12 @@
 import React from "react";
 import "./QAPage.css";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function QAPage() {
   const navigate = useNavigate();
   return (
     <div className="qa-container">
       <h1>Questions and Answers</h1>
-      <button
-        onClick={() => {
-          alert("fuck you");
-        }}
-      >
-        click here
-      </button>
-
       <div className="qa-section">
         <div className="qa-question">
           <h1 className="QHeader">Problem 1: Events Won't Load</h1>
@@ -125,9 +117,14 @@ function QAPage() {
             </ul>
           </div>
         </div>
-      <h5>Didn't found what you were looking for?  <br/> <span className="span-btn"onClick={() => navigate("../ContactUs")}>Contact us</span> with your problem and we will help you!</h5>
-      
-      </div>  
+        <h5>
+          Didn't found what you were looking for? <br />{" "}
+          <span className="span-btn" onClick={() => navigate("../ContactUs")}>
+            Contact us
+          </span>{" "}
+          with your problem and we will help you!
+        </h5>
+      </div>
     </div>
   );
 }
