@@ -1,34 +1,37 @@
-/* App.css */
+/* Footer Styles */
 .site-footer {
-  background-color: #26272b;
-  font-size: 15px;
+  background-color: #0a0a0a;
+  font-size: 14px;
   line-height: 24px;
-  color: rgb(99, 122, 99) !important;
-  height: 100%;
+  color: #ffffff;
+  padding: 20px 0;
 }
 
 .site-footer hr {
-  border-top-color: #6a0dad; /* Match the color scheme */
+  border-top-color: #45b07e;
   opacity: 0.5;
-}
-
-.site-footer hr.small {
   margin: 20px 0;
 }
 
 .site-footer h6 {
-  color: #45b07e; /* Match the color scheme */
+  color: #45b07e;
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-top: 0; /* Remove margin for cleaner look */
+  margin: 0;
 }
 
 .site-footer a {
-  color: #6a0dad; /* Match the color scheme */
+  color: #45b07e;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-/* Footer links styles */
+.site-footer a:hover {
+  color: #00ff95;
+}
+
+/* Footer Links Styles */
 .footer-links {
   padding-left: 0;
   list-style: none;
@@ -39,14 +42,21 @@
 }
 
 .footer-links a {
-  color: #6a0dad; /* Match the color scheme */
+  color: #45b07e;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #00ff95;
 }
 
 .footer-links.inline li {
   display: inline-block;
+  margin-right: 10px;
 }
 
-/* Social icons styles */
+/* Social Icons Styles */
 .site-footer .social-icons {
   text-align: right;
 }
@@ -57,27 +67,28 @@
   line-height: 40px;
   margin-left: 6px;
   margin-right: 0;
-  border-radius: 100%;
-  background-color: #45b07e; 
+  border-radius: 50%;
+  background-color: #45b07e;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 }
 
 .site-footer .social-icons a:hover {
-  background-color: #023b15; /* New color on hover */
+  background-color: #00ff95;
 }
 
-/* Copyright text styles */
+/* Copyright Text Styles */
 .copyright-text {
-  margin: 0;
-  color: #737373; /* Match the color scheme */
+  margin: 10px 0;
+  color: #737373;
+  font-size: 12px;
 }
 
 @media (max-width: 991px) {
   .site-footer [class^='col-'] {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 }
 
@@ -91,7 +102,7 @@
   }
 }
 
-/* Additional styles for social icons */
+/* Additional Styles for Social Icons */
 .social-icons {
   padding-left: 0;
   margin-bottom: 0;
@@ -121,7 +132,7 @@
   height: 44px;
   text-align: center;
   margin-right: 8px;
-  border-radius: 100%;
+  border-radius: 50%;
   transition: all 0.2s linear;
 }
 
@@ -132,7 +143,7 @@
   font-size: 14px;
 }
 
-/* Hover styles for social icons */
+/* Hover Styles for Social Icons */
 .social-icons a.facebook:hover {
   background-color: #3b5998;
 }

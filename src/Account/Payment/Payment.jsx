@@ -62,7 +62,7 @@ export default function SubscriptionModal() {
       >
         <form onSubmit={handleSubmit} className="modal-content">
           <div className="modal-header">
-            <div className="modal-title">Choose your plan!</div>
+            <div className="modal-title-payment">Choose your plan!</div>
             <div>
               <span
                 className="close-button"

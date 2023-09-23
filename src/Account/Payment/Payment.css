@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&family=Phudu:wght@300;500;700&family=Poppins:wght@100;200&family=Rajdhani:wght@300;500&display=swap");
 
 .modal {
-  font-family: "Phudu", cursive;
   font-weight: 700;
   position: fixed;
   width: auto;
@@ -34,15 +33,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px; 
-  margin-left: 12px;/* Add padding to the modal header */
 }
 
 /* Style for the modal title */
-.modal-title {
+.modal-title-payment {
   font-weight: 500;
   font-size: 1.25rem;
-  color: #333; /* Added color for better readability */
+  color: #333; 
 }
 
 /* Style for the close button */
@@ -91,6 +88,46 @@ button {
   color: #fff;
   background-color: #008000;
 }
+/* Style for the "Choose A Plan" button */
+.choose-plan-button {
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 10px;
+  background-color: #45b07e;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+/* Pseudo-element for button animation */
+.choose-plan-button::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #023b15;
+  transition: height 0.3s ease;
+  z-index: -1;
+}
+
+/* Style for "Choose A Plan" button on hover */
+.choose-plan-button:hover::after {
+  height: 100%;
+}
+
+.choose-plan-button:hover {
+  background-color: #023b15;
+  box-shadow: 0px 12px 16px 0px rgba(70, 180, 129, 0.6);
+  transform: translateY(-5px);
+  color: #fff;
+}
+
 
 /* Additional styles for the form fields */
 .insert {
@@ -332,3 +369,55 @@ button {
   box-shadow: 0 4px 6px rgba(0, 143, 45, 0.4);
   transform: translateY(-2px);
 }
+button {
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+/* Style for primary button */
+.primary-button {
+  color: #fff;
+  background-color: #008f2d;
+  position: relative; /* Add position for pseudo-element */
+  overflow: hidden; /* Hide overflow for pseudo-element */
+}
+
+/* Pseudo-element for button animation */
+.primary-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scaleX(0);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+/* Style for primary button on hover */
+.primary-button:hover::before {
+  transform: translate(-50%, -50%) scaleX(1);
+}
+
+.primary-button:hover {
+  background-color: #6cbe45;
+  box-shadow: 0 10px 20px rgba(0, 143, 45, 0.4);
+  transform: translateY(-5px);
+  color: #fff;
+}
+
+/* Style for secondary button */
+.secondary-button {
+  color: #fff;
+  background-color: #254636;
+  margin-right: 1vw;
+}
+
+/* Additional custom styles can be added here */

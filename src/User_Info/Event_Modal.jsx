@@ -51,6 +51,7 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
         <h2 className="modal-title">Event Form</h2>
         <div>
           <input
+          className="event-modal-text"
             type="text"
             placeholder="Add Title"
             value={newEvent.title}
@@ -60,12 +61,13 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
           />
           <br />
           <select
+          id="event-color"
             style={{ backgroundColor: newEvent.color }}
             value={newEvent.color}
             onChange={(e) =>
               setNewEvent({ ...newEvent, color: e.target.value })
             }
-          >
+          > 
             <option value="white" style={{ backgroundColor: "white" }}>
               white
             </option>
@@ -181,11 +183,11 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
         )}
         {editer ? (
           <>
-            <button onClick={handleEditEvent}>Edit Task</button>
-            <button onClick={handleDelete}>delete</button>
+            <button className="event-button" onClick={handleEditEvent}>Edit Task</button>
+            <button className="event-button" onClick={handleDelete}>delete</button>
           </>
         ) : (
-          <button onClick={handleAddEvent} id="newEventPadding">Add Task</button>
+          <button className="event-button" onClick={handleAddEvent} id="newEventPadding">Add Task</button>
         )}
       </div>
     </Modal>

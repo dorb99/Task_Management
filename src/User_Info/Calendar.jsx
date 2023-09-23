@@ -1,3 +1,4 @@
+import React from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { useContext, useEffect, useState } from "react";
@@ -21,15 +22,22 @@ export default function PrintCalendar({ openModal, setEditer }) {
     <div className="backdrop_adder" {...props} />
   );
 
-  // const handleDoubleClick = (event) => {
-  //       setCurrentEvent(event);
-  // };
   const handleOneClick = (event) => {
     setNewEvent(event);
     openModal();
-    setEditer(true)
+    setEditer(true);
   };
   useEffect(() => {
+<<<<<<< HEAD
+    const eventsCollector = allEvent.map((event) => {
+      const { title, start, end, color, id } = event;
+      const formattedStart = new Date(start);
+      const formattedEnd = new Date(end);
+      return { title, start: formattedStart, end: formattedEnd, color, id };
+    });
+    setCalendarEvents(eventsCollector);
+  }, [allEvent]);
+=======
     if (allEvents) {
       if (allEvents.length > 1) {
         const eventsCollector = allEvents.map((event) => {
@@ -44,6 +52,7 @@ export default function PrintCalendar({ openModal, setEditer }) {
       }
     } 
   }, [allEvents]);
+>>>>>>> d83355d3e54a54f50f2529eadf09f5f8fb85a557
 
   return (
     <>
@@ -55,17 +64,17 @@ export default function PrintCalendar({ openModal, setEditer }) {
           endAccessor="end"
           style={{ height: 500, margin: "50px", width: 600 }}
           onSelectEvent={handleOneClick}
-          // onDoubleClickEvent={handleDoubleClick}
           eventPropGetter={(calendarEvents) => {
             const backgroundColor = calendarEvents.color
               ? calendarEvents.color
               : "white";
             return { style: { backgroundColor } };
           }}
+          className="your-calendar-class"
         />
         {currentEvent.title && (
           <Modal
-            className="modal_Presnt , event_Modal"
+            className="modal_Presnt event_Modal"
             show={taskChanger}
             onHide={() => {
               setTaskChanger(false);
@@ -73,7 +82,7 @@ export default function PrintCalendar({ openModal, setEditer }) {
             renderBackdrop={renderBackdrop}
           >
             <div style={{ color: currentEvent.color || "black" }}>
-              <h4>Title: {currentEvent.title}</h4>
+              <h4 className="title">Title: {currentEvent.title}</h4>
               {currentEvent.start.toLocaleString() ===
               currentEvent.end.toLocaleString() ? (
                 <h4>Time: {currentEvent.start.toLocaleString()}</h4>
