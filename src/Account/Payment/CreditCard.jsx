@@ -2,6 +2,25 @@ import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../General_Components/Other/Context";
 function CreditCardSection() {
   const { setCardInfo, cardInfo } = useContext(UserContext);
+ 
+
+  const handleCardNumberChange = (e) => {
+    const value = e.target.value;
+    const newCardInfo = { ...cardInfo, cardNumber: value };
+    setCardInfo(newCardInfo);
+  };
+
+  const handleExpirationDateChange = (e) => {
+    const value = e.target.value;
+    const newCardInfo = { ...cardInfo, expirationDate: value };
+    setCardInfo(newCardInfo);
+  };
+  const handleCVVChange = (e) => {
+    const value = e.target.value;
+    const newCardInfo = { ...cardInfo, CVV: value };
+    setCardInfo(newCardInfo);
+  };
+
   useEffect(() => {
     const storedCardNumber = localStorage.getItem("cardNumber");
     const storedExpirationDate = localStorage.getItem("expirationDate");
@@ -14,26 +33,6 @@ function CreditCardSection() {
     if (storedCVV) setCardInfo({ ...cardInfo, CVV: storedCVV });
   }, []);
 
-  const handleCardNumberChange = (e) => {
-    const value = e.target.value;
-    const newCardInfo = { ...cardInfo, cardNumber: value };
-    setCardInfo(newCardInfo);
-  };
-
-  const handleExpirationDateChange = (e) => {
-    const value = e.target.value;
-    const newCardInfo = { ...cardInfo, expirationDate: value };
-    setCardInfo(newCardInfo);
-    // console.log(cardInfo);
-  };
-  const handleCVVChange = (e) => {
-    const value = e.target.value;
-    const newCardInfo = { ...cardInfo, CVV: value };
-    setCardInfo(newCardInfo);
-    // console.log(cardInfo);
-  };
-
-  console.log(cardInfo);
   return (
     <div className="credit-card-section">
       <h3>Credit Card Information</h3>
@@ -67,7 +66,7 @@ function CreditCardSection() {
           <input
             type="text"
             id="cvv"
-            value={cardInfo.cvv}
+            value={cardInfo.cvv}  
             onChange={handleCVVChange}
             placeholder="CVV"
             pattern="^[0-9]{3}$"

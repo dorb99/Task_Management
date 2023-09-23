@@ -14,15 +14,6 @@ function MyProfile() {
   });
   let numberOfTasks = 0;
 
-  useEffect(() => {
-    const savedUsername = localStorage.getItem("username");
-    if (!userInfo?.username && savedUsername) {
-      const savedUserData = JSON.parse(savedUsername);
-      setUserInfo({ ...editedData, username: savedUserData });
-    }
-  }, [userInfo, setUserInfo]);
-  
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditedData({
@@ -39,6 +30,14 @@ function MyProfile() {
   if (allEvents) {
     numberOfTasks = allEvents.length;
   }
+
+  useEffect(() => {
+    const savedUsername = localStorage.getItem("username");
+    if (!userInfo?.username && savedUsername) {
+      const savedUserData = JSON.parse(savedUsername);
+      setUserInfo({ ...editedData, username: savedUserData });
+    }
+  }, [userInfo, setUserInfo]);
 
   return (
     <div id="my-profile">

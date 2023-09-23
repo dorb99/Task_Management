@@ -1,17 +1,40 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Modals from "../Payment/Payment";
 import "./SignUp.css";
 import Comments from "../Comments/Comments";
-function SignUp({ setUser }) {
+import { UserContext } from "../../General_Components/Other/Context";
+
+function SignUp() {
+  const { setUser, setUserInfo, setallEvents, setChanged } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [birth, setBirth] = useState("");
+  const navigate = useNavigate();
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    console.log(e);
+    setUser(username);
+    const newUser = {
+      username: username,
+      password: password,
+      email: email,
+      birthday: birth,
+      tasks: [
+        {
+          id: 0,
+          color: "white",
+          title: "Your first task",
+          start: new Date(),
+          end: new Date(),
+        }
+      ],
+    };
+    setallEvents(newUser.tasks);
+    setUserInfo(newUser);
+    setChanged(true)
+    navigate("/userpage");
   };
 
   return (
@@ -19,7 +42,9 @@ function SignUp({ setUser }) {
       <form onSubmit={handleSignUp}>
         <div id="signup">
           <h2 id="signup-header">Sign Up</h2>
-          <span className="patter-input">Password and Username must include a number and a letter</span>
+          <span className="patter-input">
+            Password and Username must include a number and a letter
+          </span>
           <input
             type="text"
             className="signup-input"
@@ -36,7 +61,7 @@ function SignUp({ setUser }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            />
+          />
           <input
             type="password"
             className="signup-input"
@@ -45,7 +70,7 @@ function SignUp({ setUser }) {
             onChange={(e) => setPassword(e.target.value)}
             pattern="^(?=.*[0-9])(?=.*[a-zA-Z]).+$"
             required
-            />
+          />
           <input
             type="date"
             className="signup-input"
@@ -61,7 +86,7 @@ function SignUp({ setUser }) {
           </p>
         </div>
       </form>
-      <Comments/>
+      <Comments />
     </div>
   );
 }
