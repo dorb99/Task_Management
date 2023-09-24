@@ -3,6 +3,7 @@ import AddTask from "./AddTask";
 import Calendar from "./Calendar";
 import "./UserInfo.css";
 import Event_Modal from "./Event_Modal";
+import ColorsBar from "./ColorsBar";
 
 function UserPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,6 +26,7 @@ function UserPage() {
         editer={editer}
         setEditer={setEditer}
       />
+      <ColorsBar/>
         <Calendar openModal={openModal} setEditer={setEditer} />
     </div>
   ) 
