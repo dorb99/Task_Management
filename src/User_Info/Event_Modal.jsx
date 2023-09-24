@@ -49,7 +49,7 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
     >
       <div id="modal-con">
         <h2 className="modal-title">Event Form</h2>
-        <div>
+        <div id="event-modal-color-title">
           <input
           className="event-modal-text"
             type="text"
@@ -97,8 +97,9 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
             </option>
           </select>
         </div>
+        <div className="checkbox-wrapper-10" >
         Need specific hours?{" "}
-        <input
+        <input  className="tgl tgl-flip" id="cb4"
           name="specifichours"
           type="checkbox"
           checked={isCheckedHour}
@@ -106,6 +107,8 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
             setIsCheckedHour(!isCheckedHour);
           }}
         />
+         <label className="tgl-btn" data-tg-off="Nope" data-tg-on="Yeah!" for="cb4"></label>
+        </div>
         {isCheckedHour ? (
           <>
             <div>
@@ -122,13 +125,16 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
                 className="big-date-picker"
               />
             </div>
+            <div className="checkbox-wrapper-10" >
             <span>More than one day?</span>{" "}
-            <input
+            <input  className="tgl tgl-flip" id="cb5"
               name="moreDays"
               type="checkbox"
               checked={isCheckedEnd}
               onChange={() => setIsCheckedEnd(!isCheckedEnd)}
             />
+              <label className="tgl-btn" data-tg-off="Nope" data-tg-on="Yeah!" for="cb5"></label>
+            </div>
             {isCheckedEnd ? (
               <div>
                 <DatePicker
@@ -159,13 +165,16 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
                 className="small-date-picker"
               />
             </div>
+            <div className="checkbox-wrapper-10" >
             <span>More than one day?</span>{" "}
-            <input
+            <input  className="tgl tgl-flip" id="cb5"
               name="moreDays"
               type="checkbox"
               checked={isCheckedEnd}
               onChange={() => setIsCheckedEnd(!isCheckedEnd)}
             />
+              <label className="tgl-btn" data-tg-off="Nope" data-tg-on="Yeah!" for="cb5"></label>
+            </div>
             {isCheckedEnd ? (
               <div>
                 <DatePicker
@@ -182,10 +191,10 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
           </>
         )}
         {editer ? (
-          <>
+          <div id="edit-delete">
             <button className="event-button" onClick={handleEditEvent}>Edit Task</button>
             <button className="event-button" onClick={handleDelete}>delete</button>
-          </>
+          </div>
         ) : (
           <button className="event-button" onClick={handleAddEvent} id="newEventPadding">Add Task</button>
         )}
