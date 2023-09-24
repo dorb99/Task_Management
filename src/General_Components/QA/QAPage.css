@@ -1,34 +1,60 @@
+/* Base styles */
 .qa-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  background-image: url(../img/kelly-sikkema-LM17xCofKA0-unsplash.jpg);
+  background-size: cover;
 }
 
+/* Question and Answer section */
 .qa-section {
   margin: 20px 0;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.qa-question{
-  background-color: rgb(215, 233, 233);
+/* Question style */
+.qa-question {
   margin: 5vh;
   border-radius: 60px;
   padding: 5px;
+  background-color: rgba(57, 57, 57, 0.7); /* Background opacity */
 }
-.QHeader{
-  color: rgb(238, 167, 76);
+
+.QHeader {
+  color:#46b481;
 }
-.Qexample{
-  color: chocolate;
+
+.Qexample {
+  color: #e1f7e8;
 }
-.Answer{
-  color: rgb(78, 76, 76);
+
+/* Answer style */
+.Answer {
+  color: #95ffd6;
+  font-size: 1rem;
+  line-height: 1.4;
+  padding: 10px;
 }
-.span-btn{
-  size-adjust: 120%;
-  color: crimson;
+
+/* Button style */
+.span-btn {
+  color: crimson; /* Button color */
   cursor: pointer;
-  font-weight: 700;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.span-btn:hover {
+  color: darkred; /* Darker button color on hover */
+}
+
+#didnt-find {
+  color: whitesmoke;
 }

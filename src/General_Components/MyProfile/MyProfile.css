@@ -16,29 +16,29 @@ body {
 }
 
 #my-profile-container {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.8
-  ); 
+  background-color: rgba(255, 255, 255, 0.95);
   border-radius: 10px;
   padding: 30px;
   text-align: center;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Box shadow for depth */
-  width: 80%; /* Percentage width for responsiveness */
-  max-width: 400px; /* Maximum width */
-  animation: fadeInUp 0.5s ease; /* Fade-in animation */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  max-width: 400px;
+  animation: fadeInUp 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #my-profile-header {
   font-size: 28px;
   margin-bottom: 20px;
+  color: #333; /* Header text color */
 }
 
 .my-profile-input {
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -46,14 +46,16 @@ align-items: center;
   border-bottom: 2px solid #4caf50; /* Underline effect */
   background: transparent; /* Transparent background */
   font-size: 16px;
-  transition: border-color 0.3s ease; /* Smooth border color transition */
+  transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
   color: #05290c;
 }
 
 .my-profile-input:focus {
   border-color: #45a049; /* Change border color on focus */
+  background-color: #f0fff0; /* Slight green background on focus */
 }
 
+/* Button Animation */
 #my-profile-button {
   background-color: #4caf50;
   color: white;
@@ -63,13 +65,30 @@ align-items: center;
   cursor: pointer;
   font-size: 18px;
   margin-top: 20px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transform: translateY(0); /* Initial state for animation */
+  transition: background-color 0.3s ease;
 }
 
 #my-profile-button:hover {
-  background-color: #45a049;
-  transform: scale(1.05); 
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Add a shadow on hover */
+  animation: pulse 0.8s infinite, colorChange 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); /* Button pulsing animation */
+  }
+}
+
+@keyframes colorChange {
+  0% {
+    background-color: #4caf50;
+  }
+  100% {
+    background-color: #45a049; /* Background color change animation */
+  }
 }
 
 #no-account,

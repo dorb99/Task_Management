@@ -1,12 +1,11 @@
 
 #comments {
-  font-size: 18px;
   background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  padding: 13px;
+  border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  margin: 20px 0;
   overflow-x: hidden;
+  width: 400px;
+  margin-top: 25px;
 }
 
 /* User profile images */
@@ -19,10 +18,10 @@
 
 /* Comment container */
 .comment-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 5px;
-  margin-right: 50px;
 }
 
 /* Heading */
@@ -42,7 +41,8 @@
 @media (max-width: 430px) {
   #comments {
     height: auto;
-    font-size: 15px;
+    font-size: 3.5vw;
+    width: 90vw !important;
   }
 }
 
@@ -59,6 +59,8 @@
   transition: transform 0.5s ease;
   display: flex;
   align-items: center;
+  padding-top: 10px;
+  margin-left: 10px;
 }
 
 .slide {

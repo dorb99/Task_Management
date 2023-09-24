@@ -18,7 +18,6 @@ function UserPage() {
   };
   return (
     <div className="userhomecontainer">
-      <h1 className="userpage-header">My Tasks</h1>
       <AddTask openModal={openModal} setEditer={setEditer} />
       <Event_Modal
         isOpen={isModalOpen}
