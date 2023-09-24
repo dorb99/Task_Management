@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import "./ContactUs.css";
+import Logo from "../img/Ourlogo.png";
+import { Link } from "react-router-dom";
 function ContactUs() {
   const [selectedProblem, setSelectedProblem] = useState("Problem-1");
   return (
     <div id="about-father">
       <div id="about-container">
         <h3 className="project-name">Project:Mangy</h3>
+        <img id="ourlogo" src={Logo} alt="" />
         <p className="para">
           Welcome to our first group project. this project is about displaying
           all of our front-end skills using react.js and everything we learnt
           this month and a half since we have started our Full-Stack course
         </p>
         <h3 className="small_header">About Us</h3>
-        <div>
+        <div id="main-para">
           <strong>Mission Statement:</strong>
           <p>
             At TASK MANGY, our mission is to simplify your life by providing an
@@ -27,7 +30,7 @@ function ContactUs() {
           <strong>Our Team:</strong>
           <ul>
             <li>
-              <strong>Founder and CEO:</strong> Elazar 
+              <strong>Founder and CEO:</strong> Elazar
             </li>
             <li>
               <strong>Chief Technology Officer (CTO):</strong> Yonatan Ben Ezra
@@ -39,7 +42,7 @@ function ContactUs() {
               <strong>Lead Developers:</strong> Dor Bruker and Ori Barda
             </li>
             <li>
-              <strong>User Experience (UX) Designer:</strong> ChatGPT
+              <strong>User Experience (UX) Designer:</strong> ChatGPT and God
             </li>
             <li>
               <strong>Customer Support:</strong> We don't belive in one
@@ -72,7 +75,7 @@ function ContactUs() {
             </li>
           </ul>
 
-          <strong>Join TASK MANGY Today!</strong>
+          <strong id="join-today"><Link to="/">Join TASK MANGY Today!</Link></strong>
         </div>
       </div>
     </div>

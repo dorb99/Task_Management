@@ -28,16 +28,6 @@ export default function PrintCalendar({ openModal, setEditer }) {
     setEditer(true);
   };
   useEffect(() => {
-<<<<<<< HEAD
-    const eventsCollector = allEvent.map((event) => {
-      const { title, start, end, color, id } = event;
-      const formattedStart = new Date(start);
-      const formattedEnd = new Date(end);
-      return { title, start: formattedStart, end: formattedEnd, color, id };
-    });
-    setCalendarEvents(eventsCollector);
-  }, [allEvent]);
-=======
     if (allEvents) {
       if (allEvents.length > 1) {
         const eventsCollector = allEvents.map((event) => {
@@ -52,7 +42,6 @@ export default function PrintCalendar({ openModal, setEditer }) {
       }
     } 
   }, [allEvents]);
->>>>>>> d83355d3e54a54f50f2529eadf09f5f8fb85a557
 
   return (
     <>
