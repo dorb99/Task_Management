@@ -5,7 +5,7 @@ import LogIn from "./Account/LogIn/LogIn";
 import SignUp from "./Account/SignUp/SignUp";
 import UserPage from "./User_Info/UserPage"; 
 import MyProfile from "./General_Components/MyProfile/MyProfile";
-import ContactUs from "./General_Components/ContactUs/ContactUs"; 
+import AboutUs from "./General_Components/AboutUs/AboutUs"; 
 import NavBar from "./General_Components/NavBar/NavBar";
 import Forgot from "./Account/ForgotPassword/Forgot";
 import Footer from "./General_Components/Footer/Footer";
@@ -62,7 +62,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/userpage" element={<UserPage />} />
           <Route path="/myprofile" element={<MyProfile />} />
-          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/forgot" element={<Forgot />} />
           <Route path="/QAPage" element={<QAPage />} />
           <Route path="*" element={<ErrorPage />} />

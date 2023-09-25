@@ -6,7 +6,8 @@ import Comments from "../Comments/Comments";
 import { UserContext } from "../../General_Components/Other/Context";
 
 function SignUp() {
-  const { setUser, setUserInfo, setallEvents, setChanged } = useContext(UserContext);
+  const { setUser, setUserInfo, setallEvents, setChanged } =
+    useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -21,20 +22,12 @@ function SignUp() {
       password: password,
       email: email,
       birthday: birth,
-      tasks: [
-        {
-          id: 0,
-          color: "white",
-          title: "Your first task",
-          start: new Date(),
-          end: new Date(),
-        }
-      ],
+      tasks: [],
     };
     setallEvents(newUser.tasks);
     setUserInfo(newUser);
-    setChanged(true)
     navigate("/userpage");
+    localStorage.setItem(username, JSON.stringify(newUser));
   };
 
   return (

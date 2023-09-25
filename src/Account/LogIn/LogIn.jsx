@@ -1,25 +1,35 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import users from "../../UserInfo.json";
-import { UserContext  } from "../../General_Components/Other/Context";
+import { UserContext } from "../../General_Components/Other/Context";
 import "./LogIn.css";
 import Comments from "../Comments/Comments";
 
 function LogIn() {
-  const { user, setUser } =  useContext(UserContext);
+  const { user, setUser, setUserInfo } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSignIn = () => {
-    if (users.hasOwnProperty(username)) {
+    const savedUser = JSON.parse(localStorage.getItem(username));
+    if (users.hasOwnProperty(username) ) {
       if (users[username].password === password) {
         setUser(username);
         localStorage.setItem("username", JSON.stringify(username));
         navigate("/userpage");
+        return
       } else {
         alert("Please check your password");
       }
+    }
+    if (savedUser) {
+      if (savedUser.password === password) {
+        setUser(username);
+        setUserInfo(JSON.parse(localStorage.getItem(username)));
+        localStorage.setItem("username", JSON.stringify(username));
+        navigate("/userpage");
+      } else alert("Please check your password");
     } else {
       alert("Username not found. Please sign up.");
     }
@@ -27,11 +37,11 @@ function LogIn() {
 
   useEffect(() => {
     const savedUsername = JSON.parse(localStorage.getItem("username"));
-    if (savedUsername && user!==savedUsername) {
-      setUser(savedUsername); 
-      navigate("/"); 
+    if (savedUsername && user !== savedUsername) {
+      setUser(savedUsername);
+      navigate("/");
     }
-  },[user]); 
+  }, [user]);
 
   return (
     <div id="login-container">
@@ -66,5 +76,4 @@ function LogIn() {
     </div>
   );
 }
-
 export default LogIn;

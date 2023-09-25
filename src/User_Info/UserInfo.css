@@ -19,7 +19,7 @@
 .rbc-calendar {
   height: 550px !important;
   margin: 10px !important;
-  width: 90vw !important;
+  width: 85vw !important;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
@@ -400,3 +400,56 @@ button#newEventPadding:hover {
 .checkbox-wrapper-10 .tgl-flip:checked + .tgl-btn:active:after {
   transform: rotateY(20deg);
 }
+.colors_legend{
+width: 120px ;
+height: 50px ;
+display: flex;
+flex-direction: column;
+}
+#table_info{
+  display: flex;
+  flex-direction: row-reverse;
+padding-left: 10px;
+}
+
+#delete_Colors{
+  width: 60px;
+  height: 20px;
+  padding: 0px;
+  margin: 0px;
+background-color: black;
+}
+#li_Colors{
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#select_Colors{
+  width: 110px;
+  height: 30px;
+  padding: 0px;
+  margin: 0px;
+}
+#colors{
+  padding-top: 20vh;
+}
+@media (max-width: 1024px) {
+  #table_info{
+    display: flex;
+    flex-direction: column;
+  }
+  #li_Colors{
+width: 100px
+  }
+  .colors_legend{
+    display: flex;
+    flex-direction: row;
+    }
+    #colors{
+      padding-top: 0px;
+      padding-left: 20vw;
+      display: flex;
+      flex-direction: row;
+    }
+  }

@@ -1,9 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../Other/Context";
 import "./MyProfile.css";
+import ProfileIcon from "./ProfileIcon";
 
 function MyProfile() {
-  const { userInfo, allEvents, setUserInfo } = useContext(UserContext);
+  const { userInfo, allEvents, setUserInfo, setChanged } = useContext(UserContext);
   const [editing, setEditing] = useState(false);
   const [editedData, setEditedData] = useState({
     email: userInfo?.email,
@@ -12,8 +13,8 @@ function MyProfile() {
     password: userInfo?.password,
     tasks: userInfo?.tasks,
   });
+  const oldUserName = userInfo?.username;
   let numberOfTasks = 0;
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditedData({
@@ -21,10 +22,14 @@ function MyProfile() {
       [name]: value,
     });
   };
-
   const handleSaveChanges = () => {
+    if (oldUserName !== userInfo?.username) {
+      console.log(oldUserName);
+      localStorage.removeItem(oldUserName);
+    }
     setUserInfo(editedData);
     setEditing(false);
+    setChanged(true)
   };
 
   if (allEvents) {
@@ -43,6 +48,7 @@ function MyProfile() {
     <div id="my-profile">
       <div id="my-profile-container">
         <h1 id="my-profile-header">Hello {userInfo?.username}</h1>
+        {/* <ProfileIcon/> */}
         {editing ? (
           <form>
             <div>
@@ -70,7 +76,7 @@ function MyProfile() {
               <input
                 type="password"
                 name="password"
-                value={editedData.password}
+                value={userInfo.password}
                 onChange={handleInputChange}
                 className="my-profile-input"
               />
@@ -99,7 +105,7 @@ function MyProfile() {
             <h2>Email: {userInfo?.email}</h2>
             <h2>Password: {userInfo?.password}</h2>
             <h2>Birthday: {userInfo?.birthday}</h2>
-            <h2>Number Of Tasks: {numberOfTasks}</h2> {/* Display the number of tasks */}
+            <h2>Number Of Tasks: {numberOfTasks}</h2>
             <button
               id="my-profile-button"
               onClick={() => setEditing(true)}

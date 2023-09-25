@@ -7,12 +7,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import { UserContext } from "../General_Components/Other/Context";
 import { Modal } from "react-overlays";
 import { all } from "axios";
+import ColorsBar from "./ColorsBar";
 
 export default function PrintCalendar({ openModal, setEditer }) {
-  const {
-    allEvents,
-    setNewEvent,
-  } = useContext(UserContext);
+  const { allEvents, setNewEvent } = useContext(UserContext);
   const [calendarEvents, setCalendarEvents] = useState();
   const [currentEvent, setCurrentEvent] = useState({});
   const [taskChanger, setTaskChanger] = useState(false);
@@ -34,18 +32,24 @@ export default function PrintCalendar({ openModal, setEditer }) {
           const { title, start, end, color, id } = event;
           const formattedStart = new Date(start);
           const formattedEnd = new Date(end);
-          return { title, start: formattedStart, end: formattedEnd, color: color, id: id};
+          return {
+            title,
+            start: formattedStart,
+            end: formattedEnd,
+            color: color,
+            id: id,
+          };
         });
         setCalendarEvents(eventsCollector);
       } else {
-        setCalendarEvents(allEvents)
+        setCalendarEvents(allEvents);
       }
-    } 
+    }
   }, [allEvents]);
 
   return (
     <>
-      <div>
+      <div id="table_info">
         <Calendar
           localizer={localizer}
           events={calendarEvents}
@@ -84,6 +88,7 @@ export default function PrintCalendar({ openModal, setEditer }) {
             </div>
           </Modal>
         )}
+        <ColorsBar />
       </div>
     </>
   );
