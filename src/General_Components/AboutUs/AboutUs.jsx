@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./ContactUs.css";
+import "./AboutUs.css";
 import Logo from "../img/Ourlogo.png";
 import { Link } from "react-router-dom";
-function ContactUs() {
+function AboutUs() {
   const [selectedProblem, setSelectedProblem] = useState("Problem-1");
   return (
     <div id="about-father">
@@ -81,4 +81,4 @@ function ContactUs() {
     </div>
   );
 }
-export default ContactUs;
+export default AboutUs;

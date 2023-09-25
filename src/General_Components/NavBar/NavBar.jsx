@@ -25,25 +25,27 @@ function NavBar() {
       </label>
 
       <nav className="navbar">
+        
+        <div id="always-on">
+          <Link to="/AboutUs" className="nav-item">
+          About Us
+        </Link>
+        <Link to="/QAPage" className="nav-item">
+          QA
+        </Link>
+        </div>
         <div id="after-login">
         {user && (
           <Link to="/myprofile" className="nav-item">
             Profile
           </Link>
         )}
-          {user && (
+        {user && (
           <Link to="/" className="nav-item" onClick={logOut}>
             Log Out
           </Link>
         )}
-        </div>
-        <div id="always-on">
-          <Link to="/contactus" className="nav-item">
-          Contact Us
-        </Link>
-        <Link to="/QAPage" className="nav-item">
-          QA
-        </Link>
+        
         </div>
       </nav>
     </header>

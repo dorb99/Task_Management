@@ -25,7 +25,6 @@ function UserPage() {
         editer={editer}
         setEditer={setEditer}
       />
-      <ColorsBar/>
         <Calendar openModal={openModal} setEditer={setEditer} />
     </div>
   ) 

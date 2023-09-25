@@ -28,7 +28,7 @@ function Footer() {
           <div className="row">
             <p className="copyright-text">
               Copyright &copy; 2023 All Rights Reserved by{" "}
-              <Link to="/contactus">Ori&Dor</Link>.
+              <Link to="/AboutUs">Ori&Dor</Link>.
             </p>
             <div className="col-md-4 col-sm-6 col-xs-12">
               <ul className="social-icons">

@@ -26,21 +26,6 @@ function Fetcher() {
       });
     }
   }
-  // async function EventsChange() {
-  //   console.log("saving info");
-  //   const newInfo = { ...userInfo, tasks: allEvents };
-  //   const uri = `http://localhost:3000/${user}`;
-  //   const res = await fetch(uri, {
-  //     method: "PUT",
-  //     body: JSON.stringify(newInfo),
-  //     headers: { "Content-Type": "application/json" },
-  //   });
-  //   const resolved = await res.json();
-  //   setChanged(false);
-  //   setUserInfo(resolved);
-  //   const events = resolved.tasks;
-  //   setallEvents(events);
-  // }
 
   async function EventsChange() {
     if (user === "o" || user === "d") {
@@ -63,6 +48,7 @@ function Fetcher() {
       setUserInfo(newInfo);
       const events = newInfo.tasks;
       setallEvents(events);
+      localStorage.setItem(newInfo.username, JSON.stringify(newInfo));
     }
   }
 
