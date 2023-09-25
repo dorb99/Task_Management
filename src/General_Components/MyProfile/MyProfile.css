@@ -120,3 +120,7 @@ body {
     opacity: 1;
   }
 }
+.icon_Modal{
+  flex-direction: row!important;
+  width: auto;
+}

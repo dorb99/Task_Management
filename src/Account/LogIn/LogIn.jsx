@@ -22,8 +22,7 @@ function LogIn() {
       } else {
         alert("Please check your password");
       }
-    }
-    if (savedUser) {
+    } else if (savedUser) {
       if (savedUser.password === password) {
         setUser(username);
         setUserInfo(JSON.parse(localStorage.getItem(username)));
