@@ -4,7 +4,8 @@ import "./MyProfile.css";
 import ProfileIcon from "./ProfileIcon";
 
 function MyProfile() {
-  const { userInfo, allEvents, setUserInfo, setChanged } = useContext(UserContext);
+  const { userInfo, allEvents, setUserInfo, setChanged } =
+    useContext(UserContext);
   const [editing, setEditing] = useState(false);
   const [editedData, setEditedData] = useState({
     email: userInfo?.email,
@@ -12,6 +13,7 @@ function MyProfile() {
     username: userInfo?.username,
     password: userInfo?.password,
     tasks: userInfo?.tasks,
+    icon: userInfo?.icon
   });
   const oldUserName = userInfo?.username;
   let numberOfTasks = 0;
@@ -29,7 +31,7 @@ function MyProfile() {
     }
     setUserInfo(editedData);
     setEditing(false);
-    setChanged(true)
+    setChanged(true);
   };
 
   if (allEvents) {
@@ -48,9 +50,9 @@ function MyProfile() {
     <div id="my-profile">
       <div id="my-profile-container">
         <h1 id="my-profile-header">Hello {userInfo?.username}</h1>
-        {/* <ProfileIcon/> */}
+        <ProfileIcon editing={editing} setEditedData={setEditedData} editedData={editedData}/>
         {editing ? (
-          <form>
+          <>
             <div>
               <div>
                 <label>Username:</label>
@@ -92,13 +94,14 @@ function MyProfile() {
               />
             </div>
             <button
+              type="submit"
               id="my-profile-button"
               onClick={handleSaveChanges}
               className="my-profile-button"
             >
               Save Changes
             </button>
-          </form>
+          </>
         ) : (
           <>
             <h2>Username: {userInfo?.username}</h2>
