@@ -4,15 +4,23 @@ import "./MyProfile.css";
 import ProfileIcon from "./ProfileIcon";
 import { Modal } from "react-overlays";
 import ReactStars from "react-rating-stars-component";
+import { Modal } from "react-overlays";
+import ReactStars from "react-rating-stars-component";
 
 function MyProfile() {
   const { userInfo, allEvents, setUserInfo, setChanged } =
     useContext(UserContext);
   const [openModalAllComments, setOpenModalAllComments] = useState(false);
+  const [openModalAllComments, setOpenModalAllComments] = useState(false);
   const [editing, setEditing] = useState(false);
   const [chosedPlan, setChosedPlan] = useState(userInfo?.plan);
  let [planStyle, setPlanStyle] = useState({})
   const [editedData, setEditedData] = useState({
+    userInfo,
+  });
+  const renderBackdrop = (props) => (
+    <div className="backdrop_adder" {...props} />
+  );
     userInfo,
   });
   const renderBackdrop = (props) => (
@@ -185,6 +193,96 @@ function MyProfile() {
             </>
           )}
         </div>
+              <label>Email:</label>
+              <input
+                type="email"
+                name="email"
+                value={editedData.email}
+                onChange={handleInputChange}
+                className="my-profile-input"
+              />
+            </div>
+            <div>
+              <label>Password:</label>
+              <input
+                type="password"
+                name="password"
+                value={editedData.password}
+                onChange={handleInputChange}
+                className="my-profile-input"
+              />
+            </div>
+            <div>
+              <label>Birthday:</label>
+              <input
+                type="date"
+                name="birthday"
+                value={editedData.birthday}
+                onChange={handleInputChange}
+                className="my-profile-input"
+              />
+            </div>
+            <button
+              type="submit"
+              id="my-profile-button"
+              onClick={handleSaveChanges}
+              className="my-profile-button"
+            >
+              Save Changes
+            </button>
+          </>
+        ) : (
+          <>
+            <h2>Username: {userInfo?.username}</h2>
+            <h2>Email: {userInfo?.email}</h2>
+            <h2>Password: {"*".repeat(userInfo?.password?.length)}</h2>
+            <h2>Birthday: {userInfo?.birthday}</h2>
+            <h2>Number Of Tasks: {numberOfTasks}</h2>
+            <button
+              id="my-profile-button"
+              onClick={() => setEditing(true)}
+              className="my-profile-button"
+            >
+              Edit Profile
+            </button>
+            <button onClick={() => setOpenModalAllComments(true)}>
+              My Comments
+            </button>
+          </>
+        )}
+        <Modal
+          className="modal_Adder event_Modal"
+          show={openModalAllComments}
+          onHide={() => setOpenModalAllComments(false)}
+          renderBackdrop={renderBackdrop}
+        >
+          <>
+          {userInfo && userInfo.comments ? (
+              userInfo.comments.length > 0 ? (
+                userInfo.comments.map((comment, index) => (
+                  <div key={index} id="allComments">
+                    <div>
+                      <ReactStars
+                        count={5}
+                        size={24}
+                        activeColor="#ffd700"
+                        name={`stars-${index}`}
+                        value={comment?.stars}
+                        edit={false}
+                      />
+                    </div>
+                    <p>Comment: {comment?.textComment}</p>
+                    <button onClick={() => handleDeleteComment(index)}>
+                      Delete
+                    </button>
+                  </div>
+                ))
+              ) : (
+                <div>no comments yet!</div>
+              )
+            ) : null}
+          </>
+        </Modal>
       </div>
     </div>
   );
