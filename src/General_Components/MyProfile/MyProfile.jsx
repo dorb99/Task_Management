@@ -8,15 +8,16 @@ function MyProfile() {
     useContext(UserContext);
   const [editing, setEditing] = useState(false);
   const [editedData, setEditedData] = useState({
-    email: userInfo?.email,
-    birthday: userInfo?.birthday,
-    username: userInfo?.username,
-    password: userInfo?.password,
-    tasks: userInfo?.tasks,
-    icon: userInfo?.icon
+    email: userInfo?.email || "",
+    birthday: userInfo?.birthday || "",
+    username: userInfo?.username || "",
+    password: userInfo?.password || "",
+    tasks: userInfo?.tasks || [],
+    icon: userInfo?.icon || "",
   });
-  const oldUserName = userInfo?.username;
+  const oldUserInfo = { ...userInfo };
   let numberOfTasks = 0;
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditedData({
@@ -24,14 +25,19 @@ function MyProfile() {
       [name]: value,
     });
   };
+
   const handleSaveChanges = () => {
-    if (oldUserName !== userInfo?.username) {
-      console.log(oldUserName);
-      localStorage.removeItem(oldUserName);
+    if (!isEqual(oldUserInfo, editedData)) {
+      if (oldUserInfo.username !== userInfo?.username) {
+        console.log(oldUserInfo.username);
+        localStorage.removeItem(oldUserInfo.username);
+      }
+      setUserInfo(editedData);
+      setEditing(false);
+      setChanged(true);
+    } else {
+      setEditing(false);
     }
-    setUserInfo(editedData);
-    setEditing(false);
-    setChanged(true);
   };
 
   if (allEvents) {
@@ -46,11 +52,32 @@ function MyProfile() {
     }
   }, [userInfo, setUserInfo]);
 
+  const isEqual = (obj1, obj2) => {
+    const keys1 = Object.keys(obj1);
+    const keys2 = Object.keys(obj2);
+
+    if (keys1.length !== keys2.length) {
+      return false;
+    }
+
+    for (const key of keys1) {
+      if (obj1[key] !== obj2[key]) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
   return (
     <div id="my-profile">
       <div id="my-profile-container">
         <h1 id="my-profile-header">Hello {userInfo?.username}</h1>
-        <ProfileIcon editing={editing} setEditedData={setEditedData} editedData={editedData}/>
+        <ProfileIcon
+          editing={editing}
+          setEditedData={setEditedData}
+          editedData={editedData}
+        />
         {editing ? (
           <>
             <div>
@@ -78,7 +105,7 @@ function MyProfile() {
               <input
                 type="password"
                 name="password"
-                value={userInfo.password}
+                value={editedData.password}
                 onChange={handleInputChange}
                 className="my-profile-input"
               />
@@ -89,6 +116,16 @@ function MyProfile() {
                 type="date"
                 name="birthday"
                 value={editedData.birthday}
+                onChange={handleInputChange}
+                className="my-profile-input"
+              />
+            </div>
+            <div>
+              <label>Icon:</label>
+              <input
+                type="text"
+                name="icon"
+                value={editedData.icon}
                 onChange={handleInputChange}
                 className="my-profile-input"
               />
@@ -106,7 +143,7 @@ function MyProfile() {
           <>
             <h2>Username: {userInfo?.username}</h2>
             <h2>Email: {userInfo?.email}</h2>
-            <h2>Password: {userInfo?.password}</h2>
+            <h2>Password: {"*".repeat(userInfo?.password?.length)}</h2>
             <h2>Birthday: {userInfo?.birthday}</h2>
             <h2>Number Of Tasks: {numberOfTasks}</h2>
             <button

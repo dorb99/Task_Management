@@ -39,7 +39,7 @@ function ColorsBar() {
   return (
     <>
       <div className="colors_legend">
-        <h3>Colors index</h3>
+        <h3>Colors Class</h3>
         <select
           id="select_Colors"
           onChange={(e) => {
@@ -79,13 +79,14 @@ function ColorsBar() {
         </select>
         {newColor === "" ? null : (
           <input
+          placeholder="enter-class"
           id="select_Colors"
             type="text"
             value={newDescription}
             onChange={(e) => setNewDescription(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                e.preventDefault(); // Prevent form submission
+                e.preventDefault(); 
                 handleAddColor();
               }
             }}

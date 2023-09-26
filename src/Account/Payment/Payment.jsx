@@ -259,6 +259,7 @@ export default function SubscriptionModal() {
               Close
             </button>
             <button
+            onClick={() => setShowModal(false)}
               type="submit"
               id="submit-button"
               className={`primary-button ${
