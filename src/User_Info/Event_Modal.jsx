@@ -68,7 +68,7 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
               setNewEvent({ ...newEvent, color: e.target.value })
             }
           > 
-            <option value="white" style={{ backgroundColor: "white" }}>
+            <option value="white" style={{ color: "black", backgroundColor: "white" }}>
               white
             </option>
             <option value="red" style={{ backgroundColor: "red" }}>
@@ -83,7 +83,7 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
             <option value="brown" style={{ backgroundColor: "brown" }}>
               brown
             </option>
-            <option value="yellow" style={{ backgroundColor: "yellow" }}>
+            <option value="yellow" style={{ color: "black", backgroundColor: "yellow" }}>
               yellow
             </option>
             <option value="purple" style={{ backgroundColor: "purple" }}>

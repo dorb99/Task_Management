@@ -74,7 +74,14 @@ export default function PrintCalendar({ openModal, setEditer }) {
             }}
             renderBackdrop={renderBackdrop}
           >
-            <div style={{ color: currentEvent.color || "black" }}>
+            <div
+              style={{
+                color:
+                  currentEvent.color === "white"
+                    ? "black"
+                    : currentEvent.color,
+              }}
+            >
               <h4 className="title">Title: {currentEvent.title}</h4>
               {currentEvent.start.toLocaleString() ===
               currentEvent.end.toLocaleString() ? (

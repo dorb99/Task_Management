@@ -7,13 +7,10 @@ function MyProfile() {
   const { userInfo, allEvents, setUserInfo, setChanged } =
     useContext(UserContext);
   const [editing, setEditing] = useState(false);
+  const [chosedPlan, setChosedPlan] = useState(userInfo?.plan);
+ let [planStyle, setPlanStyle] = useState({})
   const [editedData, setEditedData] = useState({
-    email: userInfo?.email || "",
-    birthday: userInfo?.birthday || "",
-    username: userInfo?.username || "",
-    password: userInfo?.password || "",
-    tasks: userInfo?.tasks || [],
-    icon: userInfo?.icon || "",
+    userInfo,
   });
   const oldUserInfo = { ...userInfo };
   let numberOfTasks = 0;
@@ -25,7 +22,21 @@ function MyProfile() {
       [name]: value,
     });
   };
-
+  // if (chosedPlan) {
+  //   switch (chosedPlan) {
+  //     case "plan1":
+  //       setPlanStyle = { width: "10px", background: "white" };
+  //       break;
+  //     case "plan2":
+  //       setPlanStyle = { width: "10px", background: "silver" };
+  //       break;
+  //     case "plan3":
+  //       setPlanStyle = { width: "10px", background: "gold" };
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
   const handleSaveChanges = () => {
     if (!isEqual(oldUserInfo, editedData)) {
       if (oldUserInfo.username !== userInfo?.username) {
@@ -33,11 +44,9 @@ function MyProfile() {
         localStorage.removeItem(oldUserInfo.username);
       }
       setUserInfo(editedData);
-      setEditing(false);
       setChanged(true);
-    } else {
-      setEditing(false);
     }
+    setEditing(false);
   };
 
   if (allEvents) {
@@ -69,18 +78,24 @@ function MyProfile() {
     return true;
   };
 
+  useEffect(() => {
+    if (userInfo) {
+      setEditedData(userInfo);
+      setChosedPlan(userInfo.plan);
+    }
+  }, [userInfo]);
+  console.log(userInfo);
   return (
     <div id="my-profile">
-      <div id="my-profile-container">
-        <h1 id="my-profile-header">Hello {userInfo?.username}</h1>
+      <div id="my-profile-container" className={editing ? "active" : ""}>
         <ProfileIcon
           editing={editing}
           setEditedData={setEditedData}
           editedData={editedData}
         />
-        {editing ? (
-          <>
-            <div>
+        <div>
+          {editing ? (
+            <>
               <div>
                 <label>Username:</label>
                 <input
@@ -91,70 +106,73 @@ function MyProfile() {
                   className="my-profile-input"
                 />
               </div>
-              <label>Email:</label>
-              <input
-                type="email"
-                name="email"
-                value={editedData.email}
-                onChange={handleInputChange}
-                className="my-profile-input"
-              />
-            </div>
-            <div>
-              <label>Password:</label>
-              <input
-                type="password"
-                name="password"
-                value={editedData.password}
-                onChange={handleInputChange}
-                className="my-profile-input"
-              />
-            </div>
-            <div>
-              <label>Birthday:</label>
-              <input
-                type="date"
-                name="birthday"
-                value={editedData.birthday}
-                onChange={handleInputChange}
-                className="my-profile-input"
-              />
-            </div>
-            <div>
-              <label>Icon:</label>
-              <input
-                type="text"
-                name="icon"
-                value={editedData.icon}
-                onChange={handleInputChange}
-                className="my-profile-input"
-              />
-            </div>
-            <button
-              type="submit"
-              id="my-profile-button"
-              onClick={handleSaveChanges}
-              className="my-profile-button"
-            >
-              Save Changes
-            </button>
-          </>
-        ) : (
-          <>
-            <h2>Username: {userInfo?.username}</h2>
-            <h2>Email: {userInfo?.email}</h2>
-            <h2>Password: {"*".repeat(userInfo?.password?.length)}</h2>
-            <h2>Birthday: {userInfo?.birthday}</h2>
-            <h2>Number Of Tasks: {numberOfTasks}</h2>
-            <button
-              id="my-profile-button"
-              onClick={() => setEditing(true)}
-              className="my-profile-button"
-            >
-              Edit Profile
-            </button>
-          </>
-        )}
+              <div>
+                <label>Email:</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={editedData.email}
+                  onChange={handleInputChange}
+                  className="my-profile-input"
+                />
+              </div>
+              <div>
+                <label>Password:</label>
+                <input
+                  type="password"
+                  name="password"
+                  value={editedData.password}
+                  onChange={handleInputChange}
+                  className="my-profile-input"
+                />
+              </div>
+              <div>
+                <label>Birthday:</label>
+                <input
+                  type="date"
+                  name="birthday"
+                  value={editedData.birthday}
+                  onChange={handleInputChange}
+                  className="my-profile-input"
+                />
+              </div>
+              <button
+                type="button"
+                id="my-profile-button"
+                onClick={handleSaveChanges}
+                className="my-profile-button"
+              >
+                Save Changes
+              </button>
+            </>
+          ) : (
+            <>
+              {chosedPlan ? (
+                <div id="chosen-plan-profile" style={planStyle}>
+                  {chosedPlan}
+                </div>
+              ) : null} 
+              <h1 id="my-profile-header">Hello, {userInfo?.username}</h1>
+              <h3>{userInfo?.email}</h3>
+              <div className="my-profile-input-before">
+                Password: <p>{"*".repeat(userInfo?.password?.length)}</p>
+              </div>
+              <div className="my-profile-input-before">
+                Birthday: <p>{userInfo?.birthday}</p>
+              </div>
+              <div className="my-profile-input-before">
+                {numberOfTasks} Tasks
+              </div>
+              <button
+                id="my-profile-button"
+                onClick={() => setEditing(true)}
+                className="my-profile-button"
+              >
+                Edit Profile
+              </button>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

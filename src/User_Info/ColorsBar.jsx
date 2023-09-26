@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../General_Components/Other/Context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 function ColorsBar() {
   const { user } = useContext(UserContext);
@@ -32,8 +34,8 @@ function ColorsBar() {
 
   useEffect(() => {
     if (colors.length > 0) {
-        localStorage.setItem(`${user}-colors`, JSON.stringify(colors));
-        }
+      localStorage.setItem(`${user}-colors`, JSON.stringify(colors));
+    }
   }, [colors]);
 
   return (
@@ -48,8 +50,8 @@ function ColorsBar() {
           }}
           value={newColor}
         >
-          <option value="">Add Color</option>
-          <option value="white" style={{ backgroundColor: "white" }}>
+               <option value="">Add Color</option>
+          <option value="white" style={{ color: "black" ,backgroundColor: "white" }}>
             white
           </option>
           <option value="red" style={{ backgroundColor: "red" }}>
@@ -79,14 +81,14 @@ function ColorsBar() {
         </select>
         {newColor === "" ? null : (
           <input
-          placeholder="enter-class"
-          id="select_Colors"
+            placeholder="enter-class"
+            id="select_Colors"
             type="text"
             value={newDescription}
             onChange={(e) => setNewDescription(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                e.preventDefault(); 
+                e.preventDefault();
                 handleAddColor();
               }
             }}
@@ -97,14 +99,16 @@ function ColorsBar() {
             <li
               key={index}
               id="li_Colors"
-              style={color.Color === "white" ? null : { color: color.Color }}
+              style={
+                color.Color === "white" ? null : { backgroundColor: color.Color }
+              }
             >
               {color.Color}: {color.description}{" "}
               <button
                 id="delete_Colors"
                 onClick={() => handleDeleteColor(index)}
               >
-                Delete
+                <FontAwesomeIcon className="icon-trash" icon={faTrashAlt} />
               </button>
             </li>
           ))}

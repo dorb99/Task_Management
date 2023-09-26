@@ -10,7 +10,6 @@ function Footer() {
     <div className="footer">
       <footer className="site-footer">
         <div className="footer-container">
-          <div className="row">
             <div className="col-sm-12 col-md-6">
               <h6>About</h6>
               <p className="text-justify">
@@ -20,7 +19,6 @@ function Footer() {
                 choice in our website. We will help you build up your task lists
                 and help you get started quickly,and efficiently.
               </p>
-            </div>
           </div>
           <hr />
         </div>

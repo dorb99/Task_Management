@@ -78,7 +78,10 @@
 .site-footer .social-icons a:hover {
   background-color: #00ff95;
 }
-
+.row{
+  display: flex;
+  justify-content: space-between;
+}
 /* Copyright Text Styles */
 .copyright-text {
   margin: 10px 0;

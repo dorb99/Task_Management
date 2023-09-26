@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Modals from "../Payment/Payment";
 import "./SignUp.css";
@@ -9,13 +9,28 @@ function SignUp() {
   const { setUser, setUserInfo, setallEvents, setChanged } =
     useContext(UserContext);
   const [email, setEmail] = useState("");
+  const [choosedPlan, setChoosedPlan] = useState(false);
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [birth, setBirth] = useState("");
   const navigate = useNavigate();
+  const [creditCardExists, setCreditCardExists] = useState(false);
+
+  useEffect(() => {
+    const creditCardData = localStorage.getItem("creditCardData");
+    if (creditCardData) {
+      setCreditCardExists(true);
+    }
+  }, []);
 
   const handleSignUp = (e) => {
     e.preventDefault();
+
+    if (!creditCardExists) {
+      alert("Please provide credit card information first.");
+      return;
+    }
+
     setUser(username);
     const newUser = {
       username: username,
@@ -70,15 +85,24 @@ function SignUp() {
             value={birth}
             onChange={(e) => setBirth(e.target.value)}
           />
-          <Modals />
-          <button type="submit" id="signup-button">
-            Submit
-          </button>
+          {choosedPlan ? (
+            <button type="submit" id="signup-button">
+              Submit
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => alert("please choose a plan")}
+              id="signup-button"
+            >
+              Submit
+            </button>
+          )}
           <p id="have-account">
             I have an account! <Link to="/">Log In</Link>
           </p>
         </div>
-      </form>
+      </form> {choosedPlan ? <img src="" alt="" /> : <Modals setChoosedPlan={setChoosedPlan} /> }
       <Comments />
     </div>
   );
