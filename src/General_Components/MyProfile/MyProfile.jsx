@@ -2,16 +2,22 @@ import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../Other/Context";
 import "./MyProfile.css";
 import ProfileIcon from "./ProfileIcon";
+import { Modal } from "react-overlays";
+import ReactStars from "react-rating-stars-component";
 
 function MyProfile() {
   const { userInfo, allEvents, setUserInfo, setChanged } =
     useContext(UserContext);
+  const [openModalAllComments, setOpenModalAllComments] = useState(false);
   const [editing, setEditing] = useState(false);
   const [chosedPlan, setChosedPlan] = useState(userInfo?.plan);
  let [planStyle, setPlanStyle] = useState({})
   const [editedData, setEditedData] = useState({
     userInfo,
   });
+  const renderBackdrop = (props) => (
+    <div className="backdrop_adder" {...props} />
+  );
   const oldUserInfo = { ...userInfo };
   let numberOfTasks = 0;
 
@@ -40,7 +46,6 @@ function MyProfile() {
   const handleSaveChanges = () => {
     if (!isEqual(oldUserInfo, editedData)) {
       if (oldUserInfo.username !== userInfo?.username) {
-        console.log(oldUserInfo.username);
         localStorage.removeItem(oldUserInfo.username);
       }
       setUserInfo(editedData);
@@ -52,6 +57,13 @@ function MyProfile() {
   if (allEvents) {
     numberOfTasks = allEvents.length;
   }
+  const handleDeleteComment = (index) => {
+    const newcomments = userInfo.comments;
+    newcomments.splice(index, 1);
+    setOpenModalAllComments(false);
+    setUserInfo({...userInfo, comments: newcomments})
+    setChanged(true)
+  };
 
   useEffect(() => {
     const savedUsername = localStorage.getItem("username");
@@ -81,10 +93,10 @@ function MyProfile() {
   useEffect(() => {
     if (userInfo) {
       setEditedData(userInfo);
-      setChosedPlan(userInfo.plan);
     }
   }, [userInfo]);
-  console.log(userInfo);
+
+
   return (
     <div id="my-profile">
       <div id="my-profile-container" className={editing ? "active" : ""}>

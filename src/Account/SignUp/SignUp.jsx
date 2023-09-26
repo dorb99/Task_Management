@@ -37,12 +37,12 @@ function SignUp() {
       password: password,
       email: email,
       birthday: birth,
-      tasks: [],
+      tasks: [{}],
     };
     setallEvents(newUser.tasks);
     setUserInfo(newUser);
     navigate("/userpage");
-    localStorage.setItem(username, JSON.stringify(newUser));
+    setChanged(true)
   };
 
   return (

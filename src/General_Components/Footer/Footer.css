@@ -174,3 +174,8 @@
 .fa {
   width: 20px;
 }
+.rate_Modal{
+  display: flex;
+  flex-direction: column;
+  align-items: center!important;
+}

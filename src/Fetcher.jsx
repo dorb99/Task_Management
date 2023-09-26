@@ -14,13 +14,15 @@ function Fetcher() {
     setChanged,
   } = useContext(UserContext);
   const [prevuser, setprevuser] = useState(0);
+  const [allUsers, setAllUsers] = useState(0);
 
   function userFetcher() {
     if (user !== prevuser) {
-      let uri = `http://localhost:3000/${user}`;
-      const res = axios.get(uri).then(({ data }) => {
-        setUserInfo(data);
-        const events = data.tasks;
+      let uri = `http://localhost:3000/users`;
+      axios.get(uri).then(({ data }) => {
+        setAllUsers(data);
+        setUserInfo(data[user]);
+        const events = data[user]?.tasks;
         setallEvents(events);
         setprevuser(user);
       });
@@ -28,28 +30,24 @@ function Fetcher() {
   }
 
   async function EventsChange() {
-    if (user === "o" || user === "d") {
-      const newInfo = { ...userInfo, tasks: allEvents };
-      const uri = `http://localhost:3000/${user}`;
-      const res = await fetch(uri, {
-        method: "PUT",
-        body: JSON.stringify(newInfo),
-        headers: { "Content-Type": "application/json" },
-      });
-      const resolved = await res.json();
-      setChanged(false);
-      setUserInfo(resolved);
-      const events = resolved.tasks;
-      setallEvents(events);
+    if (!user) {
+      return;
     }
-    else{
-      const newInfo = { ...userInfo, tasks: allEvents }
-      setChanged(false);
-      setUserInfo(newInfo);
-      const events = newInfo.tasks;
-      setallEvents(events);
-      localStorage.setItem(newInfo.username, JSON.stringify(newInfo));
-    }
+    const newUser = { ...userInfo, tasks: allEvents };
+    const newallUsers = {...allUsers};
+    newallUsers[user] = newUser;
+    const uri = `http://localhost:3000/users`;
+    const res = await fetch(uri, {
+      method: "POST",
+      body: JSON.stringify(newallUsers),
+      headers: { "Content-Type": "application/json" },
+    });
+    const resolved = await res.json();
+    setAllUsers(newallUsers);
+    setChanged(false);
+    setUserInfo(resolved[user]);
+    const events = resolved[user].tasks
+    setallEvents(events);
   }
 
   useEffect(() => {
