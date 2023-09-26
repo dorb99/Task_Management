@@ -6,15 +6,15 @@ import "./LogIn.css";
 import Comments from "../Comments/Comments";
 
 function LogIn() {
-  const { user, setUser, setUserInfo } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSignIn = () => {
     const savedUser = JSON.parse(localStorage.getItem(username));
-    if (users.hasOwnProperty(username) ) {
-      if (users[username].password === password) {
+    if (users.users.hasOwnProperty(username) ) {
+      if (users.users[username].password === password) {
         setUser(username);
         localStorage.setItem("username", JSON.stringify(username));
         navigate("/userpage");
@@ -22,14 +22,8 @@ function LogIn() {
       } else {
         alert("Please check your password");
       }
-    } else if (savedUser) {
-      if (savedUser.password === password) {
-        setUser(username);
-        setUserInfo(JSON.parse(localStorage.getItem(username)));
-        localStorage.setItem("username", JSON.stringify(username));
-        navigate("/userpage");
-      } else alert("Please check your password");
-    } else {
+    } 
+    else {
       alert("Username not found. Please sign up.");
     }
   };

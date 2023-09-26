@@ -11,7 +11,7 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
     useContext(UserContext);
   const [isCheckedEnd, setIsCheckedEnd] = useState(false);
   const [isCheckedHour, setIsCheckedHour] = useState(false);
-  
+
   function handleDelete() {
     const title = newEvent.title;
     const editedEvents = allEvents;
@@ -23,12 +23,13 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
     setChanged(true);
     onClose();
   }
+  
   function handleAddEvent() {
-    allEvents.length > 1 ?
-    setallEvents([...allEvents, newEvent])
-    : setallEvents([allEvents, newEvent])
-    setChanged(true);
-    onClose();
+    console.log(allEvents);
+    allEvents
+      ? (setallEvents([...allEvents, newEvent]), setChanged(true), onClose())
+      : // : setallEvents([newEvent]);
+        null;
   }
   function handleEditEvent() {
     const newList = allEvents.map((task) =>
@@ -51,7 +52,7 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
         <h2 className="modal-title">Event Form</h2>
         <div id="event-modal-color-title">
           <input
-          className="event-modal-text"
+            className="event-modal-text"
             type="text"
             placeholder="Add Title"
             value={newEvent.title}
@@ -61,13 +62,13 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
           />
           <br />
           <select
-          id="event-color"
+            id="event-color"
             style={{ backgroundColor: newEvent.color }}
             value={newEvent.color}
             onChange={(e) =>
               setNewEvent({ ...newEvent, color: e.target.value })
             }
-          > 
+          >
             <option value="white" style={{ backgroundColor: "white" }}>
               white
             </option>
@@ -97,17 +98,24 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
             </option>
           </select>
         </div>
-        <div className="checkbox-wrapper-10" >
-        Need specific hours?{" "}
-        <input  className="tgl tgl-flip" id="cb4"
-          name="specifichours"
-          type="checkbox"
-          checked={isCheckedHour}
-          onChange={() => {
-            setIsCheckedHour(!isCheckedHour);
-          }}
-        />
-         <label className="tgl-btn" data-tg-off="Nope" data-tg-on="Yeah!" for="cb4"></label>
+        <div className="checkbox-wrapper-10">
+          Need specific hours?{" "}
+          <input
+            className="tgl tgl-flip"
+            id="cb4"
+            name="specifichours"
+            type="checkbox"
+            checked={isCheckedHour}
+            onChange={() => {
+              setIsCheckedHour(!isCheckedHour);
+            }}
+          />
+          <label
+            className="tgl-btn"
+            data-tg-off="Nope"
+            data-tg-on="Yeah!"
+            htmlFor="cb4"
+          ></label>
         </div>
         {isCheckedHour ? (
           <>
@@ -125,15 +133,22 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
                 className="big-date-picker"
               />
             </div>
-            <div className="checkbox-wrapper-10" >
-            <span>More than one day?</span>{" "}
-            <input  className="tgl tgl-flip" id="cb5"
-              name="moreDays"
-              type="checkbox"
-              checked={isCheckedEnd}
-              onChange={() => setIsCheckedEnd(!isCheckedEnd)}
-            />
-              <label className="tgl-btn" data-tg-off="Nope" data-tg-on="Yeah!" for="cb5"></label>
+            <div className="checkbox-wrapper-10">
+              <span>More than one day?</span>{" "}
+              <input
+                className="tgl tgl-flip"
+                id="cb5"
+                name="moreDays"
+                type="checkbox"
+                checked={isCheckedEnd}
+                onChange={() => setIsCheckedEnd(!isCheckedEnd)}
+              />
+              <label
+                className="tgl-btn"
+                data-tg-off="Nope"
+                data-tg-on="Yeah!"
+                for="cb5"
+              ></label>
             </div>
             {isCheckedEnd ? (
               <div>
@@ -165,15 +180,22 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
                 className="small-date-picker"
               />
             </div>
-            <div className="checkbox-wrapper-10" >
-            <span>More than one day?</span>{" "}
-            <input  className="tgl tgl-flip" id="cb5"
-              name="moreDays"
-              type="checkbox"
-              checked={isCheckedEnd}
-              onChange={() => setIsCheckedEnd(!isCheckedEnd)}
-            />
-              <label className="tgl-btn" data-tg-off="Nope" data-tg-on="Yeah!" for="cb5"></label>
+            <div className="checkbox-wrapper-10">
+              <span>More than one day?</span>{" "}
+              <input
+                className="tgl tgl-flip"
+                id="cb5"
+                name="moreDays"
+                type="checkbox"
+                checked={isCheckedEnd}
+                onChange={() => setIsCheckedEnd(!isCheckedEnd)}
+              />
+              <label
+                className="tgl-btn"
+                data-tg-off="Nope"
+                data-tg-on="Yeah!"
+                for="cb5"
+              ></label>
             </div>
             {isCheckedEnd ? (
               <div>
@@ -192,11 +214,21 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
         )}
         {editer ? (
           <div id="edit-delete">
-            <button className="event-button" onClick={handleEditEvent}>Edit Task</button>
-            <button className="event-button" onClick={handleDelete}>delete</button>
+            <button className="event-button" onClick={handleEditEvent}>
+              Edit Task
+            </button>
+            <button className="event-button" onClick={handleDelete}>
+              delete
+            </button>
           </div>
         ) : (
-          <button className="event-button" onClick={handleAddEvent} id="newEventPadding">Add Task</button>
+          <button
+            className="event-button"
+            onClick={handleAddEvent}
+            id="newEventPadding"
+          >
+            Add Task
+          </button>
         )}
       </div>
     </Modal>

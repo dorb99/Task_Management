@@ -2,19 +2,20 @@ import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../Other/Context";
 import "./MyProfile.css";
 import ProfileIcon from "./ProfileIcon";
+import { Modal } from "react-overlays";
+import ReactStars from "react-rating-stars-component";
 
 function MyProfile() {
   const { userInfo, allEvents, setUserInfo, setChanged } =
     useContext(UserContext);
+  const [openModalAllComments, setOpenModalAllComments] = useState(false);
   const [editing, setEditing] = useState(false);
   const [editedData, setEditedData] = useState({
-    email: userInfo?.email || "",
-    birthday: userInfo?.birthday || "",
-    username: userInfo?.username || "",
-    password: userInfo?.password || "",
-    tasks: userInfo?.tasks || [],
-    icon: userInfo?.icon || "",
+    userInfo,
   });
+  const renderBackdrop = (props) => (
+    <div className="backdrop_adder" {...props} />
+  );
   const oldUserInfo = { ...userInfo };
   let numberOfTasks = 0;
 
@@ -29,7 +30,6 @@ function MyProfile() {
   const handleSaveChanges = () => {
     if (!isEqual(oldUserInfo, editedData)) {
       if (oldUserInfo.username !== userInfo?.username) {
-        console.log(oldUserInfo.username);
         localStorage.removeItem(oldUserInfo.username);
       }
       setUserInfo(editedData);
@@ -43,6 +43,13 @@ function MyProfile() {
   if (allEvents) {
     numberOfTasks = allEvents.length;
   }
+  const handleDeleteComment = (index) => {
+    const newcomments = userInfo.comments;
+    newcomments.splice(index, 1);
+    setOpenModalAllComments(false);
+    setUserInfo({...userInfo, comments: newcomments})
+    setChanged(true)
+  };
 
   useEffect(() => {
     const savedUsername = localStorage.getItem("username");
@@ -68,6 +75,12 @@ function MyProfile() {
 
     return true;
   };
+
+  useEffect(() => {
+    if (userInfo) {
+      setEditedData(userInfo);
+    }
+  }, [userInfo]);
 
   return (
     <div id="my-profile">
@@ -120,16 +133,6 @@ function MyProfile() {
                 className="my-profile-input"
               />
             </div>
-            <div>
-              <label>Icon:</label>
-              <input
-                type="text"
-                name="icon"
-                value={editedData.icon}
-                onChange={handleInputChange}
-                className="my-profile-input"
-              />
-            </div>
             <button
               type="submit"
               id="my-profile-button"
@@ -153,8 +156,44 @@ function MyProfile() {
             >
               Edit Profile
             </button>
+            <button onClick={() => setOpenModalAllComments(true)}>
+              My Comments
+            </button>
           </>
         )}
+        <Modal
+          className="modal_Adder event_Modal"
+          show={openModalAllComments}
+          onHide={() => setOpenModalAllComments(false)}
+          renderBackdrop={renderBackdrop}
+        >
+          <>
+          {userInfo && userInfo.comments ? (
+              userInfo.comments.length > 0 ? (
+                userInfo.comments.map((comment, index) => (
+                  <div key={index} id="allComments">
+                    <div>
+                      <ReactStars
+                        count={5}
+                        size={24}
+                        activeColor="#ffd700"
+                        name={`stars-${index}`}
+                        value={comment?.stars}
+                        edit={false}
+                      />
+                    </div>
+                    <p>Comment: {comment?.textComment}</p>
+                    <button onClick={() => handleDeleteComment(index)}>
+                      Delete
+                    </button>
+                  </div>
+                ))
+              ) : (
+                <div>no comments yet!</div>
+              )
+            ) : null}
+          </>
+        </Modal>
       </div>
     </div>
   );

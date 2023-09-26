@@ -5,12 +5,12 @@ import FB from "../img/FB.png";
 import TW from "../img/TW.png";
 import Ins from "../img/Ins.png";
 import GH from "../img/GH.png";
+import RateUs from "../MyProfile/RateUs";
 function Footer() {
   return (
     <div className="footer">
       <footer className="site-footer">
         <div className="footer-container">
-          <div className="row">
             <div className="col-sm-12 col-md-6">
               <h6>About</h6>
               <p className="text-justify">
@@ -21,7 +21,6 @@ function Footer() {
                 and help you get started quickly,and efficiently.
               </p>
             </div>
-          </div>
           <hr />
         </div>
         <div className="footer-container">
@@ -30,6 +29,7 @@ function Footer() {
               Copyright &copy; 2023 All Rights Reserved by{" "}
               <Link to="/AboutUs">Ori&Dor</Link>.
             </p>
+            <RateUs/>
             <div className="col-md-4 col-sm-6 col-xs-12">
               <ul className="social-icons">
                 <li>

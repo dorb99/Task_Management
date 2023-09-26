@@ -6,7 +6,6 @@ import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import { UserContext } from "../General_Components/Other/Context";
 import { Modal } from "react-overlays";
-import { all } from "axios";
 import ColorsBar from "./ColorsBar";
 
 export default function PrintCalendar({ openModal, setEditer }) {
