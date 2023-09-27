@@ -47,8 +47,8 @@ function MyProfile() {
     const newcomments = userInfo.comments;
     newcomments.splice(index, 1);
     setOpenModalAllComments(false);
-    setUserInfo({...userInfo, comments: newcomments})
-    setChanged(true)
+    setUserInfo({ ...userInfo, comments: newcomments });
+    setChanged(true);
   };
 
   useEffect(() => {
@@ -168,7 +168,7 @@ function MyProfile() {
           renderBackdrop={renderBackdrop}
         >
           <>
-          {userInfo && userInfo.comments ? (
+            {userInfo && userInfo.comments ? (
               userInfo.comments.length > 0 ? (
                 userInfo.comments.map((comment, index) => (
                   <div key={index} id="allComments">

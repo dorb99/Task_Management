@@ -147,7 +147,7 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
                 className="tgl-btn"
                 data-tg-off="Nope"
                 data-tg-on="Yeah!"
-                for="cb5"
+                htmlFor="cb5"
               ></label>
             </div>
             {isCheckedEnd ? (
@@ -194,7 +194,7 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
                 className="tgl-btn"
                 data-tg-off="Nope"
                 data-tg-on="Yeah!"
-                for="cb5"
+                htmlFor="cb5"
               ></label>
             </div>
             {isCheckedEnd ? (

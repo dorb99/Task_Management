@@ -2,51 +2,62 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../General_Components/Other/Context";
 
 function ColorsBar() {
-  const { user } = useContext(UserContext);
-  const [colors, setColors] = useState([]);
-  const [newColor, setNewColor] = useState("");
-  const [newDescription, setNewDescription] = useState("");
-
+  const { user, setUserInfo, userInfo, setChanged } = useContext(UserContext);
+  const [colorsLegened, setColorsLegened] = useState(userInfo?.colors || []);
+  const [newColorLegend, setNewColorLegend] = useState({
+    color: "",
+    description: "",
+  });
   const handleAddColor = () => {
-    setColors((prevColors) => [
-      ...prevColors,
-      { Color: newColor, description: newDescription },
-    ]);
-    setNewColor("");
-    setNewDescription("");
+    const updatedcolorsLegened =
+      colorsLegened?.length > 0 ? [...colorsLegened] : [];
+    updatedcolorsLegened.push({
+      color: newColorLegend.color,
+      description: newColorLegend.description,
+    });
+    setColorsLegened(updatedcolorsLegened);
+    setNewColorLegend({ color: "", description: "" });
+    console.log(userInfo);
+    setUserInfo({ ...userInfo, colors: updatedcolorsLegened });
+    setChanged(true);
   };
 
   const handleDeleteColor = (index) => {
-    setColors((prevColors) => {
-      const updatedColors = [...prevColors];
-      updatedColors.splice(index, 1);
-      return updatedColors;
-    });
+    const updatedcolorsLegened = [...colorsLegened];
+    updatedcolorsLegened.splice(index, 1);
+    setColorsLegened(updatedcolorsLegened);
+    console.log(userInfo);
+    setUserInfo({ ...userInfo, colors: updatedcolorsLegened });
+    setChanged(true);
   };
+
   useEffect(() => {
-    const oldcolors = JSON.parse(localStorage.getItem(`${user}-colors`));
-    if (oldcolors) {
-      setColors(oldcolors);
-    }
+      if (userInfo?.hasOwnProperty("colors")) 
+        setColorsLegened(userInfo.colors)
   }, [user]);
 
   useEffect(() => {
-    if (colors.length > 0) {
-        localStorage.setItem(`${user}-colors`, JSON.stringify(colors));
-        }
-  }, [colors]);
+    setColorsLegened(userInfo?.colors);
+  }, [userInfo]);
 
   return (
     <>
+      <button
+        onClick={() => {
+          console.log(userInfo);
+        }}
+      >
+        log
+      </button>
       <div className="colors_legend">
-        <h3>Colors Class</h3>
+        <h3>Colors Legend</h3>
         <select
           id="select_Colors"
           onChange={(e) => {
             const newColor = e.target.value;
-            setNewColor(newColor);
+            setNewColorLegend({ ...newColorLegend, color: newColor });
           }}
-          value={newColor}
+          value={newColorLegend.color}
         >
           <option value="">Add Color</option>
           <option value="white" style={{ backgroundColor: "white" }}>
@@ -77,29 +88,42 @@ function ColorsBar() {
             pink
           </option>
         </select>
-        {newColor === "" ? null : (
+        {newColorLegend.color === "" ? null : (
           <input
-          placeholder="enter-class"
-          id="select_Colors"
+            placeholder="enter-class"
+            id="select_Colors"
             type="text"
-            value={newDescription}
-            onChange={(e) => setNewDescription(e.target.value)}
+            value={newColorLegend.description}
+            onChange={(e) =>
+              setNewColorLegend({
+                ...newColorLegend,
+                description: e.target.value,
+              })
+            }
+            onClick={() => {
+              if (
+                newColorLegend.description !== "" &&
+                newColorLegend.color !== ""
+              ) {
+                handleAddColor();
+              }
+            }}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                e.preventDefault(); 
+                e.preventDefault();
                 handleAddColor();
               }
             }}
           />
         )}
         <ul id="colors">
-          {colors.map((color, index) => (
+          {colorsLegened?.map((color, index) => (
             <li
               key={index}
               id="li_Colors"
               style={color.Color === "white" ? null : { color: color.Color }}
             >
-              {color.Color}: {color.description}{" "}
+              {color.color}: {color.description}
               <button
                 id="delete_Colors"
                 onClick={() => handleDeleteColor(index)}
