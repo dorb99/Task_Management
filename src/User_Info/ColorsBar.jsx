@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../General_Components/Other/Context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 function ColorsBar() {
   const { user, setUserInfo, userInfo, setChanged } = useContext(UserContext);
@@ -59,8 +61,8 @@ function ColorsBar() {
           }}
           value={newColorLegend.color}
         >
-          <option value="">Add Color</option>
-          <option value="white" style={{ backgroundColor: "white" }}>
+               <option value="">Add Color</option>
+          <option value="white" style={{ color: "black" ,backgroundColor: "white" }}>
             white
           </option>
           <option value="red" style={{ backgroundColor: "red" }}>
@@ -121,14 +123,16 @@ function ColorsBar() {
             <li
               key={index}
               id="li_Colors"
-              style={color.Color === "white" ? null : { color: color.Color }}
+              style={
+                color.Color === "white" ? null : { backgroundColor: color.Color }
+              }
             >
               {color.color}: {color.description}
               <button
                 id="delete_Colors"
                 onClick={() => handleDeleteColor(index)}
               >
-                Delete
+                <FontAwesomeIcon className="icon-trash" icon={faTrashAlt} /> 
               </button>
             </li>
           ))}

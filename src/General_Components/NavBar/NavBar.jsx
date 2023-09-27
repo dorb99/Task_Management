@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../img/WebLogoNew.png";
+import Logo from "../img/bestone.png";
 import { UserContext } from "../Other/Context";
 import "./NavBar.css";
 
@@ -24,7 +24,7 @@ function NavBar() {
         <i className="bx bx-x" id="close-icon"></i>
       </label>
 
-      <nav className="navbar">
+      <nav className="nav">
         
         <div id="always-on">
           <Link to="/AboutUs" className="nav-item">

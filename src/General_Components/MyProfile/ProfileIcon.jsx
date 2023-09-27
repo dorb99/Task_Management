@@ -66,8 +66,9 @@ export default function ProfileIcon({ editing, setEditedData, editedData }) {
       <div>
         <img
           src={userIcon.uri}
+          className="displayed-icon"
           alt="User Icon"
-          width="60px"
+          width="85px"
           onClick={handleClick}
         />
       </div>

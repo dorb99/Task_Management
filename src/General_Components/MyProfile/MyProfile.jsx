@@ -4,7 +4,7 @@ import "./MyProfile.css";
 import ProfileIcon from "./ProfileIcon";
 import { Modal } from "react-overlays";
 import ReactStars from "react-rating-stars-component";
-
+import commentimg from "../img/commentimg.png";
 function MyProfile() {
   const { userInfo, allEvents, setUserInfo, setChanged } =
     useContext(UserContext);
@@ -49,6 +49,8 @@ function MyProfile() {
     setOpenModalAllComments(false);
     setUserInfo({ ...userInfo, comments: newcomments });
     setChanged(true);
+    setUserInfo({ ...userInfo, comments: newcomments });
+    setChanged(true);
   };
 
   useEffect(() => {
@@ -85,7 +87,6 @@ function MyProfile() {
   return (
     <div id="my-profile">
       <div id="my-profile-container">
-        <h1 id="my-profile-header">Hello {userInfo?.username}</h1>
         <ProfileIcon
           editing={editing}
           setEditedData={setEditedData}
@@ -144,11 +145,17 @@ function MyProfile() {
           </>
         ) : (
           <>
-            <h2>Username: {userInfo?.username}</h2>
-            <h2>Email: {userInfo?.email}</h2>
-            <h2>Password: {"*".repeat(userInfo?.password?.length)}</h2>
-            <h2>Birthday: {userInfo?.birthday}</h2>
-            <h2>Number Of Tasks: {numberOfTasks}</h2>
+            <h1 id="my-profile-header">Hello, {userInfo?.username}</h1>
+            <div>
+              Email: <h3>{userInfo?.email}</h3>
+            </div>
+            <div>
+              Password: <h3>{"*".repeat(userInfo?.password?.length)}</h3>
+            </div>
+            <div>
+              Birthday:<h3>{userInfo?.birthday}</h3>
+            </div>
+            <h3>{numberOfTasks} Tasks</h3>
             <button
               id="my-profile-button"
               onClick={() => setEditing(true)}
@@ -156,8 +163,8 @@ function MyProfile() {
             >
               Edit Profile
             </button>
-            <button onClick={() => setOpenModalAllComments(true)}>
-              My Comments
+            <button id="allcomments" onClick={() => setOpenModalAllComments(true)}>
+              <img src={commentimg} alt="" />
             </button>
           </>
         )}
@@ -168,11 +175,12 @@ function MyProfile() {
           renderBackdrop={renderBackdrop}
         >
           <>
+          <h1 id="yourcommenttitle">Your Comments</h1>
             {userInfo && userInfo.comments ? (
               userInfo.comments.length > 0 ? (
                 userInfo.comments.map((comment, index) => (
                   <div key={index} id="allComments">
-                    <div>
+                    <div id="already-comment">
                       <ReactStars
                         count={5}
                         size={24}
@@ -181,9 +189,9 @@ function MyProfile() {
                         value={comment?.stars}
                         edit={false}
                       />
+                    <p>{comment?.textComment}</p>
                     </div>
-                    <p>Comment: {comment?.textComment}</p>
-                    <button onClick={() => handleDeleteComment(index)}>
+                    <button className="comment-delete" onClick={() => handleDeleteComment(index)}>
                       Delete
                     </button>
                   </div>

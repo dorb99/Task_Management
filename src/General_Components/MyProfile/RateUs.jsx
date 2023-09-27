@@ -51,12 +51,15 @@ function RateUs() {
 
   return (
     <>
+   <div className="image-container">
       <img
+        id="rate-us-image"
         src={ratebubble}
-        width="160px"
+        width="120px"
         alt="rate us!"
         onClick={() => setOpenModalAdd(true)}
       />
+    </div>
       <Modal
         className=" event_Modal "
         show={openModalAdd}

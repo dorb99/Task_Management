@@ -5,6 +5,7 @@
   line-height: 24px;
   color: #ffffff;
   padding: 20px 0;
+  text-align: center; /* Center-align the footer content */
 }
 
 .site-footer hr {
@@ -58,7 +59,7 @@
 
 /* Social Icons Styles */
 .site-footer .social-icons {
-  text-align: right;
+  text-align: center; /* Center-align the social icons */
 }
 
 .site-footer .social-icons a {
@@ -66,17 +67,18 @@
   height: 40px;
   line-height: 40px;
   margin-left: 6px;
-  margin-right: 0;
+  margin-right: 6px;
   border-radius: 50%;
   background-color: #45b07e;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .site-footer .social-icons a:hover {
   background-color: #00ff95;
+  transform: scale(1.1); /* Add scaling effect on hover */
 }
 
 /* Copyright Text Styles */
@@ -85,7 +87,10 @@
   color: #737373;
   font-size: 12px;
 }
-
+.row{
+  display: flex;
+  justify-content: space-between;
+}
 @media (max-width: 991px) {
   .site-footer [class^='col-'] {
     margin-bottom: 20px;
@@ -133,7 +138,7 @@
   text-align: center;
   margin-right: 8px;
   border-radius: 50%;
-  transition: all 0.2s linear;
+  transition: all 0.2s linear, transform 0.3s ease; /* Added transform transition */
 }
 
 .social-icons.size-sm a {
@@ -146,18 +151,22 @@
 /* Hover Styles for Social Icons */
 .social-icons a.facebook:hover {
   background-color: #3b5998;
+  transform: scale(1.1); /* Add scaling effect on hover */
 }
 
 .social-icons a.twitter:hover {
   background-color: #00aced;
+  transform: scale(1.1); /* Add scaling effect on hover */
 }
 
 .social-icons a.instagram:hover {
   background-color: #ff4242;
+  transform: scale(1.1); /* Add scaling effect on hover */
 }
 
 .social-icons a.github:hover {
   background-color: #d9ff00;
+  transform: scale(1.1); /* Add scaling effect on hover */
 }
 
 @media (max-width: 767px) {
@@ -171,8 +180,6 @@
 .fa {
   width: 20px;
 }
-.rate_Modal{
-  display: flex;
-  flex-direction: column;
-  align-items: center!important;
+#rate-us-image{
+  cursor: pointer;
 }
