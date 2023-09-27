@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./AboutUs.css";
-import Logo from "../img/Ourlogo.png";
+import Logo from "../img/OurLogo.png";
 import { Link } from "react-router-dom";
 function AboutUs() {
   const [selectedProblem, setSelectedProblem] = useState("Problem-1");
