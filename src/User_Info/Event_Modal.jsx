@@ -25,7 +25,6 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
   }
 
   function handleAddEvent() {
-    console.log(allEvents);
     allEvents
       ? (setallEvents([...allEvents, newEvent]), setChanged(true), onClose())
       : null;
@@ -176,7 +175,7 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
                 onChange={(start) =>
                   setNewEvent({ ...newEvent, start, end: start })
                 }
-                timeFormat="HH:mm"
+                excludeTimes={"00:00:00"}
                 timeIntervals={15}
                 dateFormat="MMMM d, yyyy"
                 className="small-date-picker"
@@ -205,7 +204,7 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
                   placeholderText="End date"
                   selected={newEvent.end}
                   onChange={(end) => setNewEvent({ ...newEvent, end })}
-                  timeFormat="HH:mm"
+                  excludeTimes={"00:00:00"}
                   timeIntervals={15}
                   dateFormat="MMMM d, yyyy"
                   className="small-date-picker"
@@ -220,14 +219,11 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
               <span>Edit Task</span>
             </button>
             <button className="event-button" onClick={handleDelete}>
-            <span>delete</span>
+              <span>delete</span>
             </button>
           </div>
         ) : (
-          <button
-            className="event-button"
-            onClick={handleAddEvent}
-          >
+          <button className="event-button" onClick={handleAddEvent}>
             <span>Add Task</span>
           </button>
         )}

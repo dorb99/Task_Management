@@ -19,7 +19,6 @@ function ColorsBar() {
     });
     setColorsLegened(updatedcolorsLegened);
     setNewColorLegend({ color: "", description: "" });
-    console.log(userInfo);
     setUserInfo({ ...userInfo, colors: updatedcolorsLegened });
     setChanged(true);
   };
@@ -28,7 +27,6 @@ function ColorsBar() {
     const updatedcolorsLegened = [...colorsLegened];
     updatedcolorsLegened.splice(index, 1);
     setColorsLegened(updatedcolorsLegened);
-    console.log(userInfo);
     setUserInfo({ ...userInfo, colors: updatedcolorsLegened });
     setChanged(true);
   };
@@ -44,13 +42,6 @@ function ColorsBar() {
 
   return (
     <>
-      <button
-        onClick={() => {
-          console.log(userInfo);
-        }}
-      >
-        log
-      </button>
       <div className="colors_legend">
         <h3>Colors Legend</h3>
         <select
@@ -124,7 +115,7 @@ function ColorsBar() {
               key={index}
               id="li_Colors"
               style={
-                color.Color === "white" ? null : { backgroundColor: color.Color }
+                color.color === "white" ? null : { backgroundColor: color.color }
               }
             >
               {color.color}: {color.description}

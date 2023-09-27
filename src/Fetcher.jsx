@@ -37,17 +37,18 @@ function Fetcher() {
     const newallUsers = {...allUsers};
     newallUsers[user] = newUser;
     const uri = `http://localhost:3000/users`;
-    const res = await fetch(uri, {
-      method: "POST",
-      body: JSON.stringify(newallUsers),
-      headers: { "Content-Type": "application/json" },
-    });
-    const resolved = await res.json();
-    setAllUsers(newallUsers);
-    setChanged(false);
-    setUserInfo(resolved[user]);
-    const events = resolved[user].tasks
-    setallEvents(events);
+    // const res = await fetch(uri, {
+    //   method: "POST",
+    //   body: JSON.stringify(newallUsers),
+    //   headers: { "Content-Type": "application/json" },
+    // });
+    axios.post(uri, newallUsers).then((response) => {
+      setAllUsers(newallUsers);
+      setChanged(false);
+      setUserInfo(response.data[user]);
+      const events = response.data[user].tasks
+      setallEvents(events);
+    })
   }
 
   useEffect(() => {

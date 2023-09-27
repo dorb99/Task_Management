@@ -155,7 +155,7 @@ function MyProfile() {
             <div>
               Birthday:<h3>{userInfo?.birthday}</h3>
             </div>
-            <h3>{numberOfTasks} Tasks</h3>
+            <h3>You have {numberOfTasks} Tasks </h3>
             <button
               id="my-profile-button"
               onClick={() => setEditing(true)}

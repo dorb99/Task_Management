@@ -50,8 +50,6 @@ function App() {
         setUserInfo,
         changed,
         setChanged,
-        // taskAdder,
-        // setTaskAdder,
       }}
     >
       <div className="App">

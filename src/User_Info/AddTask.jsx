@@ -23,12 +23,16 @@ function AddTask({ openModal, setEditer }) {
   }
   
   const handleAddEventClick = () => {
+    const newStart = new Date
+    const newEnd = new Date
+    newStart.setHours(0, 0, 0, 0);
+    newEnd.setHours(0, 0, 0, 0);
     setNewEvent({
       id: nextID,
       title: "",
       color: "white",
-      start: new Date(),
-      end: new Date(),
+      start: newStart,
+      end: newEnd,
     });
     openModal();
     setEditer(false);
