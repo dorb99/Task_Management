@@ -85,19 +85,9 @@ function SignUp() {
             value={birth}
             onChange={(e) => setBirth(e.target.value)}
           />
-          {choosedPlan ? (
             <button type="submit" id="signup-button">
               Submit
             </button>
-          ) : (
-            <button
-              type="button"
-              onClick={() => alert("please choose a plan")}
-              id="signup-button"
-            >
-              Submit
-            </button>
-          )}
           <p id="have-account">
             I have an account! <Link to="/">Log In</Link>
           </p>
