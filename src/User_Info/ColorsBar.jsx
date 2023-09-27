@@ -108,7 +108,7 @@ function ColorsBar() {
                 id="delete_Colors"
                 onClick={() => handleDeleteColor(index)}
               >
-                <FontAwesomeIcon className="icon-trash" icon={faTrashAlt} />
+                <FontAwesomeIcon className="icon-trash" icon={faTrashAlt} /> 
               </button>
             </li>
           ))}

@@ -23,13 +23,12 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
     setChanged(true);
     onClose();
   }
-  
+
   function handleAddEvent() {
     console.log(allEvents);
     allEvents
       ? (setallEvents([...allEvents, newEvent]), setChanged(true), onClose())
-      : // : setallEvents([newEvent]);
-        null;
+      : null;
   }
   function handleEditEvent() {
     const newList = allEvents.map((task) =>
@@ -84,7 +83,10 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
             <option value="brown" style={{ backgroundColor: "brown" }}>
               brown
             </option>
-            <option value="yellow" style={{ color: "black", backgroundColor: "yellow" }}>
+            <option
+              value="yellow"
+              style={{ color: "black", backgroundColor: "yellow" }}
+            >
               yellow
             </option>
             <option value="purple" style={{ backgroundColor: "purple" }}>
@@ -215,19 +217,18 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
         {editer ? (
           <div id="edit-delete">
             <button className="event-button" onClick={handleEditEvent}>
-              Edit Task
+              <span>Edit Task</span>
             </button>
             <button className="event-button" onClick={handleDelete}>
-              delete
+            <span>delete</span>
             </button>
           </div>
         ) : (
           <button
             className="event-button"
             onClick={handleAddEvent}
-            id="newEventPadding"
           >
-            Add Task
+            <span>Add Task</span>
           </button>
         )}
       </div>

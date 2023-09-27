@@ -42,7 +42,7 @@ function SignUp() {
     setallEvents(newUser.tasks);
     setUserInfo(newUser);
     navigate("/userpage");
-    setChanged(true)
+    setChanged(true);
   };
 
   return (
@@ -102,7 +102,8 @@ function SignUp() {
             I have an account! <Link to="/">Log In</Link>
           </p>
         </div>
-      </form> {choosedPlan ? <img src="" alt="" /> : <Modals setChoosedPlan={setChoosedPlan} /> }
+      </form>{" "}
+      {choosedPlan ? null : <Modals setChoosedPlan={setChoosedPlan} />}
       <Comments />
     </div>
   );

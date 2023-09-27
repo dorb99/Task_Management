@@ -4,23 +4,13 @@ import "./MyProfile.css";
 import ProfileIcon from "./ProfileIcon";
 import { Modal } from "react-overlays";
 import ReactStars from "react-rating-stars-component";
-import { Modal } from "react-overlays";
-import ReactStars from "react-rating-stars-component";
-
+import commentimg from "../img/commentimg.png";
 function MyProfile() {
   const { userInfo, allEvents, setUserInfo, setChanged } =
     useContext(UserContext);
   const [openModalAllComments, setOpenModalAllComments] = useState(false);
-  const [openModalAllComments, setOpenModalAllComments] = useState(false);
   const [editing, setEditing] = useState(false);
-  const [chosedPlan, setChosedPlan] = useState(userInfo?.plan);
- let [planStyle, setPlanStyle] = useState({})
   const [editedData, setEditedData] = useState({
-    userInfo,
-  });
-  const renderBackdrop = (props) => (
-    <div className="backdrop_adder" {...props} />
-  );
     userInfo,
   });
   const renderBackdrop = (props) => (
@@ -36,30 +26,18 @@ function MyProfile() {
       [name]: value,
     });
   };
-  // if (chosedPlan) {
-  //   switch (chosedPlan) {
-  //     case "plan1":
-  //       setPlanStyle = { width: "10px", background: "white" };
-  //       break;
-  //     case "plan2":
-  //       setPlanStyle = { width: "10px", background: "silver" };
-  //       break;
-  //     case "plan3":
-  //       setPlanStyle = { width: "10px", background: "gold" };
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // }
+
   const handleSaveChanges = () => {
     if (!isEqual(oldUserInfo, editedData)) {
       if (oldUserInfo.username !== userInfo?.username) {
         localStorage.removeItem(oldUserInfo.username);
       }
       setUserInfo(editedData);
+      setEditing(false);
       setChanged(true);
+    } else {
+      setEditing(false);
     }
-    setEditing(false);
   };
 
   if (allEvents) {
@@ -69,8 +47,8 @@ function MyProfile() {
     const newcomments = userInfo.comments;
     newcomments.splice(index, 1);
     setOpenModalAllComments(false);
-    setUserInfo({...userInfo, comments: newcomments})
-    setChanged(true)
+    setUserInfo({ ...userInfo, comments: newcomments });
+    setChanged(true);
   };
 
   useEffect(() => {
@@ -104,18 +82,17 @@ function MyProfile() {
     }
   }, [userInfo]);
 
-
   return (
     <div id="my-profile">
-      <div id="my-profile-container" className={editing ? "active" : ""}>
+      <div id="my-profile-container">
         <ProfileIcon
           editing={editing}
           setEditedData={setEditedData}
           editedData={editedData}
         />
-        <div>
-          {editing ? (
-            <>
+        {editing ? (
+          <>
+            <div>
               <div>
                 <label>Username:</label>
                 <input
@@ -126,73 +103,6 @@ function MyProfile() {
                   className="my-profile-input"
                 />
               </div>
-              <div>
-                <label>Email:</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={editedData.email}
-                  onChange={handleInputChange}
-                  className="my-profile-input"
-                />
-              </div>
-              <div>
-                <label>Password:</label>
-                <input
-                  type="password"
-                  name="password"
-                  value={editedData.password}
-                  onChange={handleInputChange}
-                  className="my-profile-input"
-                />
-              </div>
-              <div>
-                <label>Birthday:</label>
-                <input
-                  type="date"
-                  name="birthday"
-                  value={editedData.birthday}
-                  onChange={handleInputChange}
-                  className="my-profile-input"
-                />
-              </div>
-              <button
-                type="button"
-                id="my-profile-button"
-                onClick={handleSaveChanges}
-                className="my-profile-button"
-              >
-                Save Changes
-              </button>
-            </>
-          ) : (
-            <>
-              {chosedPlan ? (
-                <div id="chosen-plan-profile" style={planStyle}>
-                  {chosedPlan}
-                </div>
-              ) : null} 
-              <h1 id="my-profile-header">Hello, {userInfo?.username}</h1>
-              <h3>{userInfo?.email}</h3>
-              <div className="my-profile-input-before">
-                Password: <p>{"*".repeat(userInfo?.password?.length)}</p>
-              </div>
-              <div className="my-profile-input-before">
-                Birthday: <p>{userInfo?.birthday}</p>
-              </div>
-              <div className="my-profile-input-before">
-                {numberOfTasks} Tasks
-              </div>
-              <button
-                id="my-profile-button"
-                onClick={() => setEditing(true)}
-                className="my-profile-button"
-              >
-                Edit Profile
-              </button>
-            </>
-          )}
-        </div>
               <label>Email:</label>
               <input
                 type="email"
@@ -233,11 +143,17 @@ function MyProfile() {
           </>
         ) : (
           <>
-            <h2>Username: {userInfo?.username}</h2>
-            <h2>Email: {userInfo?.email}</h2>
-            <h2>Password: {"*".repeat(userInfo?.password?.length)}</h2>
-            <h2>Birthday: {userInfo?.birthday}</h2>
-            <h2>Number Of Tasks: {numberOfTasks}</h2>
+            <h1 id="my-profile-header">Hello, {userInfo?.username}</h1>
+            <div>
+              Email: <h3>{userInfo?.email}</h3>
+            </div>
+            <div>
+              Password: <h3>{"*".repeat(userInfo?.password?.length)}</h3>
+            </div>
+            <div>
+              Birthday:<h3>{userInfo?.birthday}</h3>
+            </div>
+            <h3>{numberOfTasks} Tasks</h3>
             <button
               id="my-profile-button"
               onClick={() => setEditing(true)}
@@ -245,8 +161,8 @@ function MyProfile() {
             >
               Edit Profile
             </button>
-            <button onClick={() => setOpenModalAllComments(true)}>
-              My Comments
+            <button id="allcomments" onClick={() => setOpenModalAllComments(true)}>
+              <img src={commentimg} alt="" />
             </button>
           </>
         )}
@@ -257,11 +173,12 @@ function MyProfile() {
           renderBackdrop={renderBackdrop}
         >
           <>
-          {userInfo && userInfo.comments ? (
+          <h1 id="yourcommenttitle">Your Comments</h1>
+            {userInfo && userInfo.comments ? (
               userInfo.comments.length > 0 ? (
                 userInfo.comments.map((comment, index) => (
                   <div key={index} id="allComments">
-                    <div>
+                    <div id="already-comment">
                       <ReactStars
                         count={5}
                         size={24}
@@ -270,9 +187,9 @@ function MyProfile() {
                         value={comment?.stars}
                         edit={false}
                       />
+                    <p>{comment?.textComment}</p>
                     </div>
-                    <p>Comment: {comment?.textComment}</p>
-                    <button onClick={() => handleDeleteComment(index)}>
+                    <button className="comment-delete" onClick={() => handleDeleteComment(index)}>
                       Delete
                     </button>
                   </div>

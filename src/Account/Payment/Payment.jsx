@@ -253,7 +253,7 @@ export default function SubscriptionModal({setChoosedPlan}) {
           <div className="modal-footer">
             <button
               type="button"
-              className="secondary-button"
+              className="payment-second-button"
               onClick={() => setShowModal(false)}
             >
               Close
@@ -261,7 +261,7 @@ export default function SubscriptionModal({setChoosedPlan}) {
             <button
               type="submit"
               id="submit-button"
-              className={`primary-button ${
+              className={`payment-primary-button ${
                 !selectedPlan ||
                 !creditCardData.cardNumber ||
                 !creditCardData.expirationDate ||

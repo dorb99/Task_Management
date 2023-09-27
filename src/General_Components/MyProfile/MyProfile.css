@@ -2,7 +2,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
 #my-profile {
   background-image: url("../img/MyPage.jpg");
   background-size: cover;
@@ -114,4 +113,86 @@ transition: all 0.7s;
   justify-content: center;
   flex-direction: column;
   margin: 0   !important;
+}
+/* YourComponent.css */
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+#rate-us-image {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+#rate-us-image:hover {
+  transform: scale(1.1) rotate(10deg); /* Scale up and rotate slightly on hover */
+  opacity: 0.8; /* Reduce opacity on hover to create a subtle fading effect */
+}
+
+#rate-us-image:active {
+  transform: scale(0.9); /* Scale down on click/active */
+}
+#allcomments{
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: none !important;
+  transition: .9s;
+  background-color: transparent ! important;
+}
+#allcomments:hover{
+  transform:rotateY(360deg) ;
+}
+#allcomments >img {
+  width: 45px;
+  margin-top: 25px;
+  cursor: pointer;
+}
+/* YourComponent.css */
+
+.comment-delete {
+  border-radius: 10px;
+  background: #3b5999;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* YourComponent.css */
+
+.comment-delete {
+  border-radius: 10px;
+  background-color: #45b07e;
+  color: #fff;
+  border: none;
+  padding: 0 !important;
+  width: 80px;
+  height: 35px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.comment-delete:hover {
+  background: #ff4500; /* Change background color on hover */
+  transform: scale(0.7); /* Scale up the button slightly on hover */
+}
+
+#already-comment{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 2px rgb(179, 179, 179) solid;
+  padding: 15px;
+}
+#yourcommenttitle{
+  color: gold;
 }

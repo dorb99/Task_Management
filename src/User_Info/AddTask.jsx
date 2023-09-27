@@ -36,14 +36,8 @@ function AddTask({ openModal, setEditer }) {
 
   return (
     <>
-      <div className="modal-AddEvent-container">
-        <button
-          className="btn-Adder"
-          type="button"
-          onClick={handleAddEventClick}
-        >
-          Add an Event
-        </button>
+      <div className="button_container">
+      <button className="add-event-btn" onClick={handleAddEventClick}><span>Add an Event</span></button>
       </div>
     </>
   );
