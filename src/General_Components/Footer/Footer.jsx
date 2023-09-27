@@ -2,7 +2,7 @@ import React from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
 import FB from "../img/FB.png";
-import TW from "../img/TW.png";
+import TW from "../img/Tw.png";
 import Ins from "../img/Ins.png";
 import GH from "../img/GH.png";
 import RateUs from "./RateUs";
