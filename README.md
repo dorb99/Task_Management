@@ -1,8 +1,8 @@
-# React + Vite
+Task Mangy project
+middle project, developers: Dor Bruker and Ori Barda.
+Total hours: 50 hours.
+Description: A task manager website, finishing frontend, and using react and javascript.
+##The app will work at the link, but in order for the data to be saved and/or load the prev user you need to activate the JSON-server
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#How to activate the JSON-server: 
+open a new terminal, make your path to the task_management_project folder, and type: "JSON-server --watch src/userinfo.json"
