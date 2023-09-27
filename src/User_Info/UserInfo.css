@@ -161,7 +161,9 @@ select {
   transition: border-color 0.3s, background-color 0.3s, transform 0.2s;
   outline: none;
 }
-
+.small-date-picker {
+  width: max-content;
+}
 /* Style for the checkboxes */
 .checkbox-container {
   display: flex;
@@ -205,7 +207,7 @@ select {
   transition: opacity 0.3s, background-color 0.3s;
 }
 /* Style for the buttons */
-button {
+.btn-Adder {
   border-radius: 20px;
   border: none;
   padding: 12px 24px;
@@ -254,7 +256,7 @@ button {
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
-button#newEventPadding:hover {
+#newEventPadding:hover {
   transform: translateY(-5px);
 }
 .rbc-button-link {
@@ -262,10 +264,15 @@ button#newEventPadding:hover {
   transition: color 0.3s ease-in-out;
 }
 .rbc-button-link:hover {
-  color: rgb(0, 255, 132) !important;
+  color: rgb(0, 193, 22) !important;
   transition: color 0.3s ease-in-out;
 }
-
+.rbc-button-link .rbc-show-more {
+  font-size: 1.3vw;
+}
+.rbc-event-content {
+  color: black !important;
+}
 @media (max-width: 449px) {
   .event_Modal {
     width: 90vw !important;
@@ -297,6 +304,8 @@ button#newEventPadding:hover {
 }
 #edit-delete {
   display: flex;
+  width: 100%;
+  justify-content: space-evenly;
 }
 .checkbox-wrapper-10 {
   display: flex !important;
@@ -422,6 +431,69 @@ button#newEventPadding:hover {
   transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out,
     transform 0.3s ease-in-out;
 }
+/* Basic button styles */
+.event-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #028100;
+  color: #fff;
+  border: 2px solid transparent;
+  cursor: pointer;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+/* Pulsating circle animation on hover */
+/* Basic button styles */
+.event-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #57e7b1 ;
+  color: #fff;
+  border: 2px solid transparent;
+  cursor: pointer;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+/* Pulsating circle animation on hover */
+.event-button::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #1db787;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.7s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.event-button:hover::before {
+  transform: translate(-50%, -50%) scale(12);
+  opacity: 1;
+}
+
+/* Change button size and font color on hover */
+.event-button:hover {
+  transform: scale(0.9);
+}
+
+/* Text styles */
+.event-button span {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
 
 .colors_legend:hover {
   transform: scale(1.02);
@@ -446,31 +518,65 @@ button#newEventPadding:hover {
 
 /* Delete Colors Button Styles */
 #delete_Colors {
-  width: 60px;
-  height: 30px;
   color: #fff;
   display: flex;
+  width: 45px !important;
+  height: 35px !important;
+  border: 1px black solid ;
   align-items: center;
   justify-content: center;
-  background-color: #ff3a19;
+  background-color: black !important;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
   font-weight: bold;
+  margin-top: 15px;
+
 }
 
 #delete_Colors:hover {
   background-color: #970000;
 }
+.icon-trash {
+  width: 25px;
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out,
+    color 0.3s ease-in-out, scale 0.3s ease-in-out;
+}
+
+.icon-trash:hover {
+  transform: scale(2) 0.3s ease-in-out;
+  filter: brightness(1.2) hue-rotate(15deg);
+  color: #ff0000;
+  animation: sparkle 1s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
 /* List Item (li_Colors) Styles */
 #li_Colors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   border-radius: 8px;
-  background-color: #444;
+  background-color: #767676;
   padding: 5px;
   margin: 5px;
   color: #fff;
-  cursor: pointer;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
     transform 0.2s ease-in-out;
 }
@@ -496,7 +602,7 @@ button#newEventPadding:hover {
 #colors {
   display: flex !important;
   width: 85vw;
-  height: 100px!important;
+  height: 100px !important;
   flex-wrap: wrap;
   overflow-y: scroll;
 }
@@ -514,4 +620,59 @@ button#newEventPadding:hover {
 
 #colors::-webkit-scrollbar-thumb:hover {
   background: #7fffd4;
+}
+.button_container {
+  margin-top: 10px;
+}
+.add-event-btn {
+  border-radius: 3px !important;
+  border: none;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: #2aa92e;
+  padding: 17px 60px;
+  margin: 0 auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.add-event-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.add-event-btn:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 370%;
+  width: 140%;
+  background: #5eed78;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+
+.add-event-btn:hover:after {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+
+.link {
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.link a {
+  color: #000;
+  font-size: 25px;
 }

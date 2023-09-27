@@ -17,26 +17,20 @@ body {
   top: 0;
   left: 0;
   height: 57px;
-  padding: 1rem 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #77ee8d;
+  background-color: #5eed78;
   overflow: hidden;
   position: relative;
   transition: background-color 0.3s ease; /* Navbar Transition */
 }
-
-/* Header Animation on Hover */
-.header:hover {
-  background-color: #5eed78; /* Bottle green color on hover */
-}
-
 /* Logo */
 #logo {
-  width: 270px;
+  width: 150px;
   position: absolute;
-  top: 5px;
+  height: 50px;
+  top: 3px;
   left: 1vw;
   transition: filter 0.3s ease; /* Logo Transition */
 }
@@ -69,68 +63,10 @@ body {
 }
 
 /* Navigation */
-.navbar {
+.nav {
   display: flex;
   flex-direction: row;
   list-style: none;
-}
-
-.nav-item {
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 25px;
-  letter-spacing: -0.13px;
-  text-decoration: none;
-  margin-left: 2.5rem;
-  position: relative;
-  /* Cool Hover Effect - Pop Animation */
-  transition: color 0.3s ease, transform 0.2s ease;
-}
-
-/* Pop Animation on Hover */
-.nav-item:hover {
-  color: #183d6a; /* Change to your desired hover color */
-  transform: translateY(-5px) scale(1.05);
-}
-
-/* Icon Animation */
-.nav-item::before,
-.nav-item::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: #183d6a; /* Change to your desired color */
-  transition: width 0.3s ease-in-out;
-}
-
-.nav-item::before {
-  left: 0;
-  bottom: -3px;
-}
-
-.nav-item::after {
-  right: 0;
-  bottom: -3px;
-}
-
-.nav-item:hover::before {
-  width: 100%;
-}
-
-.nav-item:hover::after {
-  width: 100%;
-}
-
-/* Icons */
-.icons {
-  position: absolute;
-  right: 5%;
-  font-size: 2.3rem;
-  color: #fff;
-  cursor: pointer;
-  transition: transform 0.3s ease;
 }
 
 /* Icon Animation on Hover */
@@ -144,21 +80,79 @@ body {
 }
 
 /* Media query */
-@media (max-width: 702px) {
-  #always-on {
-    display: flex;
-    flex-direction: column;
-  }
-
-  #after-login {
-    display: flex;
-    flex-direction: column;
-  }
+@media (max-width: 580px) {
+.nav a{
+  font-size: 3vw !important;
+}
+#logo{
+  width: 80px;
+  height: 30px;
+  top: 12px;
+}
 }
 
-@media (max-width: 520px) {
-  #logo {
-    width: 40vw !important;
-    height: 35px;
-  }
+.nav {
+  font-family: "Titillium Web";
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
 }
+
+.nav * {
+  box-sizing: border-box;
+  transition: all 0.35s ease;
+}
+
+.nav li {
+  display: inline-block;
+  list-style: outside none none;
+  margin: 0.5em 1em;
+  padding: 0;
+}
+
+.nav a {
+  padding: 0.5em 0.8em;
+  color: rgba(255, 255, 255, 0.5);
+  position: relative;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.nav a::before,
+.nav a::after {
+  content: "";
+  height: 14px;
+  width: 14px;
+  position: absolute;
+  transition: all 0.35s ease;
+  opacity: 0;
+}
+
+.nav a::before {
+  content: "";
+  right: 0;
+  top: 0;
+  border-top: 3px solid #3e8914;
+  border-right: 3px solid #2e640f;
+  transform: translate(-100%, 50%);
+}
+
+.nav a:after {
+  content: "";
+  left: 0;
+  bottom: 0;
+  border-bottom: 3px solid #2e640f;
+  border-left: 3px solid #3e8914;
+  transform: translate(100%, -50%);
+}
+
+.nav a:hover:before,
+.nav a:hover:after {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.nav a:hover {
+  color: #14254c;
+}
+

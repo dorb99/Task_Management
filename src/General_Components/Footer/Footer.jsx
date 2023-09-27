@@ -29,7 +29,6 @@ function Footer() {
               Copyright &copy; 2023 All Rights Reserved by{" "}
               <Link to="/AboutUs">Ori&Dor</Link>.
             </p>
-            <RateUs/>
             <div className="col-md-4 col-sm-6 col-xs-12">
               <ul className="social-icons">
                 <li>
@@ -55,6 +54,7 @@ function Footer() {
               </ul>
             </div>
           </div>
+            <RateUs/>
         </div>
       </footer>
     </div>

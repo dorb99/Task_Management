@@ -2,7 +2,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
 #my-profile {
   background-image: url("../img/MyPage.jpg");
   background-size: cover;
@@ -21,8 +20,7 @@ body {
   padding: 30px;
   text-align: center;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
-  width: 80%;
-  max-width: 400px;
+  width: 350px;
   animation: fadeInUp 0.5s ease;
   display: flex;
   flex-direction: column;
@@ -33,9 +31,15 @@ body {
 #my-profile-header {
   font-size: 28px;
   margin-bottom: 20px;
-  color: #333; /* Header text color */
+  color: #333; 
 }
-
+.displayed-icon{
+  transition: all 0.7s;
+}
+.displayed-icon:hover{
+transform: scale(1.15);
+transition: all 0.7s;
+}
 .my-profile-input {
   display: flex;
   align-items: center;
@@ -54,61 +58,40 @@ body {
   border-color: #45a049; /* Change border color on focus */
   background-color: #f0fff0; /* Slight green background on focus */
 }
-
-/* Button Animation */
+.my-profile-input-before{
+  display: flex;
+}
 #my-profile-button {
-  background-color: #4caf50;
+  background: #4caf50;
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 12px 24px;
+  width: 100%;
+  padding: 8px;
   cursor: pointer;
   font-size: 18px;
   margin-top: 20px;
-  transform: translateY(0); /* Initial state for animation */
-  transition: background-color 0.3s ease;
+  position: relative; 
+  overflow: hidden; 
+  z-index: 1; 
 }
 
-#my-profile-button:hover {
-  animation: pulse 0.8s infinite, colorChange 0.5s infinite alternate;
+#my-profile-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, #45a049 50%, #4caf50 50%);
+  background-size: 100% 200%; 
+  z-index: -1; 
+  transition: background-size 1s ease;
 }
 
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1); /* Button pulsing animation */
-  }
+#my-profile-button:hover::before {
+  background-size: 100% 0; 
 }
-
-@keyframes colorChange {
-  0% {
-    background-color: #4caf50;
-  }
-  100% {
-    background-color: #45a049; /* Background color change animation */
-  }
-}
-
-#no-account,
-#forgot-pass {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #333; /* Text color */
-}
-
-#no-account a,
-#forgot-pass a {
-  color: #4caf50;
-  text-decoration: none;
-}
-
-#no-account a:hover,
-#forgot-pass a:hover {
-  text-decoration: underline;
-}
-
 /* Keyframes for fadeInUp animation */
 @keyframes fadeInUp {
   from {
@@ -130,4 +113,86 @@ body {
   justify-content: center;
   flex-direction: column;
   margin: 0   !important;
+}
+/* YourComponent.css */
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+#rate-us-image {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+#rate-us-image:hover {
+  transform: scale(1.1) rotate(10deg); /* Scale up and rotate slightly on hover */
+  opacity: 0.8; /* Reduce opacity on hover to create a subtle fading effect */
+}
+
+#rate-us-image:active {
+  transform: scale(0.9); /* Scale down on click/active */
+}
+#allcomments{
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: none !important;
+  transition: .9s;
+  background-color: transparent ! important;
+}
+#allcomments:hover{
+  transform:rotateY(360deg) ;
+}
+#allcomments >img {
+  width: 45px;
+  margin-top: 25px;
+  cursor: pointer;
+}
+/* YourComponent.css */
+
+.comment-delete {
+  border-radius: 10px;
+  background: #3b5999;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* YourComponent.css */
+
+.comment-delete {
+  border-radius: 10px;
+  background-color: #45b07e;
+  color: #fff;
+  border: none;
+  padding: 0 !important;
+  width: 80px;
+  height: 35px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.comment-delete:hover {
+  background: #ff4500; /* Change background color on hover */
+  transform: scale(0.7); /* Scale up the button slightly on hover */
+}
+
+#already-comment{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 2px rgb(179, 179, 179) solid;
+  padding: 15px;
+}
+#yourcommenttitle{
+  color: gold;
 }
