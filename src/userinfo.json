@@ -1,0 +1,117 @@
+{
+  "users": {
+    "dor1": {
+      "email": "dorbruker1@gmail.com",
+      "birthday": "1999-11-20",
+      "username": "dor1",
+      "password": "o",
+      "tasks": [
+        {
+          "id": 2,
+          "color": "green",
+          "title": "Afternoon Task",
+          "start": "2023-09-06T15:45:00.000Z",
+          "end": "2023-09-06T16:30:00.000Z"
+        },
+        {
+          "id": 3,
+          "color": "red",
+          "title": "Evening Event",
+          "start": "2023-09-06T18:00:00.000Z",
+          "end": "2023-09-06T19:30:00.000Z"
+        },
+        {
+          "id": 4,
+          "title": "Two-Day Event 1",
+          "start": "2023-09-10T14:00:00.000Z",
+          "end": "2023-09-11T14:00:00.000Z",
+          "color": "yellow"
+        },
+        {
+          "id": 5,
+          "title": "Two-Day Event 2",
+          "start": "2023-09-15T10:00:00.000Z",
+          "end": "2023-09-16T10:00:00.000Z",
+          "color": "red"
+        },
+        {
+          "title": "Two-Day Event 3",
+          "start": "2023-09-20T08:00:00.000Z",
+          "end": "2023-09-21T08:00:00.000Z",
+          "color": "yellow",
+          "id": 6
+        },
+        {
+          "id": 7,
+          "title": "Three-Day Event 1",
+          "start": "2023-09-25T16:00:00.000Z",
+          "end": "2023-09-27T16:00:00.000Z",
+          "color": "pink"
+        },
+        {
+          "id": 8,
+          "color": "green",
+          "title": "Weekend Getaway",
+          "start": "2023-09-30T12:00:00.000Z",
+          "end": "2023-10-01T16:00:00.000Z"
+        },
+        {
+          "id": 9,
+          "color": "green",
+          "title": "Monthly Review",
+          "start": "2023-10-05T09:00:00.000Z",
+          "end": "2023-10-05T10:30:00.000Z"
+        },
+        {
+          "id": 10,
+          "title": "Task with No Time 1",
+          "start": "2023-09-06T00:00:00.000Z",
+          "end": "2023-09-06T00:00:00.000Z",
+          "color": "blue"
+        },
+        {
+          "id": 11,
+          "title": "flight",
+          "color": "teal",
+          "start": "2023-09-17T11:00:00.000Z",
+          "end": "2023-09-17T11:00:00.000Z"
+        },
+        {
+          "id": 0,
+          "title": "all day spa",
+          "color": "teal",
+          "start": "2023-09-01T21:00:00.000Z",
+          "end": "2023-09-01T21:00:00.000Z"
+        },
+        {
+          "id": 1,
+          "title": "dinner",
+          "color": "white",
+          "start": "2023-08-31T21:00:00.000Z",
+          "end": "2023-08-31T21:00:00.000Z"
+        }
+      ],
+      "colors": [
+        {
+          "color": "green",
+          "description": "food"
+        },
+        {
+          "color": "blue",
+          "description": "appointments"
+        }
+      ],
+      "icon": 4,
+      "comments": [
+        {
+          "textComment": "great app!",
+          "stars": 5
+        },
+        {
+          "textComment": "amazing css!",
+          "stars": 5
+        }
+      ]
+    }
+  }
+}
