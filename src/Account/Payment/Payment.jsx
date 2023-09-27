@@ -36,7 +36,7 @@ export default function SubscriptionModal({setChoosedPlan}) {
     } else {
       localStorage.setItem("selectedPlan", selectedPlan);
       localStorage.setItem("creditCardData", JSON.stringify(creditCardData));
-      alert("Your Credit Card Information Is Safe With Me Now Thanks fucker!");
+      alert("Your Credit Card Information Is Safe With Me Now Thanks");
       setShowModal(false);
       setChoosedPlan(true)
     }

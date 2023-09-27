@@ -3,9 +3,9 @@ import { UserContext } from "./General_Components/Other/Context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LogIn from "./Account/LogIn/LogIn";
 import SignUp from "./Account/SignUp/SignUp";
-import UserPage from "./User_Info/UserPage"; 
+import UserPage from "./User_Info/UserPage";
 import MyProfile from "./General_Components/MyProfile/MyProfile";
-import AboutUs from "./General_Components/AboutUs/AboutUs"; 
+import AboutUs from "./General_Components/AboutUs/AboutUs";
 import NavBar from "./General_Components/NavBar/NavBar";
 import Forgot from "./Account/ForgotPassword/Forgot";
 import Footer from "./General_Components/Footer/Footer";
@@ -20,7 +20,7 @@ function App() {
     cardNumber: "",
     expirationDate: "",
   });
-  const [user, setUser] = useState(); 
+  const [user, setUser] = useState();
   const [userInfo, setUserInfo] = useState();
   const [allEvents, setallEvents] = useState([]);
   const [changed, setChanged] = useState(false);
@@ -34,7 +34,7 @@ function App() {
     const haveUser = JSON.parse(localStorage.getItem("username"));
     if (haveUser !== null) setUser(haveUser);
   }, []);
-  
+
   return (
     <UserContext.Provider
       value={{
@@ -54,7 +54,7 @@ function App() {
     >
       <div className="App">
         <NavBar />
-        <Fetcher user={user} allEvents={allEvents}/>
+        <Fetcher user={user} allEvents={allEvents} />
         <Routes>
           <Route path="/" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
