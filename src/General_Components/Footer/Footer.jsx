@@ -5,7 +5,8 @@ import FB from "../img/FB.png";
 import TW from "../img/TW.png";
 import Ins from "../img/Ins.png";
 import GH from "../img/GH.png";
-import RateUs from "../MyProfile/RateUs";
+import RateUs from "./RateUs";
+
 function Footer() {
   return (
     <div className="footer">

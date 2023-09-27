@@ -11,13 +11,8 @@ import ColorsBar from "./ColorsBar";
 export default function PrintCalendar({ openModal, setEditer }) {
   const { allEvents, setNewEvent } = useContext(UserContext);
   const [calendarEvents, setCalendarEvents] = useState();
-  const [currentEvent, setCurrentEvent] = useState({});
-  const [taskChanger, setTaskChanger] = useState(false);
   const localizer = momentLocalizer(moment);
 
-  const renderBackdrop = (props) => (
-    <div className="backdrop_adder" {...props} />
-  );
 
   const handleOneClick = (event) => {
     setNewEvent(event);
@@ -64,36 +59,6 @@ export default function PrintCalendar({ openModal, setEditer }) {
           }}
           className="your-calendar-class"
         />
-        {currentEvent.title && (
-          <Modal
-            className="modal_Presnt event_Modal"
-            show={taskChanger}
-            onHide={() => {
-              setTaskChanger(false);
-            }}
-            renderBackdrop={renderBackdrop}
-          >
-            <div
-              style={{
-                color:
-                  currentEvent.color === "white"
-                    ? "black"
-                    : currentEvent.color,
-              }}
-            >
-              <h4 className="title">Title: {currentEvent.title}</h4>
-              {currentEvent.start.toLocaleString() ===
-              currentEvent.end.toLocaleString() ? (
-                <h4>Time: {currentEvent.start.toLocaleString()}</h4>
-              ) : (
-                <>
-                  <h4>Start time: {currentEvent.start.toLocaleString()}</h4>
-                  <h4>End time: {currentEvent.end.toLocaleString()}</h4>
-                </>
-              )}
-            </div>
-          </Modal>
-        )}
         <ColorsBar />
       </div>
     </>

@@ -5,11 +5,10 @@ import { UserContext } from "../Other/Context";
 import "./NavBar.css";
 
 function NavBar() {
-  const { user, setUser, setUserInfo } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const logOut = () => {
     setUser("");
-    setUserInfo("")
     localStorage.removeItem("username");
   };
 

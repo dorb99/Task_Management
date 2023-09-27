@@ -3,7 +3,6 @@ import ratebubble from "../img/rateus.png";
 import { useContext, useEffect, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import React from "react";
-import { render } from "react-dom";
 import { UserContext } from "../Other/Context";
 
 function RateUs() {
@@ -37,6 +36,7 @@ function RateUs() {
       newuserinfo.comments = newallcomments;
       setUserInfo(newuserinfo);
       setChanged(true);
+      setNewComment({ textComment: "", stars: 0 })
     }
   };
   const handleTextCommentChange = (e) => {
@@ -51,15 +51,15 @@ function RateUs() {
 
   return (
     <>
-   <div className="image-container">
-      <img
-        id="rate-us-image"
-        src={ratebubble}
-        width="120px"
-        alt="rate us!"
-        onClick={() => setOpenModalAdd(true)}
-      />
-    </div>
+      <div className="image-container">
+        <img
+          id="rate-us-image"
+          src={ratebubble}
+          width="120px"
+          alt="rate us!"
+          onClick={() => setOpenModalAdd(true)}
+        />
+      </div>
       <Modal
         className=" event_Modal "
         show={openModalAdd}
@@ -81,6 +81,14 @@ function RateUs() {
             placeholder="please add your comment"
             onChange={handleTextCommentChange}
           />
+          <div id="closing_btn" onClick={() => setOpenModalAdd(false)}>
+            X
+          </div>
+          {newComment.textComment !== "" && newComment.stars !== 0 ? (
+            <button className="submit_btn" type="submit">Submit</button>
+          ) : (
+            <button className="submit_btn">Submit</button>
+          )}
         </form>
       </Modal>
     </>
