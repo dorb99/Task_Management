@@ -37,11 +37,6 @@ function Fetcher() {
     const newallUsers = {...allUsers};
     newallUsers[user] = newUser;
     const uri = `http://localhost:3000/users`;
-    // const res = await fetch(uri, {
-    //   method: "POST",
-    //   body: JSON.stringify(newallUsers),
-    //   headers: { "Content-Type": "application/json" },
-    // });
     axios.post(uri, newallUsers).then((response) => {
       setAllUsers(newallUsers);
       setChanged(false);
