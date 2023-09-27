@@ -3,7 +3,7 @@
     "dor1": {
       "email": "dorbruker1@gmail.com",
       "birthday": "1999-11-20",
-      "username": "dor1",
+      "username": "dor2",
       "password": "o",
       "tasks": [
         {
@@ -105,10 +105,6 @@
       "comments": [
         {
           "textComment": "great app!",
-          "stars": 5
-        },
-        {
-          "textComment": "amazing css!",
           "stars": 5
         }
       ]
