@@ -43,9 +43,9 @@ The application allows users to efficiently manage their tasks with a user-frien
     npm start
     ```
 
-5. **Run the JSON server for data storage:**
+5. **Log:**
     ```bash
-    json-server --watch src/userinfo.json
+    npx json-server --watch src/userinfo.json --port 3000
     ```
 
 ## Usage
@@ -63,6 +63,6 @@ The application allows users to efficiently manage their tasks with a user-frien
 
 ## Acknowledgements
 
-- **Developers:** Dor Bruker
-- **Technologies Used:** React, JavaScript, JSON Server
+- **Developer:** Dor Bruker
+- **Technologies Used:** React, JavaScript
 - **Deployment:** Netlify
