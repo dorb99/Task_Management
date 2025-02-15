@@ -7,7 +7,7 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
   const renderBackdrop = (props) => (
     <div className="backdrop_adder" {...props} />
   );
-  const { newEvent, setNewEvent, allEvents, setallEvents, setChanged } =
+  const { newEvent, setNewEvent, allEvents, setAllEvents, setChanged } =
     useContext(UserContext);
   const [isCheckedEnd, setIsCheckedEnd] = useState(false);
   const [isCheckedHour, setIsCheckedHour] = useState(false);
@@ -18,7 +18,7 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
     const index = editedEvents.findIndex((obj) => obj.title === title);
     if (index > -1) {
       editedEvents.splice(index, 1);
-      setallEvents(editedEvents);
+      setAllEvents(editedEvents);
     }
     setChanged(true);
     onClose();
@@ -26,14 +26,15 @@ export default function event_Modal({ isOpen, onClose, editer, setEditer }) {
 
   function handleAddEvent() {
     allEvents
-      ? (setallEvents([...allEvents, newEvent]), setChanged(true), onClose())
+      ? (setAllEvents([...allEvents, newEvent]), setChanged(true), onClose())
       : null;
   }
+  
   function handleEditEvent() {
     const newList = allEvents.map((task) =>
       task.id === newEvent.id ? newEvent : task
     );
-    setallEvents(newList);
+    setAllEvents(newList);
     setChanged(true);
     setEditer(false);
     onClose();

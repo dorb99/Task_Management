@@ -1,40 +1,47 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import users from "../../UserInfo.json";
-import { UserContext } from "../../General_Components/Other/Context";
-import "./LogIn.css";
-import Comments from "../Comments/Comments";
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../General_Components/Other/Context';
+import './LogIn.css';
+import Comments from '../Comments/Comments';
 
 function LogIn() {
-  const { user, setUser } = useContext(UserContext);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const { setUser, setUserInfo, setAllEvents } = useContext(UserContext);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSignIn = () => {
-    const savedUser = JSON.parse(localStorage.getItem(username));
-    if (users.users.hasOwnProperty(username) ) {
-      if (users.users[username].password === password) {
-        setUser(username);
-        localStorage.setItem("username", JSON.stringify(username));
-        navigate("/userpage");
-        return
-      } else {
-        alert("Please check your password");
+  const handleSignIn = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/users");
+      const users = await response.json();
+  
+      console.log("Fetched users:", users); // Debugging step
+  
+      if (!Array.isArray(users)) {
+        throw new Error("Invalid user data format. Expected an array.");
       }
-    } 
-    else {
-      alert("Username not found. Please sign up.");
+
+      // Find the user in the users array
+      const user = users.find((u) => u.id === username);
+
+      if (user) {
+        if (user.password === password) {
+          setUser(username);
+          setUserInfo(user);
+          setAllEvents(user.tasks || []);
+
+          localStorage.setItem("username", JSON.stringify(username));
+          navigate("/userpage");
+        } else {
+          alert("Incorrect password. Please try again.");
+        }
+      } else {
+        alert("Username not found. Please sign up.");
+      }
+    } catch (error) {
+      console.error("Error during sign-in:", error);
     }
   };
-
-  useEffect(() => {
-    const savedUsername = JSON.parse(localStorage.getItem("username"));
-    if (savedUsername && user !== savedUsername) {
-      setUser(savedUsername);
-      navigate("/");
-    }
-  }, [user]);
 
   return (
     <div id="login-container">
@@ -46,7 +53,7 @@ function LogIn() {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          minLength="8"
+          minLength="4"
         />
         <input
           className="login-input"
@@ -69,4 +76,5 @@ function LogIn() {
     </div>
   );
 }
+
 export default LogIn;

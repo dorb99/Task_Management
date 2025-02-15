@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { UserContext } from "./General_Components/Other/Context";
+import React, { useContext, useEffect, useState } from "react";
+import { UserContext, UserProvider } from "./General_Components/Other/Context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LogIn from "./Account/LogIn/LogIn";
 import SignUp from "./Account/SignUp/SignUp";
@@ -15,20 +15,7 @@ import Fetcher from "./Fetcher";
 import "./App.css";
 
 function App() {
-  const [cardInfo, setCardInfo] = useState({
-    CVV: "",
-    cardNumber: "",
-    expirationDate: "",
-  });
-  const [user, setUser] = useState();
-  const [userInfo, setUserInfo] = useState();
-  const [allEvents, setallEvents] = useState([]);
-  const [changed, setChanged] = useState(false);
-  const [newEvent, setNewEvent] = useState({
-    title: "",
-    start: "",
-    end: "",
-  });
+  const { user, setUser, allEvents } = useContext(UserContext);
 
   useEffect(() => {
     const haveUser = JSON.parse(localStorage.getItem("username"));
@@ -36,22 +23,7 @@ function App() {
   }, []);
 
   return (
-    <UserContext.Provider
-      value={{
-        user,
-        setUser,
-        allEvents,
-        setallEvents,
-        newEvent,
-        setNewEvent,
-        setCardInfo,
-        cardInfo,
-        userInfo,
-        setUserInfo,
-        changed,
-        setChanged,
-      }}
-    >
+    <UserProvider>
       <div className="App">
         <NavBar />
         <Fetcher user={user} allEvents={allEvents} />
@@ -67,7 +39,7 @@ function App() {
         </Routes>
         <Footer />
       </div>
-    </UserContext.Provider>
+      </UserProvider>
   );
 }
 export default App;

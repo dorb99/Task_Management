@@ -6,7 +6,7 @@ import Comments from "../Comments/Comments";
 import { UserContext } from "../../General_Components/Other/Context";
 
 function SignUp() {
-  const { setUser, setUserInfo, setallEvents, setChanged } =
+  const { setUser, setUserInfo, setAllEvents, setChanged } =
     useContext(UserContext);
   const [email, setEmail] = useState("");
   const [choosedPlan, setChoosedPlan] = useState(false);
@@ -17,13 +17,12 @@ function SignUp() {
   const [creditCardExists, setCreditCardExists] = useState(false);
 
   useEffect(() => {
-    const creditCardData = localStorage.getItem("creditCardData");
-    if (creditCardData) {
+    if (choosedPlan) {
       setCreditCardExists(true);
     }
-  }, []);
+  }, [choosedPlan]);
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
 
     if (!creditCardExists) {
@@ -31,18 +30,56 @@ function SignUp() {
       return;
     }
 
-    setUser(username);
-    const newUser = {
-      username: username,
-      password: password,
-      email: email,
-      birthday: birth,
-      tasks: [{}],
-    };
-    setallEvents(newUser.tasks);
-    setUserInfo(newUser);
-    navigate("/userpage");
-    setChanged(true);
+    try {
+      const response = await fetch("http://localhost:3000/users");
+      const users = await response.json();
+
+      console.log("Fetched users:", users); // Debugging step
+
+      if (!Array.isArray(users)) {
+        throw new Error("Invalid user data format. Expected an array.");
+      }
+
+      // Check if username is already taken
+      const existingUser = users.find((user) => user.id === username);
+      if (existingUser) {
+        alert("Username already exists. Please choose another.");
+        return;
+      }
+
+      // Create new user object
+      const newUser = {
+        id: username, // Unique identifier
+        username: username,
+        password: password,
+        email: email,
+        birthday: birth,
+        tasks: [],
+      };
+
+      // Save new user to JSON server
+      const addUserResponse = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
+
+      if (!addUserResponse.ok) {
+        throw new Error("Failed to create user.");
+      }
+
+      setUser(username);
+      setUserInfo(newUser);
+      setAllEvents([]);
+      setChanged(true);
+      localStorage.setItem("username", JSON.stringify(username));
+
+      navigate("/userpage");
+    } catch (error) {
+      console.error("Error during sign-up:", error);
+    }
   };
 
   return (
@@ -85,15 +122,15 @@ function SignUp() {
             value={birth}
             onChange={(e) => setBirth(e.target.value)}
           />
-            <button type="submit" id="signup-button">
-              Submit
-            </button>
+          <button type="submit" id="signup-button">
+            Submit
+          </button>
           <p id="have-account">
             I have an account! <Link to="/">Log In</Link>
           </p>
         </div>
-      </form>{" "}
-      {choosedPlan ? null : <Modals setChoosedPlan={setChoosedPlan} />}
+      </form>
+      {!choosedPlan && <Modals setChoosedPlan={setChoosedPlan} />}
       <Comments />
     </div>
   );

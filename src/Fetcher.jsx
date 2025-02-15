@@ -7,7 +7,7 @@ function Fetcher() {
   const {
     user,
     allEvents,
-    setallEvents,
+    setAllEvents,
     userInfo,
     setUserInfo,
     changed,
@@ -15,36 +15,38 @@ function Fetcher() {
   } = useContext(UserContext);
   const [prevuser, setprevuser] = useState(0);
   const [allUsers, setAllUsers] = useState(0);
-
+  
   function userFetcher() {
     if (user !== prevuser) {
       let uri = `http://localhost:3000/users`;
       axios.get(uri).then(({ data }) => {
         setAllUsers(data);
-        setUserInfo(data[user]);
-        const events = data[user]?.tasks;
-        setallEvents(events);
-        setprevuser(user);
-      });
+        if (data[user]) {
+          setUserInfo(data[user]);
+          const events = data[user].tasks || []; // ✅ Ensure events exist
+          setAllEvents(events); // ✅ Correct function call
+          setprevuser(user);
+        }
+      }).catch(error => console.error("Error fetching user:", error));
     }
   }
-
+  
   async function EventsChange() {
-    if (!user) {
-      return;
-    }
+    if (!user) return;
+  
     const newUser = { ...userInfo, tasks: allEvents };
-    const newallUsers = {...allUsers};
-    newallUsers[user] = newUser;
-    const uri = `http://localhost:3000/users`;
-    axios.post(uri, newallUsers).then((response) => {
-      setAllUsers(newallUsers);
-      setChanged(false);
-      setUserInfo(response.data[user]);
-      const events = response.data[user].tasks
-      setallEvents(events);
-    })
+    const uri = `http://localhost:3000/users/${user}`; // JSON Server now supports this
+  
+    axios.put(uri, newUser) // ✅ Use PUT to update the specific user
+      .then((response) => {
+        setChanged(false);
+        setUserInfo(response.data);
+        setAllEvents(response.data.tasks || []);
+      })
+      .catch(error => console.error("Error updating user:", error));
   }
+  
+  
 
   useEffect(() => {
     if (changed === true) {

@@ -49,7 +49,10 @@ export default function SubscriptionModal({setChoosedPlan}) {
         id="choose-plan-button"
         className="choose-plan-button"
         type="button"
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          alert("Please don't write real creditcard information!")
+          setShowModal(true)
+        }}
       >
         Choose A Plan
       </button>
