@@ -1,6 +1,7 @@
 # Task Management Project
 
-A task management web application developed as a final project for the frontend course by Dor Bruker and Ori Barda. The application allows users to efficiently manage their tasks with a user-friendly interface built using React and JavaScript.
+A task management web application developed as a final project for the frontend course by Dor Bruker. 
+The application allows users to efficiently manage their tasks with a user-friendly interface built using React and JavaScript.
 
 ## Features
 
